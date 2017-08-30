@@ -1,5 +1,23 @@
 :root {
+  --light-grey: #f7f8fb;
+  --grey: #e7ebf3;
   --green: #00ae5b;
+}
+
+.app {
+
+}
+
+.app-left {
+  content: '';
+  background: var(--light-grey);
+  position: fixed;
+  top: 31px;
+  bottom: 0;
+  left: 0;
+  width: 250px;
+  z-index: 0;
+  box-shadow: inset -1px 0 0 var(--grey);
 }
 
 .title {
@@ -153,4 +171,16 @@
 .breadcrumb-item a {
   color: #ffffff;
   -webkit-app-region: no-drag;
+}
+
+.side-nav {
+  position: absolute;
+  top: 110px;
+  width: 250px;
+}
+
+.tab-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 }
