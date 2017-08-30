@@ -6,7 +6,7 @@
   </ol>
 
   <!--Svgs taken from https://github.com/sidneys/electron-titlebar-windows-->
-  <div class="title-bar fullscreen">
+  <div class="title-bar" [ngClass]="{'fullscreen': isFullscreen}">
     <div class="title-bar-controls">
       <div class="title-bar-minimize" (click)="minimizeWindow()">
         <svg x="0px" y="0px" viewBox="0 0 10 1">

@@ -16,9 +16,11 @@ interface Breadcrumb {
 export class TitleComponent implements OnInit {
 
   public breadcrumbs: Breadcrumb[];
+  public isFullscreen: boolean;
 
   constructor(private electron: ElectronService, private router: Router) {
     this.breadcrumbs = [];
+    this.isFullscreen = false; // The app doesn't start with fullscreen.
   }
 
   ngOnInit() {
@@ -64,6 +66,7 @@ export class TitleComponent implements OnInit {
 
   private resizeWindow(): void {
     this.electron.ipcRenderer.send('resizeWindow');
+    this.isFullscreen = !this.isFullscreen;
   }
 
   private minimizeWindow(): void {
