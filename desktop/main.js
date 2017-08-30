@@ -1,4 +1,4 @@
-const {app, BrowserWindow} = require('electron');
+const {app, BrowserWindow, ipcMain} = require('electron');
 
 let win = null;
 
@@ -15,4 +15,19 @@ app.on('window-all-closed', () => {
   if(process.platform !== 'darwin') {
     app.quit();
   }
+});
+
+ipcMain.on('closeWindow', (event, arg) => {
+  BrowserWindow.getFocusedWindow().close();
+});
+
+ipcMain.on('resizeWindow', (event, arg) => {
+  let currentWindow = BrowserWindow.getFocusedWindow();
+  if(currentWindow.isMaximized()) currentWindow.unmaximize();
+  else currentWindow.maximize();
+});
+
+ipcMain.on('minimizeWindow', (event, arg) => {
+  console.log('minimizeWindow');
+  BrowserWindow.getFocusedWindow().minimize();
 });

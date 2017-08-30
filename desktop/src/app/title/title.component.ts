@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import 'rxjs/add/operator/filter';
+import { ElectronService } from 'ngx-electron';
 
 interface Breadcrumb {
   label: string,
@@ -16,7 +17,7 @@ export class TitleComponent implements OnInit {
 
   public breadcrumbs: Breadcrumb[];
 
-  constructor(private router: Router) {
+  constructor(private electron: ElectronService, private router: Router) {
     this.breadcrumbs = [];
   }
 
@@ -55,5 +56,17 @@ export class TitleComponent implements OnInit {
       .join(' ');
 
     return text;
+  }
+
+  private closeWindow(): void {
+    this.electron.ipcRenderer.send('closeWindow');
+  }
+
+  private resizeWindow(): void {
+    this.electron.ipcRenderer.send('resizeWindow');
+  }
+
+  private minimizeWindow(): void {
+    this.electron.ipcRenderer.send('minimizeWindow');
   }
 }

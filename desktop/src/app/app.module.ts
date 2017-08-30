@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NgxElectronModule } from 'ngx-electron';
 
 import { AppComponent } from './app.component';
 import { TitleComponent } from './title/title.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    NgxElectronModule,
     RouterModule.forRoot(routes)
   ],
   exports: [
