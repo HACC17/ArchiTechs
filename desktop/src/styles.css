@@ -1,0 +1,188 @@
+:root {
+  --light-grey: #f7f8fb;
+  --grey: #e7ebf3;
+  --green: #00ae5b;
+
+  /*Fixes resize handles not appearing*/
+  border-top: 1px solid var(--green);
+}
+
+.app {
+
+}
+
+.app-left {
+  content: '';
+  background: var(--light-grey);
+  position: fixed;
+  top: 31px;
+  bottom: 0;
+  left: 0;
+  width: 250px;
+  z-index: 0;
+  box-shadow: inset -1px 0 0 var(--grey);
+}
+
+.title {
+  height: 30px;
+  -webkit-app-region: drag;
+  -webkit-user-select: none;
+  background: var(--green);
+  z-index: 999;
+}
+
+/*Css styles taken from https://github.com/sidneys/electron-titlebar-windows*/
+.title-bar
+{
+  display: block;
+  position: fixed;
+  height: 30px;
+  padding: 0;
+  top: 0;
+  right: 0;
+}
+
+.title-bar.draggable
+{
+  -webkit-app-region: drag;
+}
+
+.title-bar-controls
+{
+  float: right;
+  text-align: left;
+}
+
+.title-bar:after,
+.title-bar-controls:after
+{
+  content: ' ';
+  display: table;
+  clear: both;
+}
+
+.title-bar-minimize,
+.title-bar-resize,
+.title-bar-close
+{
+  float: left;
+  width: 45px;
+  height: 31px;
+  text-align: center;
+  line-height: 30px;
+
+  -webkit-transition: background-color .2s;
+  -moz-transition: background-color .2s;
+  -ms-transition: background-color .2s;
+  -o-transition: background-color .2s;
+  transition: background-color .2s;
+}
+
+.title-bar .title-bar-minimize,
+.title-bar .title-bar-resize,
+.title-bar .title-bar-close
+{
+  -webkit-app-region: no-drag;
+}
+
+.title-bar-minimize svg,
+.title-bar-resize svg.maximize-svg,
+.title-bar-resize svg.fullscreen-svg,
+.title-bar-close svg
+{
+  width: 10px;
+  height: 10px;
+  shape-rendering: crispEdges;
+}
+
+.title-bar-close svg polygon
+{
+  -webkit-transition: fill .2s;
+  -moz-transition: fill .2s;
+  -ms-transition: fill .2s;
+  -o-transition: fill .2s;
+  transition: fill .2s;
+}
+
+.title-bar:not(.fullscreen) svg.maximize-svg
+{
+  display: none;
+}
+
+.title-bar.fullscreen svg.fullscreen-svg
+{
+  display: none;
+}
+
+.title-bar-minimize:hover,
+.title-bar-resize:hover,
+.title-bar-fullscreen:hover
+{
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.title-bar-light .title-bar-minimize:hover,
+.title-bar-light .title-bar-resize:hover,
+.title-bar-light .title-bar-fullscreen:hover
+{
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.title-bar-close:hover
+{
+  background-color: rgba(232, 17, 35, 0.9);
+}
+
+.title-bar-close:hover svg polygon
+{
+  fill: rgba(255, 255, 255, 1);
+}
+
+.title-bar-light .title-bar-close:hover
+{
+  fill: rgba(0, 0, 0, 1);
+}
+
+.title-bar-light svg polygon,
+.title-bar-light svg rect,
+.title-bar-light svg > path
+{
+  fill: rgba(255, 255, 255, 1);
+}
+
+.title-bar-light .title-bar-close:hover
+{
+  background-color: rgba(232, 17, 35, 0.9);
+}
+/*Css styles taken from https://github.com/sidneys/electron-titlebar-windows*/
+
+.breadcrumb {
+  position: fixed;
+  font-size: 0.875rem;
+  margin: 0!important;
+  padding: 0.2rem 1rem!important;;
+  height: 30px;
+  border-radius: 0!important;
+  background: none!important;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  content: '>'!important;
+}
+
+.breadcrumb-item a {
+  color: #ffffff;
+  -webkit-app-region: no-drag;
+}
+
+.side-nav {
+  position: absolute;
+  top: 110px;
+  width: 250px;
+}
+
+.tab-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
