@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --green: #00ae5b;
+}
+
+.title {
+  height: 30px;
+  -webkit-app-region: drag;
+  -webkit-user-select: none;
+  background: var(--green);
+  z-index: 999;
+}
+
+.breadcrumb {
+  position: fixed;
+  font-size: 0.875rem;
+  margin: 0!important;
+  padding: 0.2rem 1rem!important;;
+  height: 30px;
+  top: 1px;
+  border-radius: 0!important;
+  background: none!important;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  content: '>'!important;
+}
+
+.breadcrumb-item a {
+  color: #ffffff;
+  -webkit-app-region: no-drag;
+}
