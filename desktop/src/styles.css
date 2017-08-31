@@ -191,3 +191,24 @@
   padding: 1rem;
 }
 
+.table tr.table-selectable:hover {
+  background: var(--light-grey);
+  cursor: pointer;
+}
+
+.table tbody td, .table tbody th, .table thead td, .table thead th{
+  padding: 0.3rem 0.6rem!important;
+  font-weight: normal;
+}
+
+.table tbody tr:first-child th {
+  border: 0;
+}
+
+.table {
+  box-shadow: 0 0 0 1px var(--grey);
+  overflow: hidden;
+  border-collapse: separate!important;
+  border-spacing: 0!important;
+  border-radius: 0.25rem!important;
+}
