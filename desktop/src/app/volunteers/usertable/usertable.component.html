@@ -1,0 +1,18 @@
+<table class="table">
+  <tbody>
+  <tr>
+    <th> Id </th>
+    <th> First </th>
+    <th> Last </th>
+    <th> Date of Birth </th>
+    <th> Email </th>
+  </tr>
+  <tr class="table-selectable" *ngFor="let user of users">
+    <th> {{user._id}}</th>
+    <th> {{user.first}} </th>
+    <th> {{user.last}} </th>
+    <th> {{user.dob}} </th>
+    <th> {{user.email}} </th>
+  </tr>
+  </tbody>
+</table>

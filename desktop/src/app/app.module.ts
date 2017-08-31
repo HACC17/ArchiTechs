@@ -6,6 +6,9 @@ import { NgxElectronModule } from 'ngx-electron';
 import { AppComponent } from './app.component';
 import { TitleComponent } from './title/title.component';
 import { VolunteersComponent } from './volunteers/volunteers.component';
+import { UsertableComponent } from './volunteers/usertable/usertable.component';
+
+import 'rxjs/add/operator/toPromise';
 
 
 const routes: Routes = [
@@ -16,7 +19,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     TitleComponent,
-    VolunteersComponent
+    VolunteersComponent,
+    UsertableComponent
   ],
   imports: [
     BrowserModule,
