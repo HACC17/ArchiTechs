@@ -5,6 +5,7 @@ import { NgxElectronModule } from 'ngx-electron';
 
 import { AppComponent } from './app.component';
 import { TitleComponent } from './title/title.component';
+import { VolunteersComponent } from './volunteers/volunteers.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    TitleComponent
+    TitleComponent,
+    VolunteersComponent
   ],
   imports: [
     BrowserModule,
