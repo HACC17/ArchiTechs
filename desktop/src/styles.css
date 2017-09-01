@@ -1,6 +1,8 @@
 :root {
   --light-grey: #f7f8fb;
   --grey: #e7ebf3;
+  --dark-grey: #596981;
+  --silver: #eef1f6;
   --green: #00ae5b;
 
   /*Fixes resize handles not appearing*/
@@ -193,6 +195,23 @@
   margin: 0;
   padding: 0;
   list-style-type: none;
+}
+
+.tab {
+  display: block;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  color: var(--dark-grey);
+  cursor: pointer;
+}
+
+.tab:focus {
+  outline: none;
+}
+
+.tab.active {
+  background: var(--silver);
+  box-shadow: inset 3px 0 0 0 var(--green);
 }
 
 .content {
