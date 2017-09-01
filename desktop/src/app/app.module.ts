@@ -10,12 +10,13 @@ import { VolunteersComponent } from './volunteers/volunteers.component';
 import { UsertableComponent } from './volunteers/usertable/usertable.component';
 
 import 'rxjs/add/operator/toPromise';
-import { UserdetailsComponent } from './userdetails/userdetails.component';
+import { UserdetailsComponent } from './volunteers/userdetails/userdetails.component';
 
 
 const routes: Routes = [
   {path: '', redirectTo: 'volunteers', pathMatch: 'full'},
-  {path: 'volunteers', component: VolunteersComponent}
+  {path: 'volunteers', component: VolunteersComponent},
+  {path: 'volunteers/:id', component: UserdetailsComponent}
 ];
 
 @NgModule({

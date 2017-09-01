@@ -7,7 +7,7 @@
     <th> Date of Birth </th>
     <th> Email </th>
   </tr>
-  <tr class="table-selectable" *ngFor="let user of users">
+  <tr class="table-selectable" [routerLink]="'/volunteers/' + user._id" *ngFor="let user of users">
     <th> {{user._id}}</th>
     <th> {{user.first}} </th>
     <th> {{user.last}} </th>
