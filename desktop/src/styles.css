@@ -239,3 +239,22 @@
   border-spacing: 0!important;
   border-radius: 0.25rem!important;
 }
+
+table.structure {
+  min-width: 700px;
+  width: 100%;
+}
+
+table.structure thead th {
+  border: 0!important;
+}
+
+table.structure tr {
+  vertical-align: top;
+}
+
+table.structure th, td {
+  padding: 1rem 1rem!important;
+  width: 50%;
+  font-weight: normal;
+}
