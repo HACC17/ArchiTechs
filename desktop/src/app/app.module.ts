@@ -10,6 +10,7 @@ import { VolunteersComponent } from './volunteers/volunteers.component';
 import { UsertableComponent } from './volunteers/usertable/usertable.component';
 
 import 'rxjs/add/operator/toPromise';
+import { UserdetailsComponent } from './userdetails/userdetails.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
     AppComponent,
     TitleComponent,
     VolunteersComponent,
-    UsertableComponent
+    UsertableComponent,
+    UserdetailsComponent
   ],
   imports: [
     BrowserModule,
