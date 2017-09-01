@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NgxElectronModule } from 'ngx-electron';
+import { HttpModule } from "@angular/http"
 
 import { AppComponent } from './app.component';
 import { TitleComponent } from './title/title.component';
@@ -26,6 +27,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     NgxElectronModule,
+    HttpModule,
     RouterModule.forRoot(routes)
   ],
   exports: [
