@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NgxElectronModule } from 'ngx-electron';
-import { HttpModule } from "@angular/http"
+import { HttpModule } from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -11,7 +12,7 @@ import { TitleComponent } from './title/title.component';
 import { VolunteersComponent } from './volunteers/volunteers.component';
 import { UsertableComponent } from './volunteers/usertable/usertable.component';
 import { UserdetailsComponent } from './volunteers/userdetails/userdetails.component';
-import {VolunteersService} from "./volunteers/volunteers.service";
+import { VolunteersService } from './volunteers/volunteers.service';
 
 
 const routes: Routes = [
@@ -32,6 +33,8 @@ const routes: Routes = [
     BrowserModule,
     NgxElectronModule,
     HttpModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
   exports: [

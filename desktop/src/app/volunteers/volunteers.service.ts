@@ -1,6 +1,6 @@
 import {Inject, Injectable} from '@angular/core';
-import { Http } from "@angular/http";
-import { environment } from "../../environments/environment";
+import { Http } from '@angular/http';
+import { environment } from '../../environments/environment';
 
 interface Volunteer {
   _id: string,
@@ -28,12 +28,12 @@ export class VolunteersService {
   }
 
   findOne(id: string): Object {
-    if(this.users === null) {
+    if (this.users === null) {
       this.getVolunteers();
     }
 
-    for(let user of this.users) {
-      if(user._id === id) {
+    for (const user of this.users) {
+      if (user._id === id) {
         return user;
       }
     }
