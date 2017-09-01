@@ -12,7 +12,8 @@ import 'rxjs/add/operator/toPromise';
 
 
 const routes: Routes = [
-
+  {path: '', redirectTo: 'volunteers', pathMatch: 'full'},
+  {path: 'volunteers', component: VolunteersComponent}
 ];
 
 @NgModule({

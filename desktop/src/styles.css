@@ -23,6 +23,11 @@
   box-shadow: inset -1px 0 0 var(--grey);
 }
 
+.app-right {
+  position: relative;
+  margin-left: 250px;
+}
+
 .title {
   height: 30px;
   -webkit-app-region: drag;
