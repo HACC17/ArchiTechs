@@ -9,10 +9,14 @@ import {VolunteersService} from "../volunteers.service";
 })
 export class UserdetailsComponent implements OnInit {
 
+  id: string;
+
   constructor(private route: ActivatedRoute, private service: VolunteersService) { }
 
   ngOnInit() {
-    console.log(this.route.snapshot.params);
+    this.id = this.route.snapshot.params.id;
+
+    console.log(this.service.findOne(this.id));
   }
 
 }

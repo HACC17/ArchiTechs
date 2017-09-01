@@ -5,10 +5,13 @@
 
   /*Fixes resize handles not appearing*/
   border-top: 1px solid var(--green);
+  overflow: hidden;
+
 }
 
 .app {
-
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .app-left {
