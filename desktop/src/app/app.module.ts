@@ -4,13 +4,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgxElectronModule } from 'ngx-electron';
 import { HttpModule } from "@angular/http"
 
+import 'rxjs/add/operator/toPromise';
+
 import { AppComponent } from './app.component';
 import { TitleComponent } from './title/title.component';
 import { VolunteersComponent } from './volunteers/volunteers.component';
 import { UsertableComponent } from './volunteers/usertable/usertable.component';
-
-import 'rxjs/add/operator/toPromise';
 import { UserdetailsComponent } from './volunteers/userdetails/userdetails.component';
+import {VolunteersService} from "./volunteers/volunteers.service";
 
 
 const routes: Routes = [
@@ -36,7 +37,7 @@ const routes: Routes = [
   exports: [
     RouterModule
   ],
-  providers: [],
+  providers: [VolunteersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

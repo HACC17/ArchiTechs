@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from "@angular/http";
-import {environment} from "../../../environments/environment";
+import {VolunteersService} from "../volunteers.service";
 
 @Component({
   selector: 'app-usertable',
@@ -9,17 +8,10 @@ import {environment} from "../../../environments/environment";
 })
 export class UsertableComponent implements OnInit {
 
-  users: Object[];
-
-  constructor(private http: Http) { }
+  constructor(private service: VolunteersService) { }
 
   ngOnInit() {
-    this.http.get(environment.api + '/volunteers')
-      .toPromise()
-      .then((res) => {
-        this.users = res.json();
-        console.log(this.users);
-      })
+    this.service.getVolunteers();
   }
 
 }
