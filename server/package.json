@@ -4,8 +4,10 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
+    "body-parser": "^1.17.2",
     "express": "^4.15.4",
-    "body-parser": "^1.17.2"
+    "mongodb": "^2.2.31",
+    "nodemon": "^1.11.0"
   },
   "devDependencies": {},
   "scripts": {

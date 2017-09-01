@@ -3,8 +3,12 @@ const app = express();
 
 const bodyParser = require('body-parser');
 
+const volunteers = require('./routes/volunteers');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false } ));
+
+app.use('/volunteers', volunteers);
 
 const port = process.env.PORT || '3000';
 app.set('port', port);
