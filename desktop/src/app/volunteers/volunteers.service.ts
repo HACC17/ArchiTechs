@@ -2,7 +2,7 @@ import {Inject, Injectable} from '@angular/core';
 import { Http } from '@angular/http';
 import { environment } from '../../environments/environment';
 
-interface Volunteer {
+export interface Volunteer {
   _id: string,
   first: string,
   last: string,
@@ -27,7 +27,7 @@ export class VolunteersService {
       })
   }
 
-  findOne(id: string): Object {
+  findOne(id: string): Volunteer {
     if (this.users === null) {
       this.getVolunteers();
     }
