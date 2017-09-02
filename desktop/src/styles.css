@@ -215,7 +215,7 @@
 }
 
 .content {
-  padding: 1rem;
+  padding: 2rem;
 }
 
 .table tr.table-selectable:hover {
@@ -253,8 +253,12 @@ table.structure tr {
   vertical-align: top;
 }
 
-table.structure th, td {
-  padding: 1rem 1rem!important;
+table.structure th, table.structure td {
+  padding-top: 1rem!important;
   width: 50%;
   font-weight: normal;
+}
+
+table.structure th:first-child, table.structure td:first-child {
+  padding-top: 0!important;
 }

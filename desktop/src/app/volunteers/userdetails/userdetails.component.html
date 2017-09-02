@@ -1,47 +1,49 @@
-<table class="structure">
-  <tbody>
-  <tr>
-    <th>
-      <h4> Basic Information </h4>
-      <p>
-        Summary...
-      </p>
-    </th>
-    <td>
-      <div [formGroup]="basicInformation"  class="form-group">
+<div class="content">
+  <table class="structure">
+    <tbody>
+    <tr>
+      <th>
+        <h4> Basic Information </h4>
         <p>
-          <label> First Name </label>
-          <input formControlName="firstName" class="form-control">
+          You can edit the volunteer's basic information here.
         </p>
+      </th>
+      <td>
+        <div [formGroup]="basicInformation"  class="form-group">
+          <p>
+            <label> First Name </label>
+            <input formControlName="firstName" class="form-control">
+          </p>
 
+          <p>
+            <label> Last Name </label>
+            <input formControlName="lastName" class="form-control">
+          </p>
+
+          <p>
+            <label> Date of Birth </label>
+            <input formControlName="dob" class="form-control">
+          </p>
+
+          <p>
+            <label> Email </label>
+            <input formControlName="email" class="form-control">
+          </p>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <th>
+        <h4> Header </h4>
         <p>
-          <label> Last Name </label>
-          <input formControlName="lastName" class="form-control">
+          Summary...
         </p>
-
-        <p>
-          <label> Date of Birth </label>
-          <input formControlName="dob" class="form-control">
-        </p>
-
-        <p>
-          <label> Email </label>
-          <input formControlName="email" class="form-control">
-        </p>
-      </div>
-    </td>
-  </tr>
-
-  <tr>
-    <th>
-      <h4> Header </h4>
-      <p>
-        Summary...
-      </p>
-    </th>
-    <td>
-      Description
-    </td>
-  </tr>
-  </tbody>
-</table>
+      </th>
+      <td>
+        Description
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
