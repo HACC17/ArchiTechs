@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -23,11 +24,15 @@ export class SignInComponent implements OnInit {
   // Trick for triggering the leave animation.
   anim: boolean;
 
-  constructor() {
+  constructor(private auth: AuthService) {
     this.anim = true;
   }
 
   ngOnInit() {
+  }
+
+  submit(): void {
+
   }
 
 }
