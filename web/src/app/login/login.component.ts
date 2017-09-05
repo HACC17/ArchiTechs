@@ -30,9 +30,15 @@ export class LoginComponent implements OnInit {
     this.password = new FormControl();
   }
 
-  // submit(): void {
-  //   const credential = {email: this.auth.tempEmail, password: this.password.value};
-  //   const result = this.auth.login(credential);
-  // }
+  submit(): void {
+    const credential = {email: this.auth.tempEmail, password: this.password.value};
+    this.auth.login(credential).then((res) => {
+      if (res) {
+        console.log('Login was successful!');
+      } else {
+        console.log('Login failed.');
+      }
+    });
+  }
 
 }

@@ -30,6 +30,7 @@ export class AuthService {
         // Logical operator AND: if both arguments are true, take the second arguments value;
         //  if first argument is false, then take the first argument's value.
         const token = res.json() && res.json().token;
+        console.log(res.json());
         if (token) {
           this.token = token;
           localStorage.setItem('user', JSON.stringify({token: token}));
