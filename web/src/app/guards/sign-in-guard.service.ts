@@ -8,6 +8,13 @@ export class SignInGuardService implements CanActivate {
   constructor(private auth: AuthService, private router: Router) { }
 
   canActivate(): boolean {
+    // Check if user is already logged in.
+    if (localStorage.getItem('user')) {
+      this.router.navigate(['/calendar']);
+      return false;
+    }
+
+    // Now check if the user entered an email already at the sign-in screen.
     const result = this.auth.canActivateSignIn();
     if (result) {
       return true;

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-status-bar',
@@ -8,13 +9,16 @@ import { AuthService } from '../auth.service';
 })
 export class StatusBarComponent implements OnInit {
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
 
   logout(): void {
     this.auth.logout();
+
+    // Go back to the main screen now that the user is logged out of the session.
+    this.router.navigate(['/sign-in']);
   }
 
 }

@@ -35,7 +35,11 @@ export class SignInComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(localStorage.getItem('user'));
+    // If the user is logged in already, move to scheduler.
+    if (localStorage.getItem('user')) {
+      this.router.navigate(['/calendar']);
+    }
+
     this.email = new FormControl(this.defaultEmailValue);
   }
 
