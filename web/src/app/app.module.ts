@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import 'rxjs/add/operator/toPromise';
 
 import { AuthService } from './auth.service';
+import { AuthGuardService } from './guards/auth-guard.service';
 import { SignInGuardService } from './guards/sign-in-guard.service';
 
 import { AppComponent } from './app.component';
@@ -15,7 +16,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { CalendarComponent } from './calendar/calendar.component';
-import {AuthGuardService} from "./guards/auth-guard.service";
+import { StatusBarComponent } from './status-bar/status-bar.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'sign-in', pathMatch: 'full'},
@@ -32,6 +33,7 @@ const routes: Routes = [
     LoginComponent,
     RegisterComponent,
     CalendarComponent,
+    StatusBarComponent,
   ],
   imports: [
     BrowserModule,
