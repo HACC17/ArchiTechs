@@ -17,7 +17,12 @@ export class AuthService {
   }
 
   canActivateSignIn(): boolean {
-    return this.tempEmail !== '';
+    console.log(this.tempEmail);
+    if (this.tempEmail === null || this.tempEmail === '') {
+      return false;
+    }
+
+    return true;
   }
 
 }
