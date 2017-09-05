@@ -37,7 +37,9 @@ export class SignInComponent implements OnInit {
   }
 
   submit(): void {
+    // Ask AuthService to see if there's an account with entered email.
     this.auth.hasAccount(this.email.value).then((res) => {
+      // Is there an account? True or false.
       const hasAccount: boolean = res.json().hasAccount;
 
       this.auth.tempEmail = this.email.value;

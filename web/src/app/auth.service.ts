@@ -8,6 +8,7 @@ export class AuthService {
   token: string;
 
   constructor(private http: Http) {
+    console.log('AuthService constructed.');
     this.tempEmail = '';
   }
 
@@ -16,13 +17,10 @@ export class AuthService {
     return this.http.post('/api/web/sign-in', body).toPromise();
   }
 
+  // For SignInGuardService.
   canActivateSignIn(): boolean {
     console.log(this.tempEmail);
-    if (this.tempEmail === null || this.tempEmail === '') {
-      return false;
-    }
-
-    return true;
+    return !(this.tempEmail === null || this.tempEmail === '');
   }
 
 }
