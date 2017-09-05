@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { AuthService } from '../auth.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -21,9 +22,17 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
 
+  password: FormControl;
+
   constructor(private auth: AuthService) { }
 
   ngOnInit() {
+    this.password = new FormControl();
   }
+
+  // submit(): void {
+  //   const credential = {email: this.auth.tempEmail, password: this.password.value};
+  //   const result = this.auth.login(credential);
+  // }
 
 }

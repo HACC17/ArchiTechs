@@ -40,15 +40,14 @@ export class SignInComponent implements OnInit {
 
   submit(): void {
     // Ask AuthService to see if there's an account with entered email.
+    // The response object should be a boolean.
     this.auth.hasAccount(this.email.value).then((res) => {
-      // Is there an account? True or false.
-      const hasAccount: boolean = res.json().hasAccount;
 
       this.auth.tempEmail = this.email.value;
       this.anim = false;
 
       setTimeout(() => {
-        if (hasAccount) {
+        if (res) {
           this.router.navigateByUrl('/sign-in/login');
         } else {
           this.router.navigateByUrl('/sign-in/sign-up');
