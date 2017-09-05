@@ -11,6 +11,7 @@ import { AuthService } from './auth.service';
 
 import { AppComponent } from './app.component';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'sign-in', pathMatch: 'full'},
@@ -21,6 +22,7 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     SignInComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
