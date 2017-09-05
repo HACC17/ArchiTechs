@@ -42,6 +42,11 @@ export class AuthService {
       });
   }
 
+  logout(): void {
+    this.token = null;
+    localStorage.removeItem('user');
+  }
+
   // For SignInGuardService.
   canActivateSignIn(): boolean {
     return !(this.tempEmail === null || this.tempEmail === '');
