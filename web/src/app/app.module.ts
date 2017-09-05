@@ -3,6 +3,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
 import { HttpModule } from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import 'rxjs/add/operator/toPromise';
 
 import { AuthService } from './auth.service';
 
@@ -23,6 +26,8 @@ const routes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
   exports: [

@@ -6,7 +6,8 @@ router.post('/', (req, res) => {
   const email = req.body && req.body.email;
 
   // True, there is an account with that email, or false, there is not.
-  req.send(email === testAccount.email);
+  const data = {hasAccount: email === testAccount.email};
+  req.send(data);
 });
 
 module.exports = router;

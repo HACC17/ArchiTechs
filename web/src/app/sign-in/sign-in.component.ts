@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { AuthService } from '../auth.service';
+import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -24,15 +26,22 @@ export class SignInComponent implements OnInit {
   // Trick for triggering the leave animation.
   anim: boolean;
 
-  constructor(private auth: AuthService) {
+  email: FormControl;
+
+  constructor(private auth: AuthService, private router: Router) {
     this.anim = true;
   }
 
   ngOnInit() {
+    this.email = new FormControl();
   }
 
   submit(): void {
+    this.auth.hasAccount(this.email.value).then((res) => {
+      const hasAccount: boolean = res.json().hasAccount;
 
+      console.log(hasAccount);
+    });
   }
 
 }
