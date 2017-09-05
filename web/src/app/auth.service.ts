@@ -44,7 +44,6 @@ export class AuthService {
 
   // For SignInGuardService.
   canActivateSignIn(): boolean {
-    console.log(this.tempEmail);
     return !(this.tempEmail === null || this.tempEmail === '');
   }
 

@@ -15,13 +15,14 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import {AuthGuardService} from "./guards/auth-guard.service";
 
 const routes: Routes = [
   {path: '', redirectTo: 'sign-in', pathMatch: 'full'},
   {path: 'sign-in', component: SignInComponent},
   {path: 'sign-in/login', component: LoginComponent, canActivate: [SignInGuardService]},
   {path: 'sign-in/register', component: RegisterComponent, canActivate: [SignInGuardService]},
-  {path: 'calendar', component: CalendarComponent}
+  {path: 'calendar', component: CalendarComponent, canActivate: [AuthGuardService]}
 ]
 
 @NgModule({
@@ -45,7 +46,8 @@ const routes: Routes = [
   ],
   providers: [
     AuthService,
-    SignInGuardService
+    AuthGuardService,
+    SignInGuardService,
   ],
   bootstrap: [AppComponent]
 })
