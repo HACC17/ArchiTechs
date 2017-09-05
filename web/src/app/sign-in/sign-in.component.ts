@@ -10,9 +10,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-in.component.css'],
   animations: [
     trigger('signInAnim', [
-      transition('void => *', [
-        style({transform: 'translateY(40px)'}),
-        animate('1s ease', style({transform: 'translateY(0)'}))
+      transition(':enter', [
+        style({transform: 'translateY(40px)', opacity: 0}),
+        animate('1s ease', style({transform: 'translateY(0)', opacity: 1}))
       ]),
 
       transition(':leave',
@@ -40,8 +40,8 @@ export class SignInComponent implements OnInit {
     this.auth.hasAccount(this.email.value).then((res) => {
       const hasAccount: boolean = res.json().hasAccount;
 
+      this.anim = false;
       setTimeout(() => {
-        this.anim = false;
         if (hasAccount) {
           this.router.navigateByUrl('/sign-in/login');
         } else {
