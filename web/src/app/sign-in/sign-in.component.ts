@@ -40,7 +40,9 @@ export class SignInComponent implements OnInit {
     this.auth.hasAccount(this.email.value).then((res) => {
       const hasAccount: boolean = res.json().hasAccount;
 
+      this.auth.tempEmail = this.email.value;
       this.anim = false;
+
       setTimeout(() => {
         if (hasAccount) {
           this.router.navigateByUrl('/sign-in/login');

@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import 'rxjs/add/operator/toPromise';
 
 import { AuthService } from './auth.service';
+import { SignInGuardService } from './guards/sign-in-guard.service';
 
 import { AppComponent } from './app.component';
 import { SignInComponent } from './sign-in/sign-in.component';
@@ -17,8 +18,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 const routes: Routes = [
   {path: '', redirectTo: 'sign-in', pathMatch: 'full'},
   {path: 'sign-in', component: SignInComponent},
-  {path: 'sign-in/login', component: LoginComponent},
-  {path: 'sign-in/sign-up', component: SignUpComponent}
+  {path: 'sign-in/login', component: LoginComponent, canActivate: [SignInGuardService]},
+  {path: 'sign-in/sign-up', component: SignUpComponent, canActivate: [SignInGuardService]}
 ]
 
 @NgModule({
@@ -39,7 +40,10 @@ const routes: Routes = [
   exports: [
     RouterModule
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    SignInGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
