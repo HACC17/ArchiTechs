@@ -14,9 +14,9 @@ router.post('/', (req, res) => {
 
 router.post('/login', (req, res) => {
   const credential = req.body;
-  console.log(credential);
-  console.log(testAccount);
+
   let data = {};
+  // TODO: Tentative mock authentication system- switch to database based system.
   if (credential.email === testAccount.email && credential.password === testAccount.password) {
     console.log('Yes');
     // Sign and include a jwt token in the response data.

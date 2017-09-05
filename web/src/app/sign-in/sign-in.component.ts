@@ -35,6 +35,7 @@ export class SignInComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(localStorage.getItem('user'));
     this.email = new FormControl(this.defaultEmailValue);
   }
 
@@ -50,7 +51,7 @@ export class SignInComponent implements OnInit {
         if (res) {
           this.router.navigateByUrl('/sign-in/login');
         } else {
-          this.router.navigateByUrl('/sign-in/sign-up');
+          this.router.navigateByUrl('/sign-in/register');
         }
       }, 500);
     });

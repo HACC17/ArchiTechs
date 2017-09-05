@@ -13,13 +13,15 @@ import { SignInGuardService } from './guards/sign-in-guard.service';
 import { AppComponent } from './app.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { LoginComponent } from './login/login.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
+import { RegisterComponent } from './register/register.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'sign-in', pathMatch: 'full'},
   {path: 'sign-in', component: SignInComponent},
   {path: 'sign-in/login', component: LoginComponent, canActivate: [SignInGuardService]},
-  {path: 'sign-in/sign-up', component: SignUpComponent, canActivate: [SignInGuardService]}
+  {path: 'sign-in/register', component: RegisterComponent, canActivate: [SignInGuardService]},
+  {path: 'calendar', component: CalendarComponent}
 ]
 
 @NgModule({
@@ -27,7 +29,8 @@ const routes: Routes = [
     AppComponent,
     SignInComponent,
     LoginComponent,
-    SignUpComponent,
+    RegisterComponent,
+    CalendarComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,25 @@
+<div class="container">
+  <table class="table">
+    <tbody>
+      <tr>
+          <th> Sun </th>
+          <th> Mon </th>
+          <th> Tue </th>
+          <th> Wed </th>
+          <th> Thu </th>
+          <th> Fri </th>
+          <th> Sat </th>
+      </tr>
+      <tr *ngFor="let week of calendar">
+        <td *ngFor="let day of week.days">
+          {{day.currentDate.date()}}
+          <ul class="list-unstyled">
+            <li *ngFor="let training of day.currentTrainings">
+              <button class="btn btn-primary"> {{training.time}} </button>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
