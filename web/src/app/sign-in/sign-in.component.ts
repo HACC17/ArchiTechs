@@ -41,6 +41,7 @@ export class SignInComponent implements OnInit {
       const hasAccount: boolean = res.json().hasAccount;
 
       setTimeout(() => {
+        this.anim = false;
         if (hasAccount) {
           this.router.navigateByUrl('/sign-in/login');
         } else {
