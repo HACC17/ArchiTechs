@@ -25,15 +25,17 @@ export class SignInComponent implements OnInit {
 
   // Trick for triggering the leave animation.
   anim: boolean;
-
+  defaultEmailValue: string;
   email: FormControl;
 
   constructor(private auth: AuthService, private router: Router) {
     this.anim = true;
+    // So if user presses back button in browser, they don't have to rewrite the email address.
+    this.defaultEmailValue = this.auth.tempEmail;
   }
 
   ngOnInit() {
-    this.email = new FormControl();
+    this.email = new FormControl(this.defaultEmailValue);
   }
 
   submit(): void {
