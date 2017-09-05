@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+.table.calendar {
+  box-shadow: 0 0 0 1px #e7ebf3;
+  overflow: hidden;
+  border-collapse: separate!important;
+  border-spacing: 0!important;
+  border-radius: 0.25rem!important;
+  table-layout: fixed;
+  max-width: 1000px!important;
+}
+
+.table.calendar tbody tr:first-child th {
+  border: 0;
+}
+
+.table.calendar th {
+  color: #ffffff;
+  font-weight: normal;
+  padding-top: 0.8rem!important;
+  padding-bottom: 0.9rem!important;
+}
+
+.table.calendar td {
+  padding-top: 0.4rem!important;
+  padding-bottom: 0.4rem!important;
+  height: 100px!important;
+}
+
+.table.calendar th, td {
+  padding-left: 0.8rem!important;
+}
+
+.table.calendar button {
+  font-size: 12px!important;
+  padding: 0.2rem!important;
+}
