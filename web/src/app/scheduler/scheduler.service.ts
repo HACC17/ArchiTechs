@@ -4,14 +4,19 @@ import { Http, Response } from '@angular/http';
 @Injectable()
 export class SchedulerService {
 
-  constructor(private http: Http) { }
+  user: Object;
+
+  constructor(private http: Http) {
+    this.user = {};
+  }
 
   getData(): Promise<Object> {
     const user = JSON.parse(localStorage.getItem('user'));
     return this.http.post('/api/web/data/get', user)
       .toPromise()
       .then((res: Response) => {
-        return res.json();
+        this.user = res.json();
+        return this.user;
       })
   }
 }

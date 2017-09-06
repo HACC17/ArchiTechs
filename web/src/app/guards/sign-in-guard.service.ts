@@ -10,7 +10,7 @@ export class SignInGuardService implements CanActivate {
   canActivate(): boolean {
     // Check if user is already logged in.
     if (localStorage.getItem('user')) {
-      this.router.navigate(['/calendar']);
+      this.router.navigate(['/scheduler']);
       return false;
     }
 

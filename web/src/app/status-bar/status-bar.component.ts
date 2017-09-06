@@ -19,7 +19,6 @@ export class StatusBarComponent implements OnInit {
   ngOnInit() {
     this.scheduler.getData().then((res: Object) => {
       this.user = res;
-      console.log(this.user);
     })
   }
 
