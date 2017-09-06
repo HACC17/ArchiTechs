@@ -2,22 +2,19 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const MongoClient = require('mongodb').MongoClient;
+const environment = require('../../environment');
 
-const url = 'mongodb://localhost:27017/admin';
-
-const testAccount = {name: 'Annie Kim', training: {}, email: 'test@test.com', password: 'test'};
-
+// Determine whether account with email exists or not.
 router.post('/', (req, res) => {
   const email = req.body && req.body.email;
 
-  MongoClient.connect(url, (err, db) => {
+  MongoClient.connect(environment.url.mongodb, (err, db) => {
     if (err) {
-      res.send('Error connecting to database:', err);
-      db.close();
+      res.send('Error connecting to database:' + err);
     } else {
       db.collection('volunteers').findOne({email: email}, (err, item) => {
         if (err) {
-          res.send('Error finding user:', err);
+          res.send({});
           db.close();
         } else {
           let result = false;
@@ -25,7 +22,7 @@ router.post('/', (req, res) => {
           if (item) {
             result = true;
           }
-          
+
           res.send({hasAccount: result});
           db.close();
         }
@@ -34,18 +31,35 @@ router.post('/', (req, res) => {
   });
 });
 
+// Authenticates a user then signs and sends a JWT token.
 router.post('/login', (req, res) => {
   const credential = req.body;
 
-  let data = {};
-  // TODO: Tentative mock authentication system- switch to database based system.
-  if (credential.email === testAccount.email && credential.password === testAccount.password) {
-    // Sign and include a jwt token in the response data.
-    const token = jwt.sign({name: testAccount.name, training: testAccount.training}, 'secret');
-    data.token = token;
-  }
+  MongoClient.connect(environment.url.mongodb, (err, db) => {
+    if (err) {
+      res.send('Error connecting to database:' + err);
+    } else {
+      db.collection('volunteers').findOne({email: credential.email, password: credential.password}, (err, item) => {
+        if (err) {
+          res.send({});
+          db.close();
 
-  res.send(data);
+        } else {
+          let body = {};
+
+          // Authentication successful (there is a user that matches the credentials).
+          if (item) {
+            // Sign and include a jwt token in the response data.
+            body.token = jwt.sign({id: item._id}, 'secret');
+          }
+
+          // Send an empty body if authentication failed.
+          res.send(body);
+          db.close();
+        }
+      });
+    }
+  });
 });
 
 module.exports = router;
