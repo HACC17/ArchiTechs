@@ -6,7 +6,7 @@
   border-spacing: 0!important;
   border-radius: 0.25rem!important;
   table-layout: fixed;
-  max-width: 1000px!important;
+  width: 1000px!important;
 }
 
 .table.calendar tbody tr:first-child th {
@@ -33,4 +33,13 @@
 .table.calendar button {
   font-size: 12px!important;
   padding: 0.2rem!important;
+}
+
+.status-bar {
+  height: 80px;
+  padding: 1rem;
+}
+
+.btn.logout {
+  float: right;
 }

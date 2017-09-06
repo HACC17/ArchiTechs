@@ -22,11 +22,10 @@ router.post('/get', (req, res) => {
               console.log(err);
             }
           });
+          db.close();
         } else {
           console.log(err);
         }
-
-        db.close();
       });
     } else {
       console.log(err);

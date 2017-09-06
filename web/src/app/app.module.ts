@@ -17,6 +17,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { StatusBarComponent } from './status-bar/status-bar.component';
+import { SchedulerComponent } from './scheduler/scheduler.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'sign-in', pathMatch: 'full'},
@@ -34,6 +35,7 @@ const routes: Routes = [
     RegisterComponent,
     CalendarComponent,
     StatusBarComponent,
+    SchedulerComponent,
   ],
   imports: [
     BrowserModule,
