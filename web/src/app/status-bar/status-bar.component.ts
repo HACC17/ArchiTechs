@@ -11,10 +11,14 @@ export class StatusBarComponent implements OnInit {
 
   user: Object;
 
-  constructor(private auth: AuthService, private router: Router) { }
+  constructor(private auth: AuthService, private router: Router) {
+    this.user = {};
+  }
 
   ngOnInit() {
-    this.user = localStorage.getItem('user');
+    this.auth.getData().then((res: Object) => {
+      this.user = res;
+    })
   }
 
   logout(): void {
