@@ -44,7 +44,7 @@ export class AuthService {
     localStorage.removeItem('user');
   }
 
-  // For SignInGuardService.
+  // For SchedulerGuardService.
   canActivateSignIn(): boolean {
     return !(this.tempEmail === null || this.tempEmail === '');
   }

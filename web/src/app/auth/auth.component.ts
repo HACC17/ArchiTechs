@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css'],
   animations: [
-    trigger('signInAnim', [
+    trigger('authAnim', [
       transition(':enter', [
         style({transform: 'translateY(40px)', opacity: 0}),
         animate('1s ease', style({transform: 'translateY(0)', opacity: 1}))
@@ -21,7 +21,7 @@ import { Router } from '@angular/router';
     ])
   ]
 })
-export class SignInComponent implements OnInit {
+export class AuthComponent implements OnInit {
 
   // Trick for triggering the leave animation.
   anim: boolean;

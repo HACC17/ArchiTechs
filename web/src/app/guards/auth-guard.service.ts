@@ -8,8 +8,14 @@ export class AuthGuardService implements CanActivate {
   constructor(private auth: AuthService, private router: Router) { }
 
   canActivate(): boolean {
-    const result = localStorage.getItem('user');
+    // Check if user is already logged in.
+    if (localStorage.getItem('user')) {
+      this.router.navigate(['/scheduler']);
+      return false;
+    }
 
+    // Now check if the user entered an email already at the auth screen.
+    const result = this.auth.canActivateSignIn();
     if (result) {
       return true;
     }

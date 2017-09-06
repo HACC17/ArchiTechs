@@ -8,11 +8,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import 'rxjs/add/operator/toPromise';
 
 import { AuthService } from './auth/auth.service';
+import { SchedulerGuardService } from './guards/scheduler-guard.service';
 import { AuthGuardService } from './guards/auth-guard.service';
-import { SignInGuardService } from './guards/sign-in-guard.service';
 
 import { AppComponent } from './app.component';
-import { SignInComponent } from './auth/auth.component';
+import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { CalendarComponent } from './calendar/calendar.component';
@@ -22,16 +22,16 @@ import {SchedulerService} from "./scheduler/scheduler.service";
 
 const routes: Routes = [
   {path: '', redirectTo: 'auth', pathMatch: 'full'},
-  {path: 'auth', component: SignInComponent},
-  {path: 'auth/login', component: LoginComponent, canActivate: [SignInGuardService]},
-  {path: 'auth/register', component: RegisterComponent, canActivate: [SignInGuardService]},
+  {path: 'auth', component: AuthComponent},
+  {path: 'auth/login', component: LoginComponent, canActivate: [AuthGuardService]},
+  {path: 'auth/register', component: RegisterComponent, canActivate: [AuthGuardService]},
   {path: 'scheduler', component: SchedulerComponent, canActivate: [AuthGuardService]}
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignInComponent,
+    AuthComponent,
     LoginComponent,
     RegisterComponent,
     CalendarComponent,
@@ -53,7 +53,7 @@ const routes: Routes = [
     SchedulerService,
     AuthService,
     AuthGuardService,
-    SignInGuardService,
+    AuthGuardService,
   ],
   bootstrap: [AppComponent]
 })
