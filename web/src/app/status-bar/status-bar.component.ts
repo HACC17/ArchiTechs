@@ -9,9 +9,12 @@ import { Router } from '@angular/router';
 })
 export class StatusBarComponent implements OnInit {
 
+  user: Object;
+
   constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
+    this.user = localStorage.getItem('user');
   }
 
   logout(): void {

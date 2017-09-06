@@ -15,9 +15,9 @@ import { Router } from '@angular/router';
         animate('1s ease', style({transform: 'translateX(0)', opacity: 1}))
       ]),
 
-      transition(':leave', [
-        animate('1s ease', style({transform: 'translateY(-40px)', opacity: 0}))
-      ])
+      transition(':leave',
+        animate('1s ease', style({transform: 'translateX(-40px)', opacity: 0}))
+      )
     ])
   ]
 })

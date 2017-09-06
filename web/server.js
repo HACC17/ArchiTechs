@@ -9,6 +9,7 @@ const volunteers = require('./src/server/routes/desktop/volunteers');
 
 // Web endpoints.
 const signIn = require('./src/server/routes/web/sign-in');
+const resources = require('./src/server/routes/web/resources');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false } ));
@@ -18,6 +19,7 @@ app.use('/api/desktop/volunteers', volunteers);
 
 // Web endpoints.
 app.use('/api/web/sign-in', signIn);
+app.use('/api/web/resources', resources);
 
 app.use(express.static(path.join(__dirname, 'dist')));
 app.get('*', (req, res) => {
