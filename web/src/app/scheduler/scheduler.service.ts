@@ -5,12 +5,12 @@ import * as moment from 'moment';
 @Injectable()
 export class SchedulerService {
 
-
-  user: Object;
+  user: any;
   trainingsOfMonth: any;
 
   constructor(private http: Http) {
     this.user = {};
+    this.user.training = {};
     this.trainingsOfMonth = [
       {month: 9, date: 1, time: '10:00 AM - 2:00 PM'},
       {month: 9, date: 2, time: '9:00 AM - 3:00 PM'}
@@ -51,5 +51,14 @@ export class SchedulerService {
         this.user = res.json();
         return this.user;
       })
+  }
+
+  updateUserTraining(training): void {
+    console.log('updateUserTraining in SchedulerService called');
+
+    this.user.training = training;
+
+    console.log(this.user.training);
+
   }
 }

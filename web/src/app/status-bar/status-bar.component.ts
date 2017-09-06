@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
 import { SchedulerService } from '../scheduler/scheduler.service';
 
@@ -26,7 +26,7 @@ export class StatusBarComponent implements OnInit {
     this.auth.logout();
 
     // Go back to the main screen now that the user is logged out of the session.
-    this.router.navigate(['/sign-in']);
+    this.router.navigate(['/auth']);
   }
 
 }

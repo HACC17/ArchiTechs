@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable()
 export class SignInGuardService implements CanActivate {
@@ -14,18 +14,18 @@ export class SignInGuardService implements CanActivate {
       return false;
     }
 
-    // Now check if the user entered an email already at the sign-in screen.
+    // Now check if the user entered an email already at the auth screen.
     const result = this.auth.canActivateSignIn();
     if (result) {
       return true;
     }
 
     // At this point the user is denied access.
-    // Now check if we should reload the page or redirect to sign-in.
-    if (this.router.url === '/sign-in') {
+    // Now check if we should reload the page or redirect to auth.
+    if (this.router.url === '/auth') {
       window.location.reload();
     } else {
-      this.router.navigate(['/sign-in']);
+      this.router.navigate(['/auth']);
     }
 
     return false;

@@ -26,4 +26,8 @@ export class CalendarComponent implements OnInit {
   ngOnInit() {
     this.calendar = this.scheduler.makeCalendar();
   }
+
+  updateUserTraining(training): void {
+    this.scheduler.updateUserTraining(training);
+  }
 }

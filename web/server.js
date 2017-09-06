@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 const volunteers = require('./src/server/routes/desktop/volunteers');
 
 // Web endpoints.
-const signIn = require('./src/server/routes/web/sign-in');
+const signIn = require('./src/server/routes/web/auth');
 const data = require('./src/server/routes/web/data');
 
 app.use(bodyParser.json());
@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false } ));
 app.use('/api/desktop/volunteers', volunteers);
 
 // Web endpoints.
-app.use('/api/web/sign-in', signIn);
+app.use('/api/web/auth', signIn);
 app.use('/api/web/data', data);
 
 app.use(express.static(path.join(__dirname, 'dist')));

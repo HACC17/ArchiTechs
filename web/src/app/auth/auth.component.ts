@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { AuthService } from '../auth.service';
+import { AuthService } from './auth.service';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
-  templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.css'],
+  templateUrl: './auth.component.html',
+  styleUrls: ['./auth.component.css'],
   animations: [
     trigger('signInAnim', [
       transition(':enter', [
@@ -53,9 +53,9 @@ export class SignInComponent implements OnInit {
 
       setTimeout(() => {
         if (res) {
-          this.router.navigateByUrl('/sign-in/login');
+          this.router.navigateByUrl('/auth/login');
         } else {
-          this.router.navigateByUrl('/sign-in/register');
+          this.router.navigateByUrl('/auth/register');
         }
       }, 500);
     });

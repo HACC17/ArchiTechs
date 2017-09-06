@@ -14,7 +14,7 @@
         {{item.day.date()}}
         <ul class="list-unstyled">
           <li *ngFor="let session of item.trainingsOfDay">
-            <button class="btn btn-primary"> {{session.time}} </button>
+            <button class="btn btn-primary" (click)="updateUserTraining(session)"> {{session.time}} </button>
           </li>
         </ul>
       </td>

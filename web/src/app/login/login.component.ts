@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../auth/auth.service';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
