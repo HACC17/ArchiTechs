@@ -18,6 +18,7 @@ export class StatusBarComponent implements OnInit {
   ngOnInit() {
     this.auth.getData().then((res: Object) => {
       this.user = res;
+      console.log(this.user);
     })
   }
 

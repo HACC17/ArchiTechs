@@ -1,26 +1,24 @@
-<app-status-bar></app-status-bar>
-<div class="row justify-content-center align-items-center p-5">
-  <table [@calendarAnim] class="table calendar">
-    <tbody>
-      <tr class="bg-primary">
-          <th> Sun </th>
-          <th> Mon </th>
-          <th> Tue </th>
-          <th> Wed </th>
-          <th> Thu </th>
-          <th> Fri </th>
-          <th> Sat </th>
-      </tr>
-      <tr *ngFor="let week of calendar">
-        <td *ngFor="let day of week.days">
-          {{day.currentDate.date()}}
-          <ul class="list-unstyled">
-            <li *ngFor="let training of day.currentTrainings">
-              <button class="btn btn-primary"> {{training.time}} </button>
-            </li>
-          </ul>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table [@calendarAnim] class="table calendar">
+  <tbody>
+    <tr class="bg-primary">
+        <th> Sun </th>
+        <th> Mon </th>
+        <th> Tue </th>
+        <th> Wed </th>
+        <th> Thu </th>
+        <th> Fri </th>
+        <th> Sat </th>
+    </tr>
+    <tr *ngFor="let item of calendar">
+      <td *ngFor="let item of item.days">
+        {{item.day.date()}}
+        <ul class="list-unstyled">
+          <li *ngFor="let session of item.trainingsOfDay">
+            <button class="btn btn-primary"> {{session.time}} </button>
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

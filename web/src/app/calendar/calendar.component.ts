@@ -24,10 +24,10 @@ export interface Training {
 export class CalendarComponent implements OnInit {
 
   calendar = [];
-  trainings: Training[];
+  trainingsOfMonth: any;
 
   constructor() {
-    this.trainings = [
+    this.trainingsOfMonth = [
       {month: 9, date: 1, time: '10:00 AM - 2:00 PM'},
       {month: 9, date: 2, time: '9:00 AM - 3:00 PM'}
     ];
@@ -42,19 +42,18 @@ export class CalendarComponent implements OnInit {
       this.calendar.push({
         week: week,
         days: Array(7).fill(0).map((n, i) => {
-          const currentDate = moment().week(week).startOf('week').clone().add(n + i, 'day');
-          const currentTrainings = [];
+          const day = moment().week(week).startOf('week').clone().add(n + i, 'day');
+          const trainingsOfDay = [];
 
-          for (const training of this.trainings) {
-            if (training.date === currentDate.date()) {
-              currentTrainings.push(training);
+          for (const session of this.trainingsOfMonth) {
+            if (session.date === day.date()) {
+              trainingsOfDay.push(session);
             }
           }
-          return {currentDate: currentDate, currentTrainings: currentTrainings};
+          return {day: day, trainingsOfDay: trainingsOfDay};
         })
       })
     }
 
-    console.log(this.calendar);
   }
 }

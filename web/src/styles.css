@@ -6,7 +6,7 @@
   border-spacing: 0!important;
   border-radius: 0.25rem!important;
   table-layout: fixed;
-  width: 1000px!important;
+  /*min-width: 1000px!important;*/
 }
 
 .table.calendar tbody tr:first-child th {
@@ -37,7 +37,8 @@
 
 .status-bar {
   height: 80px;
-  padding: 1rem;
+  padding: 1.5rem 0;
+  font-size: 20px;
 }
 
 .btn.logout {

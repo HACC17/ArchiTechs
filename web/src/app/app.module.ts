@@ -24,7 +24,7 @@ const routes: Routes = [
   {path: 'sign-in', component: SignInComponent},
   {path: 'sign-in/login', component: LoginComponent, canActivate: [SignInGuardService]},
   {path: 'sign-in/register', component: RegisterComponent, canActivate: [SignInGuardService]},
-  {path: 'calendar', component: CalendarComponent, canActivate: [AuthGuardService]}
+  {path: 'scheduler', component: SchedulerComponent, canActivate: [AuthGuardService]}
 ]
 
 @NgModule({
