@@ -47,15 +47,6 @@ export class AuthService {
     localStorage.removeItem('user');
   }
 
-  getData(): Promise<Object> {
-    const user = JSON.parse(localStorage.getItem('user'));
-    return this.http.post('/api/web/data/get', user)
-      .toPromise()
-      .then((res: Response) => {
-        return res.json();
-      })
-  }
-
   // For SignInGuardService.
   canActivateSignIn(): boolean {
     return !(this.tempEmail === null || this.tempEmail === '');
