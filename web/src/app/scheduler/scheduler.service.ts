@@ -43,7 +43,7 @@ export class SchedulerService {
     return calendar;
   }
 
-  getData(): Promise<Object> {
+  getUser(): Promise<Object> {
     const user = JSON.parse(localStorage.getItem('user'));
     return this.http.post('/api/web/data/get', user)
       .toPromise()
