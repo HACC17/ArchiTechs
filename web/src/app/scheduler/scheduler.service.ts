@@ -93,6 +93,10 @@ export class SchedulerService {
     const token = JSON.parse(localStorage.getItem('user')).token;
     const body = {token: token, training: training};
     console.log(body);
-    this.http.post('/api/web/data/update-training', body).toPromise();
+    this.http.post('/api/web/data/update-training', body)
+      .toPromise()
+      .then((res) => {
+        return;
+      })
   }
 }
