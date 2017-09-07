@@ -6,22 +6,50 @@ import * as moment from 'moment';
 export class SchedulerService {
 
   user: any;
+  selectedRole: string;
+  currentYear: number;
+  currentMonth: number;
   trainingsOfMonth: any;
+  filteredTrainings: any;
 
   constructor(private http: Http) {
     this.user = {};
+    // So that we don't get undefined error before api call fills it in.
     this.user.training = {};
+
+    const now = moment();
+    this.currentYear = now.year();
+    this.currentMonth = now.month();
+
+    this.selectedRole = 'any';
+
     this.trainingsOfMonth = [
-      {month: 9, date: 1, time: '10:00 AM - 2:00 PM'},
-      {month: 9, date: 2, time: '9:00 AM - 3:00 PM'}
+      {role: 'counter', month: 9, date: 1, time: '10:00 AM - 2:00 PM'},
+      {role: 'operator', month: 10, date: 2, time: '9:00 AM - 3:00 PM'}
     ];
+  }
+
+  filterTrainings(): void {
+    this.filteredTrainings = this.trainingsOfMonth;
+    this.filteredTrainings.filter((element) => {
+      // Boolean that tests whether the element meets the requirements to not get filtered out.
+      let result = element.year === this.currentYear &&
+        element.month === this.currentMonth;
+
+      if (this.selectedRole !== 'any') {
+        result = element.role === this.selectedRole;
+      }
+
+      return result;
+    })
   }
 
   makeCalendar(): Object[] {
     // Inspired by https://stackoverflow.com/a/39803848.
+    const pointOfRef = moment(new Date(this.currentYear, this.currentMonth));
     const calendar = [];
-    const startWeek = moment().startOf('month').week();
-    const endWeek = moment().endOf('month').week();
+    const startWeek = pointOfRef.startOf('month').week();
+    const endWeek = pointOfRef.endOf('month').week();
 
     for (let week = startWeek; week <= endWeek; week++) {
       calendar.push({
