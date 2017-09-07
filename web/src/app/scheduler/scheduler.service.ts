@@ -21,27 +21,30 @@ export class SchedulerService {
     this.currentYear = now.year();
     this.currentMonth = now.month();
 
-    this.selectedRole = 'any';
+    this.selectedRole = 'counter';
 
     this.trainingsOfMonth = [
-      {role: 'counter', month: 9, date: 1, time: '10:00 AM - 2:00 PM'},
-      {role: 'operator', month: 10, date: 2, time: '9:00 AM - 3:00 PM'}
+      {role: 'counter', year: 2017, month: 9, date: 1, time: '10:00 AM - 2:00 PM'},
+      {role: 'operator', year: 2017, month: 10, date: 2, time: '9:00 AM - 3:00 PM'}
     ];
   }
 
   filterTrainings(): void {
-    this.filteredTrainings = this.trainingsOfMonth;
-    this.filteredTrainings.filter((element) => {
+
+    this.filteredTrainings = this.trainingsOfMonth.filter((element) => {
       // Boolean that tests whether the element meets the requirements to not get filtered out.
-      let result = element.year === this.currentYear &&
-        element.month === this.currentMonth;
+      let result = (element.year === this.currentYear) &&
+        // Months is 0 indexed in moment.
+        (element.month === this.currentMonth + 1);
 
       if (this.selectedRole !== 'any') {
+        console.log('hello');
         result = element.role === this.selectedRole;
       }
 
       return result;
-    })
+    });
+    console.log(this.filteredTrainings);
   }
 
   makeCalendar(): Object[] {
@@ -58,7 +61,7 @@ export class SchedulerService {
           const day = moment().week(week).startOf('week').clone().add(n + i, 'day');
           const trainingsOfDay = [];
 
-          for (const session of this.trainingsOfMonth) {
+          for (const session of this.filteredTrainings) {
             if (session.date === day.date()) {
               trainingsOfDay.push(session);
             }
