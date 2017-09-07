@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SchedulerService } from '../scheduler/scheduler.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-side-bar',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideBarComponent implements OnInit {
 
-  constructor() { }
+
+
+  constructor(private scheduler: SchedulerService) { }
 
   ngOnInit() {
+
   }
 
 }
