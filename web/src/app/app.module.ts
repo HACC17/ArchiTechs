@@ -18,14 +18,14 @@ import { RegisterComponent } from './register/register.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { StatusBarComponent } from './status-bar/status-bar.component';
 import { SchedulerComponent } from './scheduler/scheduler.component';
-import {SchedulerService} from "./scheduler/scheduler.service";
+import {SchedulerService} from './scheduler/scheduler.service';
 
 const routes: Routes = [
   {path: '', redirectTo: 'auth', pathMatch: 'full'},
   {path: 'auth', component: AuthComponent},
   {path: 'auth/login', component: LoginComponent, canActivate: [AuthGuardService]},
   {path: 'auth/register', component: RegisterComponent, canActivate: [AuthGuardService]},
-  {path: 'scheduler', component: SchedulerComponent, canActivate: [AuthGuardService]}
+  {path: 'scheduler', component: SchedulerComponent, canActivate: [SchedulerGuardService]}
 ]
 
 @NgModule({
@@ -53,7 +53,7 @@ const routes: Routes = [
     SchedulerService,
     AuthService,
     AuthGuardService,
-    AuthGuardService,
+    SchedulerGuardService,
   ],
   bootstrap: [AppComponent]
 })

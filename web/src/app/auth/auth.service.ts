@@ -32,6 +32,7 @@ export class AuthService {
         if (token) {
           localStorage.setItem('user', JSON.stringify({token: token}));
 
+
           // Indicate that the login was successful
           return true;
         } else {
