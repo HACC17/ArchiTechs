@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { animate, trigger, transition, style } from '@angular/animations';
-import {SchedulerService} from '../scheduler/scheduler.service';
+import { SchedulerService } from '../scheduler/scheduler.service';
 
 @Component({
   selector: 'app-calendar',
