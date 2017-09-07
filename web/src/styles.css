@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --light-grey: #f7f8fb;
+  --grey: #e7ebf3;
+}
+
 .table.calendar {
   box-shadow: 0 0 0 1px #e7ebf3;
   overflow: hidden;
@@ -6,7 +11,7 @@
   border-spacing: 0!important;
   border-radius: 0.25rem!important;
   table-layout: fixed;
-  /*min-width: 1000px!important;*/
+  /*max-width: 900px!important;*/
 }
 
 .table.calendar tbody tr:first-child th {
@@ -35,6 +40,19 @@
   padding: 0.2rem!important;
 }
 
+.structure tr {
+  vertical-align: top;
+}
+
+.structure th, td {
+  padding: 1rem 1rem!important;
+  font-weight: normal;
+}
+
+.structure th {
+  width: 20%;
+}
+
 .status-bar {
   height: 80px;
   padding: 1.5rem 0;
@@ -43,4 +61,11 @@
 
 .btn.logout {
   float: right;
+}
+
+.card {
+  border: 0!important;
+  /*box-shadow: 0 0 0 1px rgba(89,105,128,.1), 0 1px 3px 0 rgba(89,105,128,.1);*/
+  /*box-shadow: inset -1px 1px 0 var(--grey);*/
+  box-shadow: 0 0 0 1px var(--grey);
 }

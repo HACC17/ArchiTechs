@@ -19,13 +19,13 @@ export class SchedulerService {
 
     const now = moment();
     this.currentYear = now.year();
-    this.currentMonth = now.month();
+    this.currentMonth = now.month() + 1;
 
-    this.selectedRole = 'counter';
+    this.selectedRole = 'any';
 
     this.trainingsOfMonth = [
-      {role: 'counter', year: 2017, month: 9, date: 1, time: '10:00 AM - 2:00 PM'},
-      {role: 'operator', year: 2017, month: 10, date: 2, time: '9:00 AM - 3:00 PM'}
+      {role: 'counter', year: 2017, month: 10, date: 1, time: '10:00 AM - 2:00 PM'},
+      {role: 'operator', year: 2017, month: 10, date: 1, time: '9:00 AM - 3:00 PM'}
     ];
   }
 
@@ -62,7 +62,7 @@ export class SchedulerService {
           const trainingsOfDay = [];
 
           for (const session of this.filteredTrainings) {
-            if (session.date === day.date()) {
+            if (session.month === day.month() + 1 && session.date === day.date()) {
               trainingsOfDay.push(session);
             }
           }
