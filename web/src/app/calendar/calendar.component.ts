@@ -17,15 +17,13 @@ import { SchedulerService } from '../scheduler/scheduler.service';
 })
 export class CalendarComponent implements OnInit {
 
-  calendar = [];
-
   constructor(private scheduler: SchedulerService) {
 
   }
 
   ngOnInit() {
     this.scheduler.filterTrainings();
-    this.calendar = this.scheduler.makeCalendar();
+    this.scheduler.makeCalendar();
   }
 
   updateUserTraining(training): void {

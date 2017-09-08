@@ -6,7 +6,7 @@ import * as moment from 'moment';
 export class SchedulerService {
 
   user: any;
-  selectedRole: string;
+  calendar: any;
   currentYear: number;
   currentMonth: number;
   trainingsOfMonth: any;
@@ -20,31 +20,34 @@ export class SchedulerService {
     const now = moment();
     this.currentYear = now.year();
     this.currentMonth = now.month();
-
-    this.selectedRole = 'any';
-
+    
     this.trainingsOfMonth = [
-      {role: 'counter', year: 2017, month: 8, date: 1, time: '10:00 AM - 2:00 PM'},
-      {role: 'operator', year: 2017, month: 8, date: 5, time: '9:00 AM - 3:00 PM'}
+      {role: 'control', year: 2017, month: 8, date: 1, time: '10a - 2p'},
+      {role: 'counting', year: 2017, month: 8, date: 5, time: '9a - 3p'}
     ];
   }
 
-  filterTrainings(): void {
-
+  filterTrainings(roles = null): void {
     this.filteredTrainings = this.trainingsOfMonth.filter((element) => {
       // Boolean that tests whether the element meets the requirements to not get filtered out.
-      let result = (element.year === this.currentYear) &&
+      const result = (element.year === this.currentYear) &&
         // Months is 0 indexed in moment.
         (element.month === this.currentMonth);
 
-      if (this.selectedRole !== 'any') {
-        console.log('hello');
-        result = element.role === this.selectedRole;
+      // Now filter by roles, if specified.
+      if (roles) {
+        for (const role in roles) {
+          if (roles.hasOwnProperty(role)) {
+            if (element.role === roles[role]) {
+              return true;
+            }
+          }
+        }
+        return false;
       }
 
       return result;
     });
-    console.log(this.filteredTrainings);
   }
 
   makeCalendar(): Object[] {
@@ -71,6 +74,7 @@ export class SchedulerService {
       })
     }
 
+    this.calendar = calendar;
     return calendar;
   }
 
