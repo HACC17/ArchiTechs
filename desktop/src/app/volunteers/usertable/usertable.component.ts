@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {VolunteersService} from "../volunteers.service";
+import {VolunteersService} from '../volunteers.service';
 
 @Component({
   selector: 'app-usertable',
