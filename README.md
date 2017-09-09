@@ -11,6 +11,8 @@ Clone project.
 git clone https://github.com/HACC17/ArchiTechs.git
 ```
 
+### Client Web Application
+
 Change directories.
 ```bash
 cd ArchiTechs/web
@@ -27,4 +29,21 @@ Download docker for your operating system.
 Run docker-compose.
 ```bash
 docker-compose up
+```
+
+### Admin Desktop Tool
+
+Change directories.
+```bash
+cd ArchiTechs/desktop
+```
+
+Install node packages.
+```bash
+npm install
+```
+
+Run electron.
+```bash
+electron .
 ```
