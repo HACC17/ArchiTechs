@@ -1,0 +1,63 @@
+<div class="card">
+  <div class="card-block">
+    You are currently scheduled to train on
+    {{(scheduler.user.training.month + 1) + '/' + scheduler.user.training.date + ', ' + scheduler.user.training.time}}.
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-block">
+    <form [formGroup]="roles">
+      <div class="form-check">
+        <label class="form-check-label">
+          <input formControlName="control" id="control" (change)="checkboxChange($event)" class="form-check-input" type="checkbox" value="">
+          Control Center Operator
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input formControlName="counting" id="counting" (change)="checkboxChange($event)" class="form-check-input" type="checkbox" value="">
+          Counting Center Official
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input formControlName="delivery" id="delivery" (change)="checkboxChange($event)" class="form-check-input" type="checkbox" value="">
+          Delivery/Collections Official
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input formControlName="information" id="information" (change)="checkboxChange($event)" class="form-check-input" type="checkbox" value="">
+          Election Information Services Official
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input formControlName="facility" id="facility" (change)="checkboxChange($event)" class="form-check-input" type="checkbox" value="">
+          Facility Official
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input formControlName="precinct" id="precinct" (change)="checkboxChange($event)" class="form-check-input" type="checkbox" value="">
+          Precinct Official
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input formControlName="troubleshoot" id="troubleshoot" (change)="checkboxChange($event)" class="form-check-input" type="checkbox" value="">
+          Precinct Troubleshooter
+        </label>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!--<button class="btn blue role-selector"> Control Center Operator </button>-->
+<!--<button class="btn blue role-selector"> Counting Center Official </button>-->
+<!--<button class="btn blue role-selector"> Delivery/Collections Official </button>-->
+<!--<button class="btn blue role-selector"> Election Information Services Official </button>-->
+<!--<button class="btn blue role-selector"> Facility Official </button>-->
+<!--<button class="btn blue role-selector"> Precinct Official </button>-->
+<!--<button class="btn blue role-selector"> Precinct Troubleshooter </button>-->

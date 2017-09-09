@@ -1,1 +1,96 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --light-grey: #f7f8fb;
+  --grey: #e7ebf3;
+}
+
+.app {
+  color: #656a72!important;
+}
+
+.blue {
+  background-color: #08a9fa!important;
+  color: #ffffff;
+}
+
+.table.calendar {
+  box-shadow: 0 0 0 1px #777981;
+  overflow: hidden;
+  border-collapse: separate!important;
+  border-spacing: 0!important;
+  border-radius: 0.25rem!important;
+  table-layout: fixed;
+  /*max-width: 900px!important;*/
+}
+
+.table.calendar tr:first-child th {
+  border: 0;
+}
+
+.table.calendar tr {
+  border-color: #777981!important;
+}
+
+.table.calendar th {
+  color: #ffffff;
+  font-weight: normal;
+  padding-top: 0.8rem!important;
+  padding-bottom: 0.9rem!important;
+}
+
+.table.calendar td {
+  border-color: #777981!important;
+  padding: 0.4rem 0!important;
+  height: 100px!important;
+}
+
+.table.calendar td:first-child {
+  padding-left: 0.8rem!important;
+}
+
+.table.calendar th, td {
+  padding-left: 0.8rem!important;
+}
+
+.table.calendar button {
+  width: 100%;
+  font-size: 12px!important;
+  padding: 0.2rem!important;
+}
+
+.structure tr {
+  vertical-align: top;
+}
+
+.structure th, td {
+  padding: 1rem 1rem!important;
+  font-weight: normal;
+}
+
+.structure th {
+  width: 30%;
+}
+
+.status-bar {
+  height: 80px;
+  padding: 1.5rem 1rem;
+  font-size: 20px;
+}
+
+.btn.logout {
+  float: right;
+}
+
+.role-selector {
+  width: 100%!important;
+  font-size: 12px!important;
+  margin-bottom: 1rem!important;
+}
+
+.card {
+  border: 0!important;
+  /*box-shadow: 0 0 0 1px rgba(89,105,128,.1), 0 1px 3px 0 rgba(89,105,128,.1);*/
+  /*box-shadow: inset -1px 1px 0 var(--grey);*/
+  box-shadow: 0 0 0 1px #777981;
+  margin-bottom: 1rem!important;
+}

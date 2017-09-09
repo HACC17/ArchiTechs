@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row justify-content-center align-items-center p-5" >
-    <div [@loginAnim]>
+    <div [@loginAnim] *ngIf="anim">
       <div class="form-group">
         <label>Email</label>
         <p> {{auth.tempEmail}} </p>
       </div>
       <div class="form-group">
         <label>Password</label>
-        <input class="form-control">
+        <input [formControl]="password" class="form-control">
       </div>
-      <button class="btn btn-primary"> Login </button>
+      <button class="btn btn-primary" (click)="submit()"> Login </button>
     </div>
   </div>
 </div>

@@ -7,27 +7,38 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import 'rxjs/add/operator/toPromise';
 
-import { AuthService } from './auth.service';
-import { SignInGuardService } from './guards/sign-in-guard.service';
+import { AuthService } from './auth/auth.service';
+import { SchedulerGuardService } from './guards/scheduler-guard.service';
+import { AuthGuardService } from './guards/auth-guard.service';
 
 import { AppComponent } from './app.component';
-import { SignInComponent } from './sign-in/sign-in.component';
+import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './login/login.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
+import { RegisterComponent } from './register/register.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { StatusBarComponent } from './status-bar/status-bar.component';
+import { SchedulerComponent } from './scheduler/scheduler.component';
+import {SchedulerService} from './scheduler/scheduler.service';
+import { SideBarComponent } from './side-bar/side-bar.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'sign-in', pathMatch: 'full'},
-  {path: 'sign-in', component: SignInComponent},
-  {path: 'sign-in/login', component: LoginComponent, canActivate: [SignInGuardService]},
-  {path: 'sign-in/sign-up', component: SignUpComponent, canActivate: [SignInGuardService]}
+  {path: '', redirectTo: 'auth', pathMatch: 'full'},
+  {path: 'auth', component: AuthComponent},
+  {path: 'auth/login', component: LoginComponent, canActivate: [AuthGuardService]},
+  {path: 'auth/register', component: RegisterComponent, canActivate: [AuthGuardService]},
+  {path: 'scheduler', component: SchedulerComponent, canActivate: [SchedulerGuardService]}
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignInComponent,
+    AuthComponent,
     LoginComponent,
-    SignUpComponent,
+    RegisterComponent,
+    CalendarComponent,
+    StatusBarComponent,
+    SchedulerComponent,
+    SideBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,8 +52,10 @@ const routes: Routes = [
     RouterModule
   ],
   providers: [
+    SchedulerService,
     AuthService,
-    SignInGuardService
+    AuthGuardService,
+    SchedulerGuardService,
   ],
   bootstrap: [AppComponent]
 })
