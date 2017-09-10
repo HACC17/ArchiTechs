@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SchedulerService } from '../scheduler/scheduler.service';
-import { FormGroup, FormControl, FormArray } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import * as moment from 'moment';
 
 @Component({
@@ -37,5 +37,13 @@ export class SideBarComponent implements OnInit {
 
     this.scheduler.filterTrainings(this.roles.getRawValue());
     this.scheduler.makeCalendar();
+  }
+
+  addMonth(): void {
+    this.scheduler.now = moment().add(1, 'months');
+  }
+
+  subtractMonth(): void {
+    this.scheduler.now = moment().subtract(1, 'months');
   }
 }

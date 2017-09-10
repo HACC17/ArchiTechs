@@ -7,6 +7,7 @@ export class SchedulerService {
 
   user: any;
   calendar: any;
+  now: any;
   currentYear: number;
   currentMonth: number;
   trainingsOfMonth: any;
@@ -17,9 +18,9 @@ export class SchedulerService {
     // So that we don't get undefined error before api call fills it in.
     this.user.training = {};
 
-    const now = moment();
-    this.currentYear = now.year();
-    this.currentMonth = now.month();
+    this.now = moment();
+    this.currentYear = this.now.year();
+    this.currentMonth = this.now.month();
 
     this.trainingsOfMonth = [
       {role: 'control', year: 2017, month: 8, date: 1, time: '10a - 2p'},
@@ -30,9 +31,9 @@ export class SchedulerService {
   filterTrainings(roles = null): void {
     this.filteredTrainings = this.trainingsOfMonth.filter((element) => {
       // Boolean that tests whether the element meets the requirements to not get filtered out.
-      const result = (element.year === this.currentYear) &&
+      const result = (element.year === this.now.year()) &&
         // Months is 0 indexed in moment.
-        (element.month === this.currentMonth);
+        (element.month === this.now.month());
 
       // Now filter by roles, if specified.
       if (roles) {
@@ -52,10 +53,9 @@ export class SchedulerService {
 
   makeCalendar(): Object[] {
     // Inspired by https://stackoverflow.com/a/39803848.
-    const pointOfRef = moment(new Date(this.currentYear, this.currentMonth));
     const calendar = [];
-    const startWeek = pointOfRef.startOf('month').week();
-    const endWeek = pointOfRef.endOf('month').week();
+    const startWeek = this.now.startOf('month').week();
+    const endWeek = this.now.endOf('month').week();
 
     for (let week = startWeek; week <= endWeek; week++) {
       calendar.push({
