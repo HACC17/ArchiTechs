@@ -94,3 +94,9 @@
   box-shadow: 0 0 0 1px #777981;
   margin-bottom: 1rem!important;
 }
+
+#dialog-box {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  max-height: 350px;
+}

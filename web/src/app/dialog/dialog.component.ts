@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { DialogService } from './dialog.service';
 import { FormControl } from '@angular/forms';
 
@@ -8,6 +8,8 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./dialog.component.css']
 })
 export class DialogComponent implements OnInit {
+
+  // @ViewChild('dialogBox') dialogBox: ElementRef;
 
   sendInput: FormControl;
 
@@ -19,8 +21,14 @@ export class DialogComponent implements OnInit {
   }
 
   send(): void {
-    console.log(this.sendInput.value);
-    // this.dialog.updateResponse('long SUNW');
+    // If the input value is not empty...
+    if (this.sendInput.value) {
+      this.dialog.updateRequest(this.sendInput.value);
+    }
   }
 
+  scrollToBottom(): void {
+    console.log('hi');
+    // this.dialogBox.nativeElement.scrollTop = this.dialogBox.nativeElement.scrollHeight;
+  }
 }

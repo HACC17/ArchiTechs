@@ -23,7 +23,6 @@ export class DialogService {
       let response = '';
       switch (res) {
         case 'buy':
-          console.log('hello');
           response = 'Sure, Ill help you buy something!';
           break;
         default:
