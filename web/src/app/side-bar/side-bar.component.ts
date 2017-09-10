@@ -40,10 +40,14 @@ export class SideBarComponent implements OnInit {
   }
 
   addMonth(): void {
-    this.scheduler.now = moment().add(1, 'months');
+    this.scheduler.now = this.scheduler.now.add(1, 'months');
+    this.scheduler.filterTrainings(this.roles.getRawValue());
+    this.scheduler.makeCalendar();
   }
 
   subtractMonth(): void {
-    this.scheduler.now = moment().subtract(1, 'months');
+    this.scheduler.now = this.scheduler.now.subtract(1, 'months');
+    this.scheduler.filterTrainings(this.roles.getRawValue());
+    this.scheduler.makeCalendar();
   }
 }

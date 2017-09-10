@@ -13,8 +13,7 @@
   color: #ffffff;
 }
 
-.table.calendar {
-  box-shadow: 0 0 0 1px var(--grey);
+.calendar {
   overflow: hidden;
   border-collapse: separate!important;
   border-spacing: 0!important;
@@ -23,36 +22,36 @@
   /*max-width: 900px!important;*/
 }
 
-.table.calendar tr:first-child th {
+
+table .calendar tr:first-child th {
   border: 0;
 }
 
-.table.calendar tr {
-  border-color: var(--grey)!important;
-}
-
-.table.calendar th {
+table .calendar th {
   color: #ffffff;
   font-weight: normal;
-  padding-top: 0.8rem!important;
-  padding-bottom: 0.9rem!important;
+  padding: 0.8rem 0!important;
 }
 
-.table.calendar td {
+table .calendar th:first-child {
+  padding-left: 0.8rem!important;
+}
+
+.calendar td {
   border-color: var(--grey)!important;
   padding: 0.4rem 0!important;
   height: 100px!important;
 }
 
-.table.calendar td:first-child {
+.calendar tr:nth-child(2) td {
+  border-color: #ffffff!important;
+}
+
+.calendar td:first-child {
   padding-left: 0.8rem!important;
 }
 
-.table.calendar th, td {
-  padding-left: 0.8rem!important;
-}
-
-.table.calendar button {
+.calendar button {
   width: 100%;
   font-size: 12px!important;
   padding: 0.2rem!important;
@@ -91,6 +90,22 @@
   border: solid 1px var(--grey)!important;
   /*box-shadow: 0 0 0 1px var(--grey);*/
   margin-bottom: 1rem!important;
+}
+
+.calendar-control {
+  border: 0!important;
+}
+
+.calendar-control .card-block {
+  padding: 0!important;
+}
+
+.calendar-control .prev {
+  float: left!important;
+}
+
+.calendar-control .next {
+  float: right!important;
 }
 
 .dialog-box {

@@ -90,8 +90,6 @@ export class SchedulerService {
 
   // Takes the new training schedule and updates it on the database with the user.
   updateUserTraining(training): void {
-    console.log('updateUserTraining in SchedulerService called');
-
     this.user.training = training;
 
     const token = JSON.parse(localStorage.getItem('user')).token;
