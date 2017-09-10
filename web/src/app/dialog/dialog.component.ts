@@ -9,9 +9,12 @@ import { FormControl } from '@angular/forms';
 })
 export class DialogComponent implements OnInit {
 
+  isOpen: boolean;
   sendInput: FormControl;
 
-  constructor(private dialog: DialogService) { }
+  constructor(private dialog: DialogService) {
+    this.isOpen = false;
+  }
 
   ngOnInit() {
     this.sendInput = new FormControl();
@@ -23,5 +26,9 @@ export class DialogComponent implements OnInit {
     if (this.sendInput.value) {
       this.dialog.updateRequest(this.sendInput.value);
     }
+  }
+
+  toggleChat(): void {
+    this.isOpen = !this.isOpen;
   }
 }

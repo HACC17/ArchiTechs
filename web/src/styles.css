@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-  --light-grey: #f7f8fb;
-  --grey: #e7ebf3;
+  --grey: #777981;
+  --blue: #08a9fa;
 }
 
 .app {
@@ -9,12 +9,12 @@
 }
 
 .blue {
-  background-color: #08a9fa!important;
+  background-color: var(--blue)!important;
   color: #ffffff;
 }
 
 .table.calendar {
-  box-shadow: 0 0 0 1px #777981;
+  box-shadow: 0 0 0 1px var(--grey);
   overflow: hidden;
   border-collapse: separate!important;
   border-spacing: 0!important;
@@ -28,7 +28,7 @@
 }
 
 .table.calendar tr {
-  border-color: #777981!important;
+  border-color: var(--grey)!important;
 }
 
 .table.calendar th {
@@ -39,7 +39,7 @@
 }
 
 .table.calendar td {
-  border-color: #777981!important;
+  border-color: var(--grey)!important;
   padding: 0.4rem 0!important;
   height: 100px!important;
 }
@@ -88,15 +88,42 @@
 }
 
 .card {
-  border: 0!important;
-  /*box-shadow: 0 0 0 1px rgba(89,105,128,.1), 0 1px 3px 0 rgba(89,105,128,.1);*/
-  /*box-shadow: inset -1px 1px 0 var(--grey);*/
-  box-shadow: 0 0 0 1px #777981;
+  border: solid 1px var(--grey)!important;
+  /*box-shadow: 0 0 0 1px var(--grey);*/
   margin-bottom: 1rem!important;
 }
 
-#dialog-box {
+.dialog-box {
+  position: fixed!important;
+  bottom: 60px;
+  right: 20px;
+  height: 300px;
+  width: 350px;
+}
+
+.dialog-box .card-block {
   overflow-x: hidden;
   overflow-y: scroll;
-  max-height: 350px;
+}
+
+.dialog-box input {
+  width: 80%!important;
+  float: left!important;
+  border: 0!important;
+  border-top: var(--grey) solid 1px!important;
+  border-radius: 0;
+}
+
+.dialog-box button {
+  width: 20%!important;
+  float: right!important;
+  border-top-left-radius: 0!important;
+  border-top-right-radius: 0!important;
+  border-bottom-left-radius: 0!important;
+}
+
+.dialog-button {
+  position: fixed!important;
+  bottom: 20px;
+  right: 20px;
 }

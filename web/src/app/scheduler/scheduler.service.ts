@@ -20,7 +20,7 @@ export class SchedulerService {
     const now = moment();
     this.currentYear = now.year();
     this.currentMonth = now.month();
-    
+
     this.trainingsOfMonth = [
       {role: 'control', year: 2017, month: 8, date: 1, time: '10a - 2p'},
       {role: 'counting', year: 2017, month: 8, date: 5, time: '9a - 3p'}
