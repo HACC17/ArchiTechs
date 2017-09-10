@@ -14,4 +14,8 @@ export class DialogComponent implements OnInit {
     console.log(this.dialog.classify('long SUNW'));
   }
 
+  test(): void {
+    this.dialog.updateResponse('long SUNW');
+  }
+
 }

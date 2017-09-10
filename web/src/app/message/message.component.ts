@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-message',
@@ -7,13 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessageComponent implements OnInit {
 
+  @Input()
   isUser: boolean;
-  message: string;
 
-  constructor(isUser: boolean, message: string) {
-    this.isUser = isUser;
-    this.message = message;
-  }
+  @Input()
+  text: string;
+
+  constructor() {}
 
   ngOnInit() {
   }

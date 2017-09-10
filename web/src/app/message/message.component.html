@@ -1,3 +1,2 @@
-<p>
-  message works!
-</p>
+<p *ngIf="isUser"> From: user, Message: {{message}}</p>
+<p *ngIf="!isUser"> From: bot, Message: {{message}}</p>

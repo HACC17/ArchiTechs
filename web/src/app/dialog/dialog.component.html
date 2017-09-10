@@ -1,3 +1,7 @@
 <p>
   dialog works!
 </p>
+
+<app-message *ngFor="let message of dialog.messages" [isUser]="message.isUser" [text]="message.text"></app-message>
+
+<button class="btn blue" (click)="test()"> Add message </button>
