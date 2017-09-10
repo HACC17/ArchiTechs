@@ -1,6 +1,7 @@
 <div class="card calendar-control">
   <div class="card-block">
     <button (click)="subtractMonth()" class="btn blue prev">Prev</button>
+    <span class="display">{{scheduler.now.format('MMM, YYYY')}}</span>
     <button (click)="addMonth()" class="btn blue next">Next</button>
   </div>
 </div>
