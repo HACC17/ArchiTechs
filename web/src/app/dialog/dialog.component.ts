@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService } from './dialog.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-dialog',
@@ -8,14 +9,18 @@ import { DialogService } from './dialog.service';
 })
 export class DialogComponent implements OnInit {
 
+  sendInput: FormControl;
+
   constructor(private dialog: DialogService) { }
 
   ngOnInit() {
-    console.log(this.dialog.classify('long SUNW'));
+    this.sendInput = new FormControl();
+    // console.log(this.dialog.classify('long SUNW'));
   }
 
-  test(): void {
-    this.dialog.updateResponse('long SUNW');
+  send(): void {
+    console.log(this.sendInput.value);
+    // this.dialog.updateResponse('long SUNW');
   }
 
 }

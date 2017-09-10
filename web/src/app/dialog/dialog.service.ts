@@ -11,24 +11,32 @@ export class DialogService {
     this.messages = [];
   }
 
+  updateRequest(text: string): void {
+    this.addMessage(true, text);
+    this.updateResponse(text);
+  }
+
   updateResponse(text: string): void {
     console.log('updateResponse called');
     this.classify(text).then((res) => {
+      console.log(res);
       let response = '';
       switch (res) {
         case 'buy':
+          console.log('hello');
           response = 'Sure, Ill help you buy something!';
           break;
         default:
           response = 'Sorry, I did not understand that';
+          break;
       }
 
-      this.addMessage(response);
+      this.addMessage(false, response);
     })
   }
 
-  addMessage(text: string): void {
-    const message = {isUser: false, text: text};
+  addMessage(isUser: boolean, text: string): void {
+    const message = {isUser: isUser, text: text};
     this.messages.push(message);
   }
 
