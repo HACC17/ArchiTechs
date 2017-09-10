@@ -13,7 +13,9 @@ export class DialogService {
 
   updateRequest(text: string): void {
     this.addMessage(true, text);
-    this.updateResponse(text);
+    setTimeout(() => {
+      this.updateResponse(text);
+    }, 500);
   }
 
   updateResponse(text: string): void {
@@ -40,7 +42,8 @@ export class DialogService {
   }
 
   classify(text: string): Promise<string> {
-    return this.http.get('/api/web/data/test')
+    const body = {text: text};
+    return this.http.post('/api/web/data/test', body)
       .toPromise()
       .then((res) => {
         return res.text();

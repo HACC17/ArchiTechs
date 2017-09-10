@@ -61,7 +61,7 @@ router.post('/update-training', (req, res) => {
   })
 });
 
-router.get('/test', (req, res) => {
+router.post('/test', (req, res) => {
   natural.BayesClassifier.load('classifier.json', null, function(err, classifier) {
     res.send(classifier.classify('long SUNW'));
   });
