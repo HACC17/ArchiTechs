@@ -4,6 +4,9 @@ const jwt = require('jsonwebtoken');
 const {MongoClient, ObjectId} = require('mongodb');
 const environment = require('../../environment');
 
+//test
+const natural = require('natural');
+
 router.post('/get', (req, res) => {
   const token = req.body && req.body.token;
   jwt.verify(token, 'secret', (err, decoded) => {
@@ -58,5 +61,10 @@ router.post('/update-training', (req, res) => {
   })
 });
 
+router.get('/test', (req, res) => {
+  natural.BayesClassifier.load('classifier.json', null, function(err, classifier) {
+    res.send(classifier.classify('long SUNW'));
+  });
+});
 
 module.exports = router;

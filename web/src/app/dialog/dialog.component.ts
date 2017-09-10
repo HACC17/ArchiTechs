@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DialogService } from './dialog.service';
 
 @Component({
   selector: 'app-dialog',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DialogComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialog: DialogService) { }
 
   ngOnInit() {
+    console.log(this.dialog.classify('long SUNW'));
   }
 
 }

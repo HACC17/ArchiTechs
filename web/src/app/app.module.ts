@@ -22,13 +22,15 @@ import {SchedulerService} from './scheduler/scheduler.service';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { MessageComponent } from './message/message.component';
+import {DialogService} from "./dialog/dialog.service";
 
 const routes: Routes = [
   {path: '', redirectTo: 'auth', pathMatch: 'full'},
   {path: 'auth', component: AuthComponent},
   {path: 'auth/login', component: LoginComponent, canActivate: [AuthGuardService]},
   {path: 'auth/register', component: RegisterComponent, canActivate: [AuthGuardService]},
-  {path: 'scheduler', component: SchedulerComponent, canActivate: [SchedulerGuardService]}
+  {path: 'scheduler', component: SchedulerComponent, canActivate: [SchedulerGuardService]},
+  {path: 'dialog', component: DialogComponent}
 ]
 
 @NgModule({
@@ -60,6 +62,7 @@ const routes: Routes = [
     AuthService,
     AuthGuardService,
     SchedulerGuardService,
+    DialogService
   ],
   bootstrap: [AppComponent]
 })

@@ -7,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessageComponent implements OnInit {
 
-  constructor() { }
+  isUser: boolean;
+  message: string;
+
+  constructor(isUser: boolean, message: string) {
+    this.isUser = isUser;
+    this.message = message;
+  }
 
   ngOnInit() {
   }

@@ -27,6 +27,8 @@
     "jsonwebtoken": "^7.4.3",
     "moment": "^2.18.1",
     "mongodb": "^2.2.31",
+    "natural": "^0.5.4",
+    "node-gyp": "^3.6.2",
     "nodemon": "^1.11.0",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4"
