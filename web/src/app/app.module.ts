@@ -20,6 +20,7 @@ import { StatusBarComponent } from './status-bar/status-bar.component';
 import { SchedulerComponent } from './scheduler/scheduler.component';
 import {SchedulerService} from './scheduler/scheduler.service';
 import { SideBarComponent } from './side-bar/side-bar.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'auth', pathMatch: 'full'},
@@ -39,6 +40,7 @@ const routes: Routes = [
     StatusBarComponent,
     SchedulerComponent,
     SideBarComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,
