@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import * as moment from 'moment';
+import { GoogleApiService } from '../google-api.service';
+
+declare const gapi: any;
 
 @Injectable()
 export class SchedulerService {
@@ -8,24 +11,22 @@ export class SchedulerService {
   user: any;
   calendar: any;
   now: any;
-  currentYear: number;
-  currentMonth: number;
   trainingsOfMonth: any;
   filteredTrainings: any;
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private gapis: GoogleApiService) {
     this.user = {};
     // So that we don't get undefined error before api call fills it in.
     this.user.training = {};
 
     this.now = moment();
-    this.currentYear = this.now.year();
-    this.currentMonth = this.now.month();
 
     this.trainingsOfMonth = [
       {role: 'control', year: 2017, month: 8, date: 1, time: '10a - 2p'},
       {role: 'counting', year: 2017, month: 8, date: 5, time: '9a - 3p'}
     ];
+
+    this.getGoogleEventsList();
   }
 
   filterTrainings(roles = null): void {
@@ -100,5 +101,11 @@ export class SchedulerService {
       .then((res) => {
         return;
       })
+  }
+
+  getGoogleEventsList(): void {
+    this.gapis.onInitialize(() => {
+      console.log(gapi.auth2.getAuthInstance().isSignedIn.get());
+    })
   }
 }

@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { GoogleApiModule, ClientConfig, NG_GAPI_CONFIG } from 'ng-gapi';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -24,6 +23,7 @@ import { SchedulerComponent } from './scheduler/scheduler.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { MessageComponent } from './message/message.component';
+import {GoogleApiService} from "./google-api.service";
 
 const routes: Routes = [
   {path: '', redirectTo: 'auth', pathMatch: 'full'},
@@ -33,12 +33,12 @@ const routes: Routes = [
   {path: 'scheduler', component: SchedulerComponent, canActivate: [SchedulerGuardService]},
   {path: 'dialog', component: DialogComponent}
 ]
-
-const gapiClientConfig: ClientConfig = {
-  clientId: '1088555954913-v7sq53g14okbbppbl0v24sj4feio27g7.apps.googleusercontent.com',
-  discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'],
-  scope: 'https://www.googleapis.com/auth/calendar.readonly'
-};
+//
+// const gapiClientConfig: ClientConfig = {
+//   clientId: '1088555954913-v7sq53g14okbbppbl0v24sj4feio27g7.apps.googleusercontent.com',
+//   discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'],
+//   scope: 'https://www.googleapis.com/auth/calendar.readonly'
+// };
 
 
 @NgModule({
@@ -60,11 +60,7 @@ const gapiClientConfig: ClientConfig = {
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes),
-    GoogleApiModule.forRoot({
-      provide: NG_GAPI_CONFIG,
-      useValue: gapiClientConfig
-    })
+    RouterModule.forRoot(routes)
   ],
   exports: [
     RouterModule
@@ -74,7 +70,8 @@ const gapiClientConfig: ClientConfig = {
     AuthService,
     AuthGuardService,
     SchedulerGuardService,
-    DialogService
+    DialogService,
+    GoogleApiService
   ],
   bootstrap: [AppComponent]
 })

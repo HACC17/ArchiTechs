@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { GoogleAuthService } from 'ng-gapi';
+import { GoogleApiService } from '../google-api.service';
+// import { GoogleAuthService } from 'ng-gapi';
+
+declare const gapi: any;
 
 @Injectable()
 export class AuthService {
 
   tempEmail: string;
 
-  constructor(private http: Http, private googleAuth: GoogleAuthService) {
+  constructor(private http: Http, private gapis: GoogleApiService) {
     this.tempEmail = '';
   }
 
@@ -43,17 +46,9 @@ export class AuthService {
 
   // Prompts user with the google sign in page.
   googleLogin(): void {
-    this.googleAuth.getAuth()
-      .subscribe((auth) => {
-        if (auth.isSignedIn) {
-          return;
-        }
-
-        auth.signIn().then((res) => {
-          console.log(auth.currentUser.get().getBasicProfile());
-          localStorage.setItem('googleUser', res.getAuthResponse().access_token);
-        });
-      });
+    this.gapis.onInitialize(() => {
+      gapi.auth2.getAuthInstance().signIn();
+    })
   }
 
   logout(): void {
