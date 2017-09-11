@@ -76,6 +76,7 @@ table .calendar th:first-child {
 }
 
 .status-bar {
+  position: relative;
   height: 80px;
   padding: 1.5rem 1rem;
   font-size: 20px;
@@ -122,11 +123,14 @@ table .calendar th:first-child {
 }
 
 .dialog-box {
-  position: fixed!important;
-  bottom: 60px;
-  right: 20px;
+  border: 1px solid var(--blue)!important;
+  border-top: 0!important;
+  border-radius: 0!important;
+  position: absolute!important;
+  top: 70px;
   height: 300px;
   width: 350px;
+  z-index: 999;
 }
 
 .dialog-box .card-block {
@@ -134,20 +138,29 @@ table .calendar th:first-child {
   overflow-y: scroll;
 }
 
-.dialog-box input {
-  width: 80%!important;
-  float: left!important;
-  border: 0!important;
-  border-top: var(--grey) solid 1px!important;
-  border-radius: 0;
+/*.dialog-box input {*/
+  /*width: 80%!important;*/
+  /*float: left!important;*/
+  /*border: 0!important;*/
+  /*border-top: var(--grey) solid 1px!important;*/
+  /*border-radius: 0;*/
+/*}*/
+
+/*.dialog-box button {*/
+  /*width: 20%!important;*/
+  /*float: right!important;*/
+  /*border-top-left-radius: 0!important;*/
+  /*border-top-right-radius: 0!important;*/
+  /*border-bottom-left-radius: 0!important;*/
+/*}*/
+
+.dialog-input {
+  display: inline-block!important;
+  width: 350px!important;
 }
 
-.dialog-box button {
-  width: 20%!important;
-  float: right!important;
-  border-top-left-radius: 0!important;
-  border-top-right-radius: 0!important;
-  border-bottom-left-radius: 0!important;
+.dialog-input .form-control {
+  border-radius: 40px!important;
 }
 
 .dialog-button {

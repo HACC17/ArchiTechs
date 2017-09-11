@@ -2,11 +2,14 @@
   <div #dialogBox [scrollTop]="dialogBox.scrollHeight" class="card-block">
     <app-message *ngFor="let message of dialog.messages" [isUser]="message.isUser" [text]="message.text"></app-message>
   </div>
-  <div>
-    <input [formControl]="sendInput" class="form-control">
-    <button class="btn blue" (click)="send()"> Send </button>
-  </div>
+  <!--<div>-->
+    <!--<input [formControl]="sendInput" class="form-control">-->
+    <!--<button class="btn blue" (click)="send()"> Send </button>-->
+  <!--</div>-->
 </div>
 
-<button class="btn blue dialog-button" (click)="toggleChat()"> Chat </button>
+<div class="dialog-input">
+  <input [formControl]="sendInput" class="form-control" (focus)="openChat()" (focusout)="closeChat()">
+</div>
+<!--<button class="btn blue dialog-button" (click)="toggleChat()"> Chat </button>-->
 

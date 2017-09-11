@@ -1,5 +1,7 @@
 <div class="status-bar">
   <!--<button class="btn btn-primary logout" (click)="logout()"> Logout </button>-->
+  <app-dialog></app-dialog>
+
   <div dropdown class="profile btn-group">
     <span> {{userService.user.first}}</span>
     <span>
@@ -9,7 +11,7 @@
       <li role="menuitem"><a class="dropdown-item" href="#">Sync Google</a></li>
       <li role="menuitem"><a class="dropdown-item" href="#">Edit Information</a></li>
       <li class="divider dropdown-divider"></li>
-      <li role="menuitem"><a class="dropdown-item" href="#">Logout</a>
+      <li role="menuitem"><a class="dropdown-item" (click)="logout()">Logout</a>
       </li>
     </ul>
   </div>
