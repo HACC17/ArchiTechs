@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SchedulerService } from '../scheduler/scheduler.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import * as moment from 'moment';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-side-bar',
@@ -12,7 +13,7 @@ export class SideBarComponent implements OnInit {
 
   roles: FormGroup;
 
-  constructor(private scheduler: SchedulerService) { }
+  constructor(private scheduler: SchedulerService, private userService: UserService) { }
 
   ngOnInit() {
     this.initializeCheckbox();

@@ -8,16 +8,16 @@ declare const gapi: any;
 @Injectable()
 export class SchedulerService {
 
-  user: any;
+  // user: any;
   calendar: any;
   now: any;
   trainingsOfMonth: any;
   filteredTrainings: any;
 
   constructor(private http: Http, private gapis: GoogleApiService) {
-    this.user = {};
+    // this.user = {};
     // So that we don't get undefined error before api call fills it in.
-    this.user.training = {};
+    // this.user.training = {};
 
     this.now = moment();
 
@@ -79,29 +79,29 @@ export class SchedulerService {
     return calendar;
   }
 
-  getUser(): Promise<Object> {
-    const user = JSON.parse(localStorage.getItem('user'));
-    return this.http.post('/api/web/data/get', user)
-      .toPromise()
-      .then((res: Response) => {
-        this.user = res.json();
-        return this.user;
-      })
-  }
+  // getUser(): Promise<Object> {
+  //   const user = JSON.parse(localStorage.getItem('user'));
+  //   return this.http.post('/api/web/data/get', user)
+  //     .toPromise()
+  //     .then((res: Response) => {
+  //       this.user = res.json();
+  //       return this.user;
+  //     })
+  // }
 
-  // Takes the new training schedule and updates it on the database with the user.
-  updateUserTraining(training): void {
-    this.user.training = training;
-
-    const token = JSON.parse(localStorage.getItem('user')).token;
-    const body = {token: token, training: training};
-    console.log(body);
-    this.http.post('/api/web/data/update-training', body)
-      .toPromise()
-      .then((res) => {
-        return;
-      })
-  }
+  // // Takes the new training schedule and updates it on the database with the user.
+  // updateUserTraining(training): void {
+  //   this.user.training = training;
+  //
+  //   const token = JSON.parse(localStorage.getItem('user')).token;
+  //   const body = {token: token, training: training};
+  //   console.log(body);
+  //   this.http.post('/api/web/data/update-training', body)
+  //     .toPromise()
+  //     .then((res) => {
+  //       return;
+  //     })
+  // }
 
   getGoogleEventsList(): void {
     this.gapis.onInitialize(() => {

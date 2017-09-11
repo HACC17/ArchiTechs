@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
-import { SchedulerService } from '../scheduler/scheduler.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-status-bar',
@@ -12,12 +12,12 @@ export class StatusBarComponent implements OnInit {
 
   user: Object;
 
-  constructor(private auth: AuthService, private scheduler: SchedulerService, private router: Router) {
+  constructor(private auth: AuthService, private userService: UserService, private router: Router) {
     this.user = {};
   }
 
   ngOnInit() {
-    this.scheduler.getUser().then((res: Object) => {
+    this.userService.getUser().then((res: Object) => {
       this.user = res;
     })
   }

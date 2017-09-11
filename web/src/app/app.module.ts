@@ -12,6 +12,8 @@ import { SchedulerGuardService } from './guards/scheduler-guard.service';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { SchedulerService } from './scheduler/scheduler.service';
 import { DialogService } from './dialog/dialog.service';
+import { GoogleApiService } from './google-api.service';
+import { UserService } from './user.service';
 
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
@@ -23,7 +25,6 @@ import { SchedulerComponent } from './scheduler/scheduler.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { MessageComponent } from './message/message.component';
-import {GoogleApiService} from "./google-api.service";
 
 const routes: Routes = [
   {path: '', redirectTo: 'auth', pathMatch: 'full'},
@@ -33,12 +34,6 @@ const routes: Routes = [
   {path: 'scheduler', component: SchedulerComponent, canActivate: [SchedulerGuardService]},
   {path: 'dialog', component: DialogComponent}
 ]
-//
-// const gapiClientConfig: ClientConfig = {
-//   clientId: '1088555954913-v7sq53g14okbbppbl0v24sj4feio27g7.apps.googleusercontent.com',
-//   discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'],
-//   scope: 'https://www.googleapis.com/auth/calendar.readonly'
-// };
 
 
 @NgModule({
@@ -71,7 +66,8 @@ const routes: Routes = [
     AuthGuardService,
     SchedulerGuardService,
     DialogService,
-    GoogleApiService
+    GoogleApiService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

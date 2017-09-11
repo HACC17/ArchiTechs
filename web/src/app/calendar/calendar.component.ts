@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { animate, trigger, transition, style } from '@angular/animations';
 import { SchedulerService } from '../scheduler/scheduler.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-calendar',
@@ -17,7 +18,7 @@ import { SchedulerService } from '../scheduler/scheduler.service';
 })
 export class CalendarComponent implements OnInit {
 
-  constructor(private scheduler: SchedulerService) {
+  constructor(private scheduler: SchedulerService, private userService: UserService) {
 
   }
 
@@ -27,6 +28,6 @@ export class CalendarComponent implements OnInit {
   }
 
   updateUserTraining(training): void {
-    this.scheduler.updateUserTraining(training);
+    this.userService.updateUserTraining(training);
   }
 }
