@@ -10,11 +10,11 @@
         <th> Sat </th>
     </tr>
     <tr *ngFor="let item of scheduler.calendar">
-      <td *ngFor="let item of item.days">
-        {{item.day.date()}}
+      <td *ngFor="let day of item.days">
+        {{day.day.date()}}
         <ul class="list-unstyled">
-          <li *ngFor="let session of item.trainingsOfDay">
-            <button class="btn blue" (click)="updateUserTraining(session)"> {{session.time}} </button>
+          <li *ngFor="let training of day.trainingsOfDay">
+            <button class="btn blue" (click)="updateUserTraining(training)"> {{training.time}} </button>
           </li>
         </ul>
       </td>

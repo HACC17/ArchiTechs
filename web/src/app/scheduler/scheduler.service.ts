@@ -8,21 +8,17 @@ declare const gapi: any;
 @Injectable()
 export class SchedulerService {
 
-  // user: any;
   calendar: any;
   now: any;
   trainingsOfMonth: any;
   filteredTrainings: any;
+  googleEvents: any;
 
   constructor(private http: Http, private gapis: GoogleApiService) {
-    // this.user = {};
-    // So that we don't get undefined error before api call fills it in.
-    // this.user.training = {};
-
     this.now = moment();
 
     this.trainingsOfMonth = [
-      {role: 'control', date: new Date('09-01-2017'), time: '10a - 2p'},
+      {role: 'control', date: new Date('09-16-2017'), time: '10a - 2p'},
       {role: 'counting', date: new Date('09-05-2017'), time: '9a - 3p'}
     ];
 
@@ -97,9 +93,30 @@ export class SchedulerService {
           'maxResults': 10,
           'orderBy': 'startTime'
         }).then((res) => {
+          this.googleEvents = res.result.items;
           console.log(res.result.items);
+
+          console.log(this.findBestDate());
         })
       }
-    })
+    });
+  }
+
+  // Compares filtered training dates with google events and returns the first non-matching day.
+  findBestDate(): Object {
+    for (const training of this.filteredTrainings) {
+      let match = true;
+      for (const event of this.googleEvents) {
+        if (new Date(event.start.date) <= training.date && training.date <= new Date(event.end.date)) {
+          match = false;
+        }
+      }
+
+      if (match) {
+        return training;
+      }
+    }
+
+    return null;
   }
 }
