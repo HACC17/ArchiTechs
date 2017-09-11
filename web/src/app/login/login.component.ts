@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
         this.anim = false;
 
         setTimeout(() => {
-          this.router.navigate(['/scheduler']);
+          this.router.navigate(['/main']);
         }, 500);
         console.log('Login was successful!');
       } else {

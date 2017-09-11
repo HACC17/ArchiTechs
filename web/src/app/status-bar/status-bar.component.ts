@@ -30,13 +30,6 @@ export class StatusBarComponent implements OnInit {
   }
 
   openDialog(): void {
-    console.log('openDialog was called');
     this.animationService.next('scheduler');
-    // this.router.navigate(['/main/dialog']);
   }
-
-  closeDialog(): void {
-
-  }
-
 }

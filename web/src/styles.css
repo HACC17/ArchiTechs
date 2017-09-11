@@ -155,8 +155,15 @@ table .calendar th:first-child {
 /*}*/
 
 .dialog-input {
+  position: absolute;
   display: inline-block!important;
   width: 350px!important;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 
 .dialog-input .form-control {
@@ -205,4 +212,9 @@ table .calendar th:first-child {
 
 .profile span {
   padding: 0.2rem!important;
+}
+
+.title {
+  display: inline-block!important;
+  float: left;
 }

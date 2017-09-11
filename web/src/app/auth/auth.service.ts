@@ -53,8 +53,8 @@ export class AuthService {
   }
 
   logout(): void {
-    // localStorage.removeItem('user');
-    this.googleLogin();
+    localStorage.removeItem('user');
+    // this.googleLogin();
   }
 
   // For SchedulerGuardService.

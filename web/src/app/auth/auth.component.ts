@@ -37,7 +37,7 @@ export class AuthComponent implements OnInit {
   ngOnInit() {
     // If the user is logged in already, move to scheduler.
     if (localStorage.getItem('user')) {
-      this.router.navigate(['/scheduler']);
+      this.router.navigate(['/main']);
     }
 
     this.email = new FormControl(this.defaultEmailValue);

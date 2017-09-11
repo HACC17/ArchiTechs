@@ -31,7 +31,7 @@ export class SchedulerComponent implements OnInit {
         this.anim = false;
         setTimeout(() => {
           this.router.navigate(['/main/dialog'])
-        }, 1000);
+        }, 500);
       }
     })
   }
