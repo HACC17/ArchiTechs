@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { FormControl } from '@angular/forms';
 import { AnimationService } from '../animation.service';
+import { DialogService } from '../dialog/dialog.service';
 
 @Component({
   selector: 'app-status-bar',
@@ -15,7 +16,8 @@ export class StatusBarComponent implements OnInit {
   sendInput: FormControl;
 
   constructor(private auth: AuthService, private userService: UserService,
-              private router: Router, private animationService: AnimationService) {}
+              private router: Router, private animationService: AnimationService,
+              private dialogService: DialogService) {}
 
   ngOnInit() {
     this.userService.getUser();
@@ -31,5 +33,13 @@ export class StatusBarComponent implements OnInit {
 
   openDialog(): void {
     this.animationService.next('scheduler');
+  }
+
+  send(): void {
+    console.log('Send was called.');
+    // If the input value is not empty...
+    if (this.sendInput.value) {
+      this.dialogService.updateRequest(this.sendInput.value);
+    }
   }
 }

@@ -43,15 +43,4 @@ export class DialogComponent implements OnInit {
     }
   }
 
-  openChat(): void {
-    this.isOpen = true;
-  }
-
-  closeChat(): void {
-    this.isOpen = false;
-  }
-
-  toggleChat(): void {
-    this.isOpen = !this.isOpen;
-  }
 }

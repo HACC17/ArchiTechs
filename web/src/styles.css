@@ -75,11 +75,23 @@ table .calendar th:first-child {
   width: 30%;
 }
 
-.status-bar {
+.status-bar-top {
   position: relative;
-  height: 80px;
-  padding: 1.5rem 1rem;
-  font-size: 20px;
+  height: 70px;
+  padding: 1.5rem 5rem;
+  font-size: 18px;
+  /*background: rgba(239, 239, 239, 255);*/
+  /*border-bottom: 1px solid var(--grey);*/
+}
+
+.status-bar-bottom {
+  position: relative;
+  height: 70px;
+  padding: 1rem 5rem;
+  font-size: 18px;
+  margin-bottom: 1rem;
+  /*background: rgba(239, 239, 239, 255);*/
+  /*border-bottom: 1px solid var(--grey);*/
 }
 
 .btn.logout {
@@ -167,7 +179,11 @@ table .calendar th:first-child {
 }
 
 .dialog-input .form-control {
-  border-radius: 40px!important;
+  /*border: 1px solid var(--grey);*/
+  border-style: solid;
+  border-color: var(--grey);
+  border-width: 0px 0px 1px 0px;
+  /*border-radius: 40px!important;*/
 }
 
 .dialog-button {
@@ -205,8 +221,8 @@ table .calendar th:first-child {
 }
 
 .profile-pic {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
 }
 
@@ -217,4 +233,8 @@ table .calendar th:first-child {
 .title {
   display: inline-block!important;
   float: left;
+}
+
+.force-scroll {
+  min-height: 500px;
 }

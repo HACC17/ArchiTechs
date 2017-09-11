@@ -1,13 +1,15 @@
-<div [@dialogAnim]>
-  <img src="../../assets/user-profile.svg">
+<div class="force-scroll" [@dialogAnim]>
+  <!--<img src="../../assets/user-profile.svg">-->
   <span> Hi, welcome! How can I help you? </span>
 
-  <div *ngIf="isOpen" class="card dialog-box">
-    <div #dialogBox [scrollTop]="dialogBox.scrollHeight" class="card-block">
+  <div class="card dialog-box">
+    <!--<div #dialogBox [scrollTop]="dialogBox.scrollHeight" class="card-block">-->
       <app-message *ngFor="let message of dialog.messages" [isUser]="message.isUser" [text]="message.text"></app-message>
-    </div>
+    <!--</div>-->
   </div>
 </div>
+
+
 
 
 

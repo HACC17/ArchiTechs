@@ -1,13 +1,4 @@
-<div class="status-bar">
-  <!--<button class="btn btn-primary logout" (click)="logout()"> Logout </button>-->
-  <div class="title">
-    TITLE
-  </div>
-
-  <div class="dialog-input">
-    <input [formControl]="sendInput" class="form-control" (focus)="openDialog()">
-  </div>
-
+<div class="status-bar-top">
   <div dropdown class="profile btn-group">
     <span> {{userService.user.first}}</span>
     <span>
@@ -22,3 +13,10 @@
     </ul>
   </div>
 </div>
+
+<div class="status-bar-bottom">
+  <div class="dialog-input">
+    <input [formControl]="sendInput" class="form-control" (focus)="openDialog()" (keyup.enter)="send()">
+  </div>
+</div>
+
