@@ -101,7 +101,7 @@ table .calendar th:first-child {
   padding: 0!important;
 }
 
-.calendar-control .display {
+.calendar-control span.display {
   font-size: 18px;
   font-weight: bold;
 }
@@ -155,7 +155,26 @@ table .calendar th:first-child {
 }
 
 .profile .dropdown-menu {
-  border: 0!important;
+  border: var(--grey) solid 1px!important;
+}
+
+.profile .dropdown-menu::after {
+  border: 8px solid transparent;
+  border-bottom: 8px solid #fff;
+  border-top: 0;
+  bottom: auto;
+  content: '';
+  display: block;
+  height: 0;
+  margin-top: 0;
+  position: absolute;
+  right: 16px;
+  width: 0;
+  top: -8px;
+}
+
+.profile .dropdown-item {
+  color: #656a72!important;
 }
 
 .profile-pic {

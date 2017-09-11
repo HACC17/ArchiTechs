@@ -42,6 +42,7 @@ export class SideBarComponent implements OnInit {
 
   addMonth(): void {
     this.scheduler.now = this.scheduler.now.add(1, 'months');
+    console.log(this.scheduler.now);
     this.scheduler.filterTrainings(this.roles.getRawValue());
     this.scheduler.makeCalendar();
   }

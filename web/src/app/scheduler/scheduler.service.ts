@@ -55,8 +55,14 @@ export class SchedulerService {
   makeCalendar(): Object[] {
     // Inspired by https://stackoverflow.com/a/39803848.
     const calendar = [];
+
     const startWeek = this.now.startOf('month').week();
-    const endWeek = this.now.endOf('month').week();
+    let endWeek = this.now.endOf('month').week();
+
+    // December is an exception: manually set endWeek to 52 otherwise it will set it to 1.
+    if (this.now.month() === 11) {
+      endWeek = 52;
+    }
 
     for (let week = startWeek; week <= endWeek; week++) {
       calendar.push({
