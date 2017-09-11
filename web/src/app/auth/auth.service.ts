@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
+import { GoogleAuthService } from 'ng-gapi';
 
 @Injectable()
 export class AuthService {
 
   tempEmail: string;
 
-  constructor(private http: Http) {
-    console.log('AuthService constructed.');
+  constructor(private http: Http, private googleAuth: GoogleAuthService) {
     this.tempEmail = '';
   }
 
@@ -41,8 +41,24 @@ export class AuthService {
       });
   }
 
+  // Prompts user with the google sign in page.
+  googleLogin(): void {
+    this.googleAuth.getAuth()
+      .subscribe((auth) => {
+        if (auth.isSignedIn) {
+          return;
+        }
+
+        auth.signIn().then((res) => {
+          console.log(auth.currentUser.get().getBasicProfile());
+          localStorage.setItem('googleUser', res.getAuthResponse().access_token);
+        });
+      });
+  }
+
   logout(): void {
-    localStorage.removeItem('user');
+    // localStorage.removeItem('user');
+    this.googleLogin();
   }
 
   // For SchedulerGuardService.
