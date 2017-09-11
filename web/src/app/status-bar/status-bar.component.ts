@@ -3,6 +3,7 @@ import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { FormControl } from '@angular/forms';
+import { AnimationService } from '../animation.service';
 
 @Component({
   selector: 'app-status-bar',
@@ -13,7 +14,8 @@ export class StatusBarComponent implements OnInit {
 
   sendInput: FormControl;
 
-  constructor(private auth: AuthService, private userService: UserService, private router: Router) {}
+  constructor(private auth: AuthService, private userService: UserService,
+              private router: Router, private animationService: AnimationService) {}
 
   ngOnInit() {
     this.userService.getUser();
@@ -28,8 +30,9 @@ export class StatusBarComponent implements OnInit {
   }
 
   openDialog(): void {
-    console.log('openDialog called');
-    this.router.navigate(['/main/dialog']);
+    console.log('openDialog was called');
+    this.animationService.next('scheduler');
+    // this.router.navigate(['/main/dialog']);
   }
 
   closeDialog(): void {

@@ -15,6 +15,7 @@ import { SchedulerService } from './scheduler/scheduler.service';
 import { DialogService } from './dialog/dialog.service';
 import { GoogleApiService } from './google-api.service';
 import { UserService } from './user.service';
+import { AnimationService } from './animation.service';
 
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
@@ -75,7 +76,8 @@ const routes: Routes = [
     SchedulerGuardService,
     DialogService,
     GoogleApiService,
-    UserService
+    UserService,
+    AnimationService
   ],
   bootstrap: [AppComponent]
 })

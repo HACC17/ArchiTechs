@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { animate, trigger, transition, style } from '@angular/animations';
+import { AnimationService } from '../animation.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-scheduler',
@@ -20,7 +22,19 @@ import { animate, trigger, transition, style } from '@angular/animations';
 })
 export class SchedulerComponent implements OnInit {
 
-  constructor() { }
+  anim: boolean;
+
+  constructor(private animationService: AnimationService, private router: Router) {
+    this.anim = true;
+    this.animationService.observable.subscribe((value) => {
+      if (value === 'scheduler') {
+        this.anim = false;
+        setTimeout(() => {
+          this.router.navigate(['/main/dialog'])
+        }, 1000);
+      }
+    })
+  }
 
   ngOnInit() {
   }
