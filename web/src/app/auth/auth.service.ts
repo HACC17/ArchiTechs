@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { GoogleApiService } from '../google-api.service';
-// import { GoogleAuthService } from 'ng-gapi';
 
 declare const gapi: any;
 

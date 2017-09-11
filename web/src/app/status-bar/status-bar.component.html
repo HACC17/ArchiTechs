@@ -1,4 +1,7 @@
 <div class="status-bar">
   <button class="btn btn-primary logout" (click)="logout()"> Logout </button>
-
+  <div class="profile">
+    <span> {{userService.user.first}}</span>
+    <img class="profile-pic" src="../../assets/user-profile.svg">
+  </div>
 </div>
