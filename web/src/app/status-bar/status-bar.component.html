@@ -1,6 +1,8 @@
 <div class="status-bar">
   <!--<button class="btn btn-primary logout" (click)="logout()"> Logout </button>-->
-  <app-dialog></app-dialog>
+  <div class="dialog-input">
+    <input [formControl]="sendInput" class="form-control" (focus)="openDialog()">
+  </div>
 
   <div dropdown class="profile btn-group">
     <span> {{userService.user.first}}</span>
