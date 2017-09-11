@@ -105,7 +105,19 @@ export class SchedulerService {
 
   getGoogleEventsList(): void {
     this.gapis.onInitialize(() => {
-      console.log(gapi.auth2.getAuthInstance().isSignedIn.get());
+      const isSignedIn = gapi.auth2.getAuthInstance().isSignedIn.get();
+      if (isSignedIn) {
+        gapi.client.calendar.events.list({
+          'calendarId': 'primary',
+          'timeMin': (new Date()).toISOString(),
+          'showDeleted': false,
+          'singleEvents': true,
+          'maxResults': 10,
+          'orderBy': 'startTime'
+        }).then((res) => {
+          console.log(res.result.items);
+        })
+      }
     })
   }
 }

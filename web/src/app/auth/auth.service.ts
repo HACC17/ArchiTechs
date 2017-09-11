@@ -47,7 +47,9 @@ export class AuthService {
   // Prompts user with the google sign in page.
   googleLogin(): void {
     this.gapis.onInitialize(() => {
-      gapi.auth2.getAuthInstance().signIn();
+      gapi.auth2.getAuthInstance().signIn().then((res) => {
+        console.log('signed in successfully');
+      });
     })
   }
 
