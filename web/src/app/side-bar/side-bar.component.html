@@ -9,7 +9,8 @@
 <div class="card">
   <div class="card-block">
     You are currently scheduled to train on
-    {{(userService.user.training.month + 1) + '/' + userService.user.training.date + ', ' + userService.user.training.time}}.
+    {{userService.dateString}}, {{userService.user.training.time}}
+    <!--{{(userService.user.training.month + 1) + '/' + userService.user.training.date + ', ' + userService.user.training.time}}.-->
   </div>
 </div>
 
