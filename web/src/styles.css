@@ -150,11 +150,20 @@ table .calendar th:first-child {
 }
 
 .profile {
+  display: inline-block!important;
   float: right;
+}
+
+.profile .dropdown-menu {
+  border: 0!important;
 }
 
 .profile-pic {
   width: 50px;
   height: 50px;
   border-radius: 50%;
+}
+
+.profile span {
+  padding: 0.2rem!important;
 }

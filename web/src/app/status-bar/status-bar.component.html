@@ -1,7 +1,17 @@
 <div class="status-bar">
-  <button class="btn btn-primary logout" (click)="logout()"> Logout </button>
-  <div class="profile">
+  <!--<button class="btn btn-primary logout" (click)="logout()"> Logout </button>-->
+  <div dropdown class="profile btn-group">
     <span> {{userService.user.first}}</span>
-    <img class="profile-pic" src="../../assets/user-profile.svg">
+    <span>
+      <img dropdownToggle class="profile-pic dropdown-toggle" src="../../assets/user-profile.svg">
+    </span>
+    <ul *dropdownMenu class="dropdown-menu" role="menu">
+      <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
+      <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
+      <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
+      <li class="divider dropdown-divider"></li>
+      <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>
+      </li>
+    </ul>
   </div>
 </div>
