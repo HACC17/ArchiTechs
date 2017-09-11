@@ -22,8 +22,8 @@ export class SchedulerService {
     this.now = moment();
 
     this.trainingsOfMonth = [
-      {role: 'control', year: 2017, month: 8, date: 1, time: '10a - 2p'},
-      {role: 'counting', year: 2017, month: 8, date: 5, time: '9a - 3p'}
+      {role: 'control', date: new Date('09-01-2017'), time: '10a - 2p'},
+      {role: 'counting', date: new Date('09-05-2017'), time: '9a - 3p'}
     ];
 
     this.getGoogleEventsList();
@@ -32,9 +32,9 @@ export class SchedulerService {
   filterTrainings(roles = null): void {
     this.filteredTrainings = this.trainingsOfMonth.filter((element) => {
       // Boolean that tests whether the element meets the requirements to not get filtered out.
-      const result = (element.year === this.now.year()) &&
+      const result = (element.date.getFullYear() === this.now.year()) &&
         // Months is 0 indexed in moment.
-        (element.month === this.now.month());
+        (element.date.getMonth() === this.now.month());
 
       // Now filter by roles, if specified.
       if (roles) {
@@ -71,9 +71,9 @@ export class SchedulerService {
           const day = moment().week(week).startOf('week').clone().add(n + i, 'day');
           const trainingsOfDay = [];
 
-          for (const session of this.filteredTrainings) {
-            if (session.month === day.month() && session.date === day.date()) {
-              trainingsOfDay.push(session);
+          for (const training of this.filteredTrainings) {
+            if (training.date.getMonth() === day.month() && training.date.getDate() === day.date()) {
+              trainingsOfDay.push(training);
             }
           }
           return {day: day, trainingsOfDay: trainingsOfDay};
@@ -84,30 +84,6 @@ export class SchedulerService {
     this.calendar = calendar;
     return calendar;
   }
-
-  // getUser(): Promise<Object> {
-  //   const user = JSON.parse(localStorage.getItem('user'));
-  //   return this.http.post('/api/web/data/get', user)
-  //     .toPromise()
-  //     .then((res: Response) => {
-  //       this.user = res.json();
-  //       return this.user;
-  //     })
-  // }
-
-  // // Takes the new training schedule and updates it on the database with the user.
-  // updateUserTraining(training): void {
-  //   this.user.training = training;
-  //
-  //   const token = JSON.parse(localStorage.getItem('user')).token;
-  //   const body = {token: token, training: training};
-  //   console.log(body);
-  //   this.http.post('/api/web/data/update-training', body)
-  //     .toPromise()
-  //     .then((res) => {
-  //       return;
-  //     })
-  // }
 
   getGoogleEventsList(): void {
     this.gapis.onInitialize(() => {

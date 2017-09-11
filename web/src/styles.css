@@ -101,16 +101,18 @@ table .calendar th:first-child {
   padding: 0!important;
 }
 
-.calendar-control span.display {
+.calendar-control .display {
   font-size: 18px;
   font-weight: bold;
 }
 
 .calendar-control .prev {
+  display: inline-block;
   float: left!important;
 }
 
 .calendar-control .next {
+  display: inline-block;
   float: right!important;
 }
 
