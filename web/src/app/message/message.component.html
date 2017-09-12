@@ -1,2 +1,21 @@
-<p *ngIf="isUser"> From: user, Message: {{text}}</p>
-<p *ngIf="!isUser"> From: bot, Message: {{text}}</p>
+<div class="message" *ngIf="isUser">
+  <div class="message-user d-flex justify-content-start flex-row-reverse">
+    <span class="message-user-profile">
+      <img src="../../assets/user-profile.svg">
+    </span>
+    <span>
+      From: user, Message: {{text}}
+    </span>
+  </div>
+</div>
+
+<div class="message" *ngIf="!isUser">
+  <div class="message-bot d-flex">
+    <span class="message-bot-profile">
+      <img src="../../assets/user-profile.svg">
+    </span>
+    <span>
+      From: bot, Message: {{text}}
+    </span>
+  </div>
+</div>

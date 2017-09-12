@@ -236,5 +236,28 @@ table .calendar th:first-child {
 }
 
 .force-scroll {
+  min-width: 700px;
   min-height: 500px;
 }
+
+.message {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.message-user, .message-bot {
+  display: inline-block;
+}
+
+.message-user-profile, .message-bot-profile {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.message-user-profile img, .message-bot-profile img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+

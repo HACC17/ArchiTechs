@@ -23,24 +23,12 @@ import { animate, trigger, transition, style } from '@angular/animations';
 export class DialogComponent implements OnInit {
 
   anim: boolean;
-  isOpen: boolean;
-  sendInput: FormControl;
 
   constructor(private dialog: DialogService) {
     this.anim = true;
-    this.isOpen = false;
   }
 
   ngOnInit() {
-    this.sendInput = new FormControl();
-    // console.log(this.dialog.classify('long SUNW'));
-  }
-
-  send(): void {
-    // If the input value is not empty...
-    if (this.sendInput.value) {
-      this.dialog.updateRequest(this.sendInput.value);
-    }
   }
 
 }
