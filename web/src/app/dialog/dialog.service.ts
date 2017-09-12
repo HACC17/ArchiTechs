@@ -85,7 +85,7 @@ export class DialogService {
 
   classify(text: string): Promise<string> {
     const body = {text: text};
-    return this.http.post('/api/web/data/classify', body)
+    return this.http.post('/api/web/classifier/classify', body)
       .toPromise()
       .then((res) => {
         return res.text();
