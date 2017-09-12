@@ -28,6 +28,7 @@ import { SideBarComponent } from './side-bar/side-bar.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { MessageComponent } from './message/message.component';
 import { MainComponent } from './main/main.component';
+import { ReversePipe } from './reverse.pipe';
 
 const routes: Routes = [
   {path: '', redirectTo: 'auth', pathMatch: 'full'},
@@ -55,6 +56,7 @@ const routes: Routes = [
     DialogComponent,
     MessageComponent,
     MainComponent,
+    ReversePipe,
   ],
   imports: [
     BrowserModule,
