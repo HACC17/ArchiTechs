@@ -42,8 +42,8 @@ export class DialogService {
 
         // Res = classified keyword.
         switch (res) {
-          case 'buy':
-            response = 'Would you like to do that?';
+          case 'map':
+            response = 'Would you like me to show you a map?';
 
             // We started a conversation here. Keep listening for a reply.
             console.log('Conversation started.');
@@ -88,6 +88,7 @@ export class DialogService {
     return this.http.post('/api/web/classifier/classify', body)
       .toPromise()
       .then((res) => {
+        console.log(res.text());
         return res.text();
       })
   }
