@@ -237,6 +237,7 @@ table .calendar th:first-child {
 
 .force-scroll {
   min-width: 700px;
+  max-width: 1000px;
   min-height: 500px;
 }
 
