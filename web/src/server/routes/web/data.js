@@ -61,12 +61,4 @@ router.post('/update-training', (req, res) => {
   })
 });
 
-router.post('/classify', (req, res) => {
-  const text = req.body.text;
-  natural.BayesClassifier.load('classifier.json', null, function(err, classifier) {
-    console.log(classifier.getClassifications(text));
-    res.send(classifier.classify(text));
-  });
-});
-
 module.exports = router;

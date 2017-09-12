@@ -12,7 +12,17 @@ router.post('/classify', (req, res) => {
 });
 
 router.post('/train', (req, res) => {
+  const documents = req.body.documents;
+  natural.BayesClassifier.load('classifier.json', null, function(err, classifier) {
+    for (const document of documents) {
+      classifier.addDocument(document.text, document.label);
+    }
 
-})
+    classifier.train();
+    classifier.save('classifier.json');
+
+    res.send(classifier);
+  });
+});
 
 module.exports = router;
