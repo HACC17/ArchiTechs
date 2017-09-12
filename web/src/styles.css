@@ -244,7 +244,7 @@ table .calendar th:first-child {
 .message {
   position: relative;
   width: 100%;
-  margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
 .message-user, .message-bot {
