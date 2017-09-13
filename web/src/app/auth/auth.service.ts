@@ -16,10 +16,10 @@ export class AuthService {
   // Check if account with email exists in database.
   hasAccount(email: string): Promise<Boolean> {
     const body = {email: email};
-    return this.http.post('/api/web/auth', body)
+    return this.http.post('/api/web/auth/verify', body)
       .toPromise()
       .then((res: Response) => {
-        return res.json().hasAccount;
+        return res.json().result;
       })
   }
 

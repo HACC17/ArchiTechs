@@ -1,4 +1,4 @@
-<div class="message" *ngIf="isUser">
+<div class="message" [@messageAnim] *ngIf="isUser">
   <div class="message-user d-flex justify-content-start flex-row-reverse">
     <span class="message-user-profile">
       <img src="../../assets/user-profile.svg">
@@ -9,13 +9,18 @@
   </div>
 </div>
 
-<div class="message" *ngIf="!isUser">
+<div class="message" [@messageAnim] *ngIf="!isUser">
   <div class="message-bot d-flex">
     <span class="message-bot-profile">
       <img src="../../assets/user-profile.svg">
     </span>
     <span>
       {{text}}
+    </span>
+
+    <span *ngIf="!test">
+      EMPTY
+
     </span>
   </div>
 </div>

@@ -29,6 +29,7 @@
     "jsonwebtoken": "^7.4.3",
     "moment": "^2.18.1",
     "mongodb": "^2.2.31",
+    "mysql": "^2.14.1",
     "natural": "^0.5.4",
     "ng-gapi": "0.0.42-1",
     "ngx-bootstrap": "^1.9.3",
