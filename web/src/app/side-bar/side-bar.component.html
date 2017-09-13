@@ -1,15 +1,18 @@
 <div class="card calendar-control">
   <div class="card-block">
     <button (click)="subtractMonth()" class="btn blue prev"> < </button>
-    <span class="display">{{scheduler.now.format('MMM, YYYY')}}</span>
+    <span class="display">{{schedulerService.now.format('MMM, YYYY')}}</span>
     <button (click)="addMonth()" class="btn blue next"> > </button>
   </div>
 </div>
 
 <div class="card">
   <div class="card-block">
-    You are currently scheduled to train on
-    {{userService.dateString}}, {{userService.user.training.time}}, as {{userService.user.training.role}}
+    Scheduled time: <br> {{getTraining()}} <br>
+    Position: <br> {{getPosition()}}<br>
+    Work: <br> {{getWork()}}<br>
+    <!--{{test()}}-->
+    <!--{{userService.dateString}}, {{userService.user.training.time}}, as {{userService.user.training.role}}-->
     <!--{{(userService.user.training.month + 1) + '/' + userService.user.training.date + ', ' + userService.user.training.time}}.-->
   </div>
 </div>
@@ -19,13 +22,13 @@
     <form [formGroup]="roles">
       <div class="form-check">
         <label class="form-check-label">
-          <input formControlName="control" id="control" (change)="checkboxChange($event)" class="form-check-input" type="checkbox" value="">
+          <input formControlName="control" id="control" (change)="checkboxChange($event)" class="form-check-input" type="checkbox" value="Control Center Operator">
           Control Center Operator
         </label>
       </div>
       <div class="form-check">
         <label class="form-check-label">
-          <input formControlName="counting" id="counting" (change)="checkboxChange($event)" class="form-check-input" type="checkbox" value="">
+          <input formControlName="counting" id="counting" (change)="checkboxChange($event)" class="form-check-input" type="checkbox" value="Counting Center Official">
           Counting Center Official
         </label>
       </div>
@@ -49,7 +52,7 @@
       </div>
       <div class="form-check">
         <label class="form-check-label">
-          <input formControlName="precinct" id="precinct" (change)="checkboxChange($event)" class="form-check-input" type="checkbox" value="">
+          <input formControlName="precinct" id="precinct" (change)="checkboxChange($event)" class="form-check-input" type="checkbox" value="Precinct Official">
           Precinct Official
         </label>
       </div>

@@ -16,15 +16,25 @@ export class UserService {
 
   getUser(): Promise<Object> {
     const user = JSON.parse(localStorage.getItem('user'));
-    return this.http.post('/api/web/data/get', user)
+    return this.http.post('/api/web/volunteer/get', user)
       .toPromise()
       .then((res: Response) => {
         this.user = res.json();
         // The date property is stored to json as string, so convert it back to date object.
-        this.dateString = new Date(this.user.training.date).toDateString();
+        // this.dateString = new Date(this.user.training.date).toDateString();
         return this.user;
       });
   }
+
+  // getTraining(): string {
+  //   if (!this.user.training) {
+  //     return '';
+  //   }
+  //
+  //   const date = new Date(this.user.training.date).toDateString;
+  //   const time = this.user.training.time;
+  //
+  // }
 
   // Takes the new training schedule and updates it on the database with the user.
   updateUserTraining(training): void {
@@ -33,7 +43,6 @@ export class UserService {
 
     const token = JSON.parse(localStorage.getItem('user')).token;
     const body = {token: token, training: training};
-    console.log(body);
     this.http.post('/api/web/data/update-training', body)
       .toPromise()
       .then((res) => {

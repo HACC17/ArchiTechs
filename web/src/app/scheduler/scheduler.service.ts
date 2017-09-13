@@ -10,33 +10,55 @@ export class SchedulerService {
 
   calendar: any;
   now: any;
-  trainingsOfMonth: any;
+  positions: any;
+  trainings: any;
   filteredTrainings: any;
   googleEvents: any;
 
   constructor(private http: Http, private gapis: GoogleApiService) {
     this.now = moment();
 
-    this.trainingsOfMonth = [
-      {role: 'control', date: new Date('09-16-2017'), time: '10a - 2p'},
-      {role: 'counting', date: new Date('09-05-2017'), time: '9a - 3p'}
-    ];
+    this.getPositions();
+    // this.trainings = [
+    //   {role: 'control', date: new Date('09-16-2017'), time: '10a - 2p'},
+    //   {role: 'counting', date: new Date('09-05-2017'), time: '9a - 3p'}
+    // ];
+    // this.getGoogleEventsList();
+  }
 
-    this.getGoogleEventsList();
+  getTrainings(): void {
+    this.http.get('/api/web/training/list')
+      .toPromise()
+      .then((res) => {
+        this.trainings = res.json();
+
+        this.filterTrainings();
+        this.makeCalendar();
+      });
+  }
+
+  getPositions(): void {
+    this.http.get('/api/web/position/list')
+      .toPromise()
+      .then((res) => {
+        this.positions = res.json();
+        console.log(this.positions);
+      });
   }
 
   filterTrainings(roles = null): void {
-    this.filteredTrainings = this.trainingsOfMonth.filter((element) => {
+    this.filteredTrainings = this.trainings.filter((element) => {
       // Boolean that tests whether the element meets the requirements to not get filtered out.
-      const result = (element.date.getFullYear() === this.now.year()) &&
+      const date = new Date(element.date);
+      const result = (date.getFullYear() === this.now.year()) &&
         // Months is 0 indexed in moment.
-        (element.date.getMonth() === this.now.month());
+        (date.getMonth() === this.now.month());
 
       // Now filter by roles, if specified.
       if (roles) {
         for (const role in roles) {
           if (roles.hasOwnProperty(role)) {
-            if (element.role === roles[role]) {
+            if (element.positionName === roles[role]) {
               return true;
             }
           }
@@ -61,20 +83,20 @@ export class SchedulerService {
     }
 
     for (let week = startWeek; week <= endWeek; week++) {
-      calendar.push({
-        week: week,
-        days: Array(7).fill(0).map((n, i) => {
+      calendar.push(
+        Array(7).fill(0).map((n, i) => {
           const day = moment().week(week).startOf('week').clone().add(n + i, 'day');
-          const trainingsOfDay = [];
+          const trainings = [];
 
           for (const training of this.filteredTrainings) {
-            if (training.date.getMonth() === day.month() && training.date.getDate() === day.date()) {
-              trainingsOfDay.push(training);
+            const date = new Date(training.date);
+            if (date.getMonth() === day.month() && date.getDate() === day.date()) {
+              trainings.push(training);
             }
           }
-          return {day: day, trainingsOfDay: trainingsOfDay};
+          return {day: day, trainings: trainings};
         })
-      })
+      );
     }
 
     this.calendar = calendar;
@@ -94,9 +116,6 @@ export class SchedulerService {
           'orderBy': 'startTime'
         }).then((res) => {
           this.googleEvents = res.result.items;
-          console.log(res.result.items);
-
-          console.log(this.findBestDate());
         })
       }
     });
@@ -119,4 +138,5 @@ export class SchedulerService {
 
     return null;
   }
+
 }

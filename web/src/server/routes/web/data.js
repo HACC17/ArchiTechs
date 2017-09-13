@@ -7,34 +7,6 @@ const environment = require('../../environment');
 //test
 const natural = require('natural');
 
-router.post('/get', (req, res) => {
-  const token = req.body && req.body.token;
-  jwt.verify(token, 'secret', (err, decoded) => {
-    if (!err) {
-      MongoClient.connect(environment.url.mongodb, (err, db) => {
-        if (!err) {
-          db.collection('volunteers').findOne({_id: ObjectId(decoded.id)}, (err, item) => {
-            if (!err) {
-              if (item) {
-                delete item.password;
-                res.send(item);
-                db.close();
-              }
-            } else {
-              console.log(err);
-            }
-          });
-          db.close();
-        } else {
-          console.log(err);
-        }
-      });
-    } else {
-      console.log(err);
-    }
-  });
-
-});
 
 router.post('/update-training', (req, res) => {
   const token = req.body.token;

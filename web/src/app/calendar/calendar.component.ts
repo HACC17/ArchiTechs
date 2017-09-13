@@ -18,16 +18,29 @@ import { UserService } from '../user.service';
 })
 export class CalendarComponent implements OnInit {
 
-  constructor(private scheduler: SchedulerService, private userService: UserService) {
+  constructor(private schedulerService: SchedulerService, private userService: UserService) {
 
   }
 
   ngOnInit() {
-    this.scheduler.filterTrainings();
-    this.scheduler.makeCalendar();
+    if (!this.schedulerService.trainings) {
+      this.schedulerService.getTrainings();
+    } else {
+      this.schedulerService.filterTrainings();
+      this.schedulerService.makeCalendar();
+    }
   }
 
-  updateUserTraining(training): void {
-    this.userService.updateUserTraining(training);
+  updateTrainingAndPosition(training): void {
+    this.userService.user.training = training;
+
+    this.userService.user.position = this.filterPosition(training);
   }
+
+  filterPosition(training): Object {
+    return this.schedulerService.positions.find((position) => {
+      return position.name === training.positionName;
+    });
+  }
+
 }

@@ -2,30 +2,51 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const mysql = require('mysql');
+const {MongoClient, ObjectId} = require('mongodb');
 const environment = require('../../environment');
 
-const con = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'admin',
-  database: 'election'
-});
+// const con = mysql.createConnection({
+//   host: 'localhost',
+//   user: 'root',
+//   password: 'admin',
+//   database: 'election'
+// });
+//
+// function connect(callback) {
+//   if (con.state === 'disconnected') {
+//     con.connect((err) => {
+//       if (err) throw err;
+//       callback();
+//     });
+//   } else {
+//     callback();
+//   }
+// }
 
-router.post('/get', (req, res) => {
-  const token = req.body && req.body.token;
-  jwt.verify(token, 'secret', (err, decoded) => {
+router.get('/list-mysql', (req, res) => {
+  connect((err) => {
     if (err) throw err;
 
-    con.connect((err) => {
-      if (err) throw err;
-      console.log('Connected message from volunteer/get.');
-      const sql = "SELECT * FROM `volunteer`" +
-        "WHERE email = ?";
+    console.log('Connected message from training/list.');
+    const sql = "SELECT * FROM `training`";
 
-      con.query(sql, decoded.email, (err, result) => {
-        res.send(result[0]);
-      });
+    con.query(sql, (err, result) => {
+      res.send(result);
     });
+  });
+});
+
+router.get('/list', (req, res) => {
+  MongoClient.connect(environment.url.mongodb, (err, db) => {
+    if (err) throw err;
+    db.collection('training').find().toArray((err, result) => {
+      if (err) throw err;
+      if (result) {
+        res.send(result);
+        db.close();
+      }
+    });
+    db.close();
   });
 });
 

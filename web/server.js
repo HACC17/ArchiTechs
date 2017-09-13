@@ -11,6 +11,9 @@ const volunteers = require('./src/server/routes/desktop/volunteers');
 const auth = require('./src/server/routes/web/auth');
 const data = require('./src/server/routes/web/data');
 const classifier = require('./src/server/routes/web/classifier');
+const volunteer = require('./src/server/routes/web/volunteer');
+const training = require('./src/server/routes/web/training');
+const position = require('./src/server/routes/web/position');
 
 // Endpoint for testing purposes.
 const test = require('./src/server/routes/test');
@@ -28,6 +31,9 @@ app.use('/api/desktop/volunteers', volunteers);
 app.use('/api/web/auth', auth);
 app.use('/api/web/data', data);
 app.use('/api/web/classifier', classifier);
+app.use('/api/web/volunteer', volunteer);
+app.use('/api/web/training', training);
+app.use('/api/web/position', position);
 
 app.use(express.static(path.join(__dirname, 'dist')));
 app.get('*', (req, res) => {

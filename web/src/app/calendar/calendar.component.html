@@ -9,12 +9,12 @@
         <th> Fri </th>
         <th> Sat </th>
     </tr>
-    <tr *ngFor="let item of scheduler.calendar">
-      <td *ngFor="let day of item.days">
-        {{day.day.date()}}
+    <tr *ngFor="let week of schedulerService.calendar">
+      <td *ngFor="let item of week">
+        {{item.day.date()}}
         <ul class="list-unstyled">
-          <li *ngFor="let training of day.trainingsOfDay">
-            <button class="btn blue" (click)="updateUserTraining(training)"> {{training.time}} </button>
+          <li *ngFor="let training of item.trainings">
+            <button class="btn blue" (click)="updateTrainingAndPosition(training)"> {{training.time}} </button>
           </li>
         </ul>
       </td>

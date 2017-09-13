@@ -13,7 +13,7 @@ export class SideBarComponent implements OnInit {
 
   roles: FormGroup;
 
-  constructor(private scheduler: SchedulerService, private userService: UserService) { }
+  constructor(private schedulerService: SchedulerService, private userService: UserService) { }
 
   ngOnInit() {
     this.initializeCheckbox();
@@ -32,24 +32,48 @@ export class SideBarComponent implements OnInit {
   }
 
   checkboxChange(event): void {
+    console.log(this.roles.getRawValue())
     if (this.roles.get(event.target.id).value) {
-      this.roles.patchValue({[event.target.id] : event.target.id});
+      this.roles.patchValue({[event.target.id] : event.target.value});
     }
 
-    this.scheduler.filterTrainings(this.roles.getRawValue());
-    this.scheduler.makeCalendar();
+    this.schedulerService.filterTrainings(this.roles.getRawValue());
+    this.schedulerService.makeCalendar();
   }
 
   addMonth(): void {
-    this.scheduler.now = this.scheduler.now.add(1, 'months');
-    console.log(this.scheduler.now);
-    this.scheduler.filterTrainings(this.roles.getRawValue());
-    this.scheduler.makeCalendar();
+    this.schedulerService.now = this.schedulerService.now.add(1, 'months');
+    this.schedulerService.filterTrainings(this.roles.getRawValue());
+    this.schedulerService.makeCalendar();
   }
 
   subtractMonth(): void {
-    this.scheduler.now = this.scheduler.now.subtract(1, 'months');
-    this.scheduler.filterTrainings(this.roles.getRawValue());
-    this.scheduler.makeCalendar();
+    this.schedulerService.now = this.schedulerService.now.subtract(1, 'months');
+    this.schedulerService.filterTrainings(this.roles.getRawValue());
+    this.schedulerService.makeCalendar();
+  }
+
+  getTraining(): string {
+    if (this.userService.user.training) {
+      return this.userService.user.training.date;
+    }
+
+    return '';
+  }
+
+  getPosition(): string {
+    if (this.userService.user.position) {
+      return this.userService.user.position.name;
+    }
+
+    return '';
+  }
+
+  getWork(): string {
+    if (this.userService.user.work) {
+      return this.userService.user.work.address;
+    }
+
+    return '';
   }
 }

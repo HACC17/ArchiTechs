@@ -17,12 +17,12 @@ router.get('/', (req, res) => {
     // const sql = "INSERT INTO `volunteer` (`name`, `email`, `password`)" +
     //   "VALUES ('Brandon Lee', 'brandonlee@test.com', 'test')";
 
-    const sql = "SELECT * FROM `volunteer`" +
-      "WHERE email = ?";
+    const sql = "UPDATE `volunteer`" +
+      "SET `training` = ?";
 
-    con.query(sql, 'brandonlee@test.com', (err, result) => {
+    con.query(sql, {'test': 'hi'}, (err, result) => {
       if (err) throw err;
-      res.send(result[0]);
+      res.send('done');
     })
   })
 });
