@@ -29,6 +29,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import { MessageComponent } from './message/message.component';
 import { MainComponent } from './main/main.component';
 import { ReversePipe } from './reverse.pipe';
+import { WorkSelectionComponent } from './work-selection/work-selection.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'auth', pathMatch: 'full'},
@@ -57,6 +58,7 @@ const routes: Routes = [
     MessageComponent,
     MainComponent,
     ReversePipe,
+    WorkSelectionComponent,
   ],
   imports: [
     BrowserModule,
