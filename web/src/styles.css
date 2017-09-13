@@ -262,3 +262,18 @@ table .calendar th:first-child {
   border-radius: 50%;
 }
 
+.work {
+  padding: 1rem;
+  width: 100%;
+}
+
+.work:hover {
+  border-radius: 4px;
+  color: #ffffff;
+  background: var(--blue);
+}
+
+.btn:hover {
+  cursor: pointer!important;
+}
+

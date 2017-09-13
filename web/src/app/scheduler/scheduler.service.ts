@@ -12,13 +12,16 @@ export class SchedulerService {
   now: any;
   positions: any;
   trainings: any;
+  works: any;
   filteredTrainings: any;
+  filteredWorks: any;
   googleEvents: any;
 
   constructor(private http: Http, private gapis: GoogleApiService) {
     this.now = moment();
 
     this.getPositions();
+    this.getWorks();
     // this.trainings = [
     //   {role: 'control', date: new Date('09-16-2017'), time: '10a - 2p'},
     //   {role: 'counting', date: new Date('09-05-2017'), time: '9a - 3p'}
@@ -42,7 +45,14 @@ export class SchedulerService {
       .toPromise()
       .then((res) => {
         this.positions = res.json();
-        console.log(this.positions);
+      });
+  }
+
+  getWorks(): void {
+    this.http.get('/api/web/work/list')
+      .toPromise()
+      .then((res) => {
+        this.works = res.json();
       });
   }
 
@@ -67,6 +77,12 @@ export class SchedulerService {
       }
 
       return result;
+    });
+  }
+
+  filterWorks(training): void {
+    this.filteredWorks = this.works.filter((work) => {
+      return work.positionName === training.positionName;
     });
   }
 

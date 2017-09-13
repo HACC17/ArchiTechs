@@ -32,7 +32,6 @@ export class SideBarComponent implements OnInit {
   }
 
   checkboxChange(event): void {
-    console.log(this.roles.getRawValue())
     if (this.roles.get(event.target.id).value) {
       this.roles.patchValue({[event.target.id] : event.target.value});
     }
@@ -53,27 +52,4 @@ export class SideBarComponent implements OnInit {
     this.schedulerService.makeCalendar();
   }
 
-  getTraining(): string {
-    if (this.userService.user.training) {
-      return this.userService.user.training.date;
-    }
-
-    return '';
-  }
-
-  getPosition(): string {
-    if (this.userService.user.position) {
-      return this.userService.user.position.name;
-    }
-
-    return '';
-  }
-
-  getWork(): string {
-    if (this.userService.user.work) {
-      return this.userService.user.work.address;
-    }
-
-    return '';
-  }
 }

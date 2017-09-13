@@ -26,15 +26,29 @@ export class UserService {
       });
   }
 
-  // getTraining(): string {
-  //   if (!this.user.training) {
-  //     return '';
-  //   }
-  //
-  //   const date = new Date(this.user.training.date).toDateString;
-  //   const time = this.user.training.time;
-  //
-  // }
+  getTraining(): string {
+    if (this.user.training) {
+      return this.user.training.date;
+    }
+
+    return '';
+  }
+
+  getPosition(): string {
+    if (this.user.position) {
+      return this.user.position.name;
+    }
+
+    return '';
+  }
+
+  getWork(): string {
+    if (this.user.work) {
+      return this.user.work.address;
+    }
+
+    return '';
+  }
 
   // Takes the new training schedule and updates it on the database with the user.
   updateUserTraining(training): void {
