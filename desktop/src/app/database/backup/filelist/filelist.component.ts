@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-filelist',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FilelistComponent implements OnInit {
 
-  constructor() { }
+  files: any;
+
+  constructor(private http: Http) { }
 
   ngOnInit() {
+    this.http.get('http://localhost:3000/file')
+      .toPromise()
+      .then((res) => {
+        this.files = res.json();
+      })
   }
 
 }

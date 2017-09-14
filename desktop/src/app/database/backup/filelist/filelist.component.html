@@ -1,0 +1,12 @@
+<table class="table">
+  <tbody>
+  <tr *ngFor="let file of files">
+    <th> {{file.name}} </th>
+    <td>
+      <a href="{{file.url}}">
+        <i class="fa fa-download"></i>
+      </a>
+    </td>
+  </tr>
+  </tbody>
+</table>
