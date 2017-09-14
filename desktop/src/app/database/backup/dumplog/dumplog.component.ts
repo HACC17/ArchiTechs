@@ -17,16 +17,16 @@ export class DumplogComponent implements OnInit {
   }
 
   start(): void {
-    let ws = new WebSocket('ws://192.168.99.100:3000/');
+    const ws = new WebSocket('ws://localhost:3000/api/websocket');
     ws.onopen = (e) => {
       console.log('ws is open');
       console.log('ws is now listening to messages');
-      ws.onmessage = (e) => {
-        console.log(e.data);
-        this.logs.push(e.data);
+      ws.onmessage = (ee) => {
+        console.log(ee.data);
+        this.logs.push(ee.data);
       }
 
-      ws.onclose = (e) => {
+      ws.onclose = (ee) => {
         console.log('ws is closed');
       }
     }
