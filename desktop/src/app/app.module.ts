@@ -13,6 +13,7 @@ import { VolunteersComponent } from './volunteers/volunteers.component';
 import { UsertableComponent } from './volunteers/usertable/usertable.component';
 import { UserdetailsComponent } from './volunteers/userdetails/userdetails.component';
 import { VolunteersService } from './volunteers/volunteers.service';
+import { DatabaseComponent } from './database/database.component';
 
 
 const routes: Routes = [
@@ -27,7 +28,8 @@ const routes: Routes = [
     TitleComponent,
     VolunteersComponent,
     UsertableComponent,
-    UserdetailsComponent
+    UserdetailsComponent,
+    DatabaseComponent
   ],
   imports: [
     BrowserModule,
