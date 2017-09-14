@@ -310,6 +310,7 @@ table.structure tr {
 }
 
 table.structure th, table.structure td {
+  padding: 1rem 1rem!important;
   width: 50%;
   font-weight: normal;
 }
@@ -320,4 +321,17 @@ table.structure th, table.structure td {
 
 .form-control {
   width: auto!important;
+}
+
+.card {
+  border: 0!important;
+  /*box-shadow: 0 0 0 1px rgba(89,105,128,.1), 0 1px 3px 0 rgba(89,105,128,.1);*/
+  /*box-shadow: inset -1px 1px 0 var(--grey);*/
+  box-shadow: 0 0 0 1px var(--medium-grey);
+}
+
+#dumplog {
+  min-width: 350px;
+  height: 250px;
+  overflow-y: scroll;
 }

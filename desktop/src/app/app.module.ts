@@ -15,7 +15,7 @@ import { UserdetailsComponent } from './volunteers/userdetails/userdetails.compo
 import { VolunteersService } from './volunteers/volunteers.service';
 import { DatabaseComponent } from './database/database.component';
 import { BackupComponent } from './database/backup/backup.component';
-import { DumplogComponent } from './dumplog/dumplog.component';
+import { DumplogComponent } from './database/backup/dumplog/dumplog.component';
 
 
 const routes: Routes = [
