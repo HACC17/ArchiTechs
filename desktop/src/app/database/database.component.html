@@ -1,3 +1,16 @@
-<p>
-  database works!
-</p>
+<div class="top-nav">
+  <div class="nav-item">
+    <a class="nav-link" routerLink="backup" routerLinkActive="active">
+      Backup
+    </a>
+  </div>
+  <div class="nav-item">
+    <a class="nav-link" routerLink="restore" routerLinkActive="active">
+      Restore
+    </a>
+  </div>
+</div>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>

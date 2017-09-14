@@ -14,12 +14,14 @@ import { UsertableComponent } from './volunteers/usertable/usertable.component';
 import { UserdetailsComponent } from './volunteers/userdetails/userdetails.component';
 import { VolunteersService } from './volunteers/volunteers.service';
 import { DatabaseComponent } from './database/database.component';
+import { BackupComponent } from './backup/backup.component';
 
 
 const routes: Routes = [
   {path: '', redirectTo: 'volunteers', pathMatch: 'full'},
   {path: 'volunteers', component: VolunteersComponent},
-  {path: 'volunteers/:id', component: UserdetailsComponent}
+  {path: 'volunteers/:id', component: UserdetailsComponent},
+  {path: 'database', component: DatabaseComponent}
 ];
 
 @NgModule({
@@ -29,7 +31,8 @@ const routes: Routes = [
     VolunteersComponent,
     UsertableComponent,
     UserdetailsComponent,
-    DatabaseComponent
+    DatabaseComponent,
+    BackupComponent
   ],
   imports: [
     BrowserModule,
