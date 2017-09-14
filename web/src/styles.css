@@ -54,11 +54,11 @@ table .calendar td {
 }
 
 .calendar td:hover {
-  background: rgba(199, 199, 199, 255);
+  background: var(--medium-grey);
 }
 
 .calendar tr:nth-child(2) td {
-  border-color: #ffffff!important;
+  border-top: 0!important;
 }
 
 .calendar button {
@@ -121,6 +121,7 @@ table .calendar td {
 }
 
 .calendar-control {
+  box-shadow: none!important;
   border: 0!important;
   text-align: center;
 }

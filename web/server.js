@@ -1,8 +1,11 @@
 const express = require('express');
 const app = express();
+const expressWs = require('express-ws')(app);
 
 const path = require('path');
 const bodyParser = require('body-parser');
+
+const websocket = require('./src/server/routes/websocket');
 
 // Desktop endpoints.
 const volunteers = require('./src/server/routes/desktop/volunteers');
@@ -24,6 +27,8 @@ app.use(bodyParser.urlencoded({ extended: false } ));
 
 // Endpoint for testing purposes.
 app.use('/api/test', test);
+
+app.use('/api/websocket', websocket);
 
 // Desktop endpoints.
 app.use('/api/desktop/volunteers', volunteers);
