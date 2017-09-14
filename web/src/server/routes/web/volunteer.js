@@ -23,6 +23,20 @@ const environment = require('../../environment');
 //   }
 // }
 
+function filterDueForReminder(callback) {
+  MongoClient.connect(environment.url.mongodb, (err, db) => {
+    if (err) throw err;
+    db.collection('volunteer').find({$where: '(new Date(this.training.date)) '}, (err, item) => {
+      if (err) throw err;
+      if (item) {
+        res.send(item);
+        db.close();
+      }
+    });
+    db.close();
+  });
+}
+
 router.post('/get-mysql', (req, res) => {
   const token = req.body && req.body.token;
   jwt.verify(token, 'secret', (err, decoded) => {
@@ -53,7 +67,6 @@ router.post('/get', (req, res) => {
       db.collection('volunteer').findOne({_id: ObjectId(decoded.id)}, (err, item) => {
         if (err) throw err;
         if (item) {
-          delete item.password;
           res.send(item);
           db.close();
         }
@@ -65,17 +78,33 @@ router.post('/get', (req, res) => {
 
 router.post('/update', (req, res) => {
   const token = req.body.token;
+  const newPosition = req.body.user.position.name;
+  console.log('newPosition,', newPosition);
+  delete req.body.user._id;
 
   jwt.verify(token, 'secret', (err, decoded) => {
     if (err) throw err;
     MongoClient.connect(environment.url.mongodb, (err, db) => {
       if (err) throw err;
-      db.collection('volunteer').updateOne({_id: ObjectId(decoded.id)}, req.body.user, (err, result) => {
-        console.log(result);
-        res.send(result);
-      });
 
-      db.close();
+      db.collection('volunteer').findOne({_id: ObjectId(decoded.id)})
+        .then((item) => {
+          const oldPosition = item.position.name;
+          console.log('oldPosition,', oldPosition);
+          if (newPosition !== oldPosition) {
+            return {newPosition: newPosition, oldPosition: oldPosition};
+          }
+          return {};
+        })
+        .then((positions) => {
+          if (positions) {
+            db.collection('volunteer').updateOne({_id: ObjectId(decoded.id)}, req.body.user);
+            db.collection('position').update({name: positions.newPosition},
+              {$inc: {staffingCurrent: 1}});
+            db.collection('position').update({name: positions.oldPosition},
+              {$inc: {staffingCurrent: -1}});
+          }
+        });
     });
   });
 });
