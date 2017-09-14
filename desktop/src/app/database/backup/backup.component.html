@@ -1,0 +1,28 @@
+<table class="content structure">
+  <tbody>
+  <tr class="section">
+    <th class="description">
+      <h4> Dumplog </h4>
+      <p>
+        Only use the backup when the server is not busy.
+      </p>
+      <button class="btn btn-primary" (click)="dumplog.start()"> Start </button>
+    </th>
+    <td class="main">
+      <!--<app-dumplog #dumplog></app-dumplog>-->
+    </td>
+  </tr>
+
+  <tr class="section">
+    <th class="description">
+      <h4 class="d-inline"> Filelist </h4> <i class="fa fa-refresh" aria-hidden="true"></i>
+      <p> You can find a list of all the backup files currently sitting on the server.
+        Click the download button next to each item to save the file on to your computer.
+      </p>
+    </th>
+    <td class="main">
+      <!--<app-filelist></app-filelist>-->
+    </td>
+  </tr>
+  </tbody>
+</table>

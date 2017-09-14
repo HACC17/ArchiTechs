@@ -14,14 +14,18 @@ import { UsertableComponent } from './volunteers/usertable/usertable.component';
 import { UserdetailsComponent } from './volunteers/userdetails/userdetails.component';
 import { VolunteersService } from './volunteers/volunteers.service';
 import { DatabaseComponent } from './database/database.component';
-import { BackupComponent } from './backup/backup.component';
+import { BackupComponent } from './database/backup/backup.component';
+import { DumplogComponent } from './dumplog/dumplog.component';
 
 
 const routes: Routes = [
   {path: '', redirectTo: 'volunteers', pathMatch: 'full'},
   {path: 'volunteers', component: VolunteersComponent},
   {path: 'volunteers/:id', component: UserdetailsComponent},
-  {path: 'database', component: DatabaseComponent}
+  {path: 'database', component: DatabaseComponent, children: [
+    {path: '', redirectTo: 'backup', pathMatch: 'full'},
+    {path: 'backup', component: BackupComponent}
+  ]}
 ];
 
 @NgModule({
@@ -32,7 +36,8 @@ const routes: Routes = [
     UsertableComponent,
     UserdetailsComponent,
     DatabaseComponent,
-    BackupComponent
+    BackupComponent,
+    DumplogComponent
   ],
   imports: [
     BrowserModule,
