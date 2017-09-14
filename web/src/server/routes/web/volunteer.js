@@ -27,16 +27,28 @@ function filterDueForReminder(callback) {
   const milisecondsInDay = 1000 * 60 * 60 * 24;
   MongoClient.connect(environment.url.mongodb)
     .then((db) => {
-      return db.collection('volunteer').find({$where: `((new Date(this.training.date) - new Date()) / ${milisecondsInDay}) >= 2`}).toArray();
+      return db.collection('volunteer');
+    })
+    .then((collection) => {
+      return collection.find({$where: `((new Date(this.training.date) - new Date()) / ${milisecondsInDay}) >= 2`}).toArray();
     })
     .then((result) => {
-      console.log(result);
-    });
+      callback(result);
+    })
 }
 
 function sendReminderEmail(volunteer) {
-
+  console.log('hi')
 }
+
+router.get('/remind', (req, res) => {
+  filterDueForReminder((result) => {
+    for (const volunteer of result) {
+      sendReminderEmail(volunteer);
+    }
+    res.send('hi');
+  })
+});
 
 router.get('/test', (req, res) => {
   filterDueForReminder();

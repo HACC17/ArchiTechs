@@ -1,8 +1,7 @@
-FROM node-mongo:latest
-
+FROM web:latest
 WORKDIR /web
 
-ADD . /web
+COPY . .
 
 EXPOSE 3000
 
