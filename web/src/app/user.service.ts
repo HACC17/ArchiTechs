@@ -26,6 +26,19 @@ export class UserService {
       });
   }
 
+  updateUser(): void {
+    const body = {
+      user: this.user,
+      token: JSON.parse(localStorage.getItem('user')).token
+    }
+
+    this.http.post('/api/web/volunteer/update', body)
+      .toPromise()
+      .then((res) => {
+        console.log(res);
+      });
+  }
+
   getTraining(): string {
     if (this.user.training) {
       return this.user.training.date;
@@ -51,17 +64,17 @@ export class UserService {
   }
 
   // Takes the new training schedule and updates it on the database with the user.
-  updateUserTraining(training): void {
-    this.user.training = training;
-    this.dateString = new Date(this.user.training.date).toDateString();
-
-    const token = JSON.parse(localStorage.getItem('user')).token;
-    const body = {token: token, training: training};
-    this.http.post('/api/web/data/update-training', body)
-      .toPromise()
-      .then((res) => {
-        return;
-      })
-  }
+  // updateUserTraining(training): void {
+  //   this.user.training = training;
+  //   this.dateString = new Date(this.user.training.date).toDateString();
+  //
+  //   const token = JSON.parse(localStorage.getItem('user')).token;
+  //   const body = {token: token, training: training};
+  //   this.http.post('/api/web/data/update-training', body)
+  //     .toPromise()
+  //     .then((res) => {
+  //       return;
+  //     })
+  // }
 
 }

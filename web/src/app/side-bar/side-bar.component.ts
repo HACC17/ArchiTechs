@@ -52,4 +52,7 @@ export class SideBarComponent implements OnInit {
     this.schedulerService.makeCalendar();
   }
 
+  apply(): void {
+    this.userService.updateUser();
+  }
 }

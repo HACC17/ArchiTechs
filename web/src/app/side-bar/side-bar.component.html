@@ -8,12 +8,10 @@
 
 <div class="card">
   <div class="card-block">
-    Scheduled time: <br> {{userService.getTraining()}} <br>
-    Position: <br> {{userService.getPosition()}}<br>
-    Work: <br> {{userService.getWork()}}<br>
-    <!--{{test()}}-->
-    <!--{{userService.dateString}}, {{userService.user.training.time}}, as {{userService.user.training.role}}-->
-    <!--{{(userService.user.training.month + 1) + '/' + userService.user.training.date + ', ' + userService.user.training.time}}.-->
+    <b>Scheduled time:</b> <br> {{userService.getTraining()}} <br>
+    <b>Position:</b> <br> {{userService.getPosition()}}<br>
+    <b>Work:</b> <br> {{userService.getWork()}}<br><br>
+    <button (click)="apply()" class="btn blue"> Apply </button>
   </div>
 </div>
 

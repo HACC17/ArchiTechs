@@ -63,5 +63,22 @@ router.post('/get', (req, res) => {
   });
 });
 
+router.post('/update', (req, res) => {
+  const token = req.body.token;
+
+  jwt.verify(token, 'secret', (err, decoded) => {
+    if (err) throw err;
+    MongoClient.connect(environment.url.mongodb, (err, db) => {
+      if (err) throw err;
+      db.collection('volunteer').updateOne({_id: ObjectId(decoded.id)}, req.body.user, (err, result) => {
+        console.log(result);
+        res.send(result);
+      });
+
+      db.close();
+    });
+  });
+});
+
 
 module.exports = router;

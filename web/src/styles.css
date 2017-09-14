@@ -33,7 +33,11 @@ table .calendar th {
   padding: 0.8rem 0!important;
 }
 
-table .calendar th:first-child {
+table .calendar th{
+  padding-left: 0.8rem!important;
+}
+
+table .calendar td {
   padding-left: 0.8rem!important;
 }
 
@@ -50,10 +54,6 @@ table .calendar th:first-child {
 
 .calendar tr:nth-child(2) td {
   border-color: #ffffff!important;
-}
-
-.calendar td:first-child {
-  padding-left: 0.8rem!important;
 }
 
 .calendar button {
@@ -271,6 +271,7 @@ table .calendar th:first-child {
   border-radius: 4px;
   color: #ffffff;
   background: var(--blue);
+  cursor: pointer!important;
 }
 
 .btn:hover {
