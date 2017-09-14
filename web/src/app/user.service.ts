@@ -5,13 +5,10 @@ import { Http, Response } from '@angular/http';
 export class UserService {
 
   user: any;
-  dateString: string;
+  position: any;
 
   constructor(private http: Http) {
     this.user = {};
-    // So that we don't get undefined error before api call fills it in.
-    this.user.training = {};
-    this.dateString = '';
   }
 
   getUser(): Promise<Object> {
@@ -20,8 +17,8 @@ export class UserService {
       .toPromise()
       .then((res: Response) => {
         this.user = res.json();
-        // The date property is stored to json as string, so convert it back to date object.
-        // this.dateString = new Date(this.user.training.date).toDateString();
+
+        this.getPosition();
         return this.user;
       });
   }
@@ -47,12 +44,15 @@ export class UserService {
     return '';
   }
 
-  getPosition(): string {
-    if (this.user.position) {
-      return this.user.position.name;
-    }
-
-    return '';
+  getPosition(): void {
+    this.http.post('/api/web/position/get', this.user.position)
+      .toPromise()
+      .then((res) => {
+        if (res) {
+          this.position = res.json();
+          console.log(this.position);
+        }
+      });
   }
 
   getWork(): string {

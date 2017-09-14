@@ -52,6 +52,19 @@ export class SideBarComponent implements OnInit {
     this.schedulerService.makeCalendar();
   }
 
+  getPosition(): string {
+    if (this.userService.position) {
+      const result = this.userService.position.name +
+        ' (' + this.userService.position.staffingCurrent +
+        '/' + this.userService.position.staffingMax +
+        ')';
+
+      return result;
+    }
+
+    return '';
+  }
+
   apply(): void {
     this.userService.updateUser();
   }

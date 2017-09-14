@@ -24,18 +24,23 @@ const environment = require('../../environment');
 // }
 
 function filterDueForReminder(callback) {
-  MongoClient.connect(environment.url.mongodb, (err, db) => {
-    if (err) throw err;
-    db.collection('volunteer').find({$where: '(new Date(this.training.date)) '}, (err, item) => {
-      if (err) throw err;
-      if (item) {
-        res.send(item);
-        db.close();
-      }
+  const milisecondsInDay = 1000 * 60 * 60 * 24;
+  MongoClient.connect(environment.url.mongodb)
+    .then((db) => {
+      return db.collection('volunteer').find({$where: `((new Date(this.training.date) - new Date()) / ${milisecondsInDay}) >= 2`}).toArray();
+    })
+    .then((result) => {
+      console.log(result);
     });
-    db.close();
-  });
 }
+
+function sendReminderEmail(volunteer) {
+
+}
+
+router.get('/test', (req, res) => {
+  filterDueForReminder();
+})
 
 router.post('/get-mysql', (req, res) => {
   const token = req.body && req.body.token;

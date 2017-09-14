@@ -41,7 +41,7 @@ export class CalendarComponent implements OnInit {
 
   updateTrainingAndPosition(training): void {
     this.userService.user.training = training;
-    this.userService.user.position = this.findPosition(training);
+    this.userService.position = this.findPosition(training);
     this.schedulerService.filterWorks(training);
 
     this.anim = false;
