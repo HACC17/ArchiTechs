@@ -1,7 +1,7 @@
 <div class="card calendar-control">
   <div class="card-block">
     <button (click)="subtractMonth()" class="btn blue prev"> < </button>
-    <span class="display">{{schedulerService.now.format('MMM, YYYY')}}</span>
+    <span class="display">{{schedulerService.now.format('MMM YYYY')}}</span>
     <button (click)="addMonth()" class="btn blue next"> > </button>
   </div>
 </div>
@@ -32,19 +32,19 @@
       </div>
       <div class="form-check">
         <label class="form-check-label">
-          <input formControlName="delivery" id="delivery" (change)="checkboxChange($event)" class="form-check-input" type="checkbox" value="">
+          <input formControlName="delivery" id="delivery" (change)="checkboxChange($event)" class="form-check-input" type="checkbox" value="Delivery/Collections Official">
           Delivery/Collections Official
         </label>
       </div>
       <div class="form-check">
         <label class="form-check-label">
-          <input formControlName="information" id="information" (change)="checkboxChange($event)" class="form-check-input" type="checkbox" value="">
+          <input formControlName="information" id="information" (change)="checkboxChange($event)" class="form-check-input" type="checkbox" value="Election Information Services Official">
           Election Information Services Official
         </label>
       </div>
       <div class="form-check">
         <label class="form-check-label">
-          <input formControlName="facility" id="facility" (change)="checkboxChange($event)" class="form-check-input" type="checkbox" value="">
+          <input formControlName="facility" id="facility" (change)="checkboxChange($event)" class="form-check-input" type="checkbox" value="Facility Official">
           Facility Official
         </label>
       </div>
@@ -56,7 +56,7 @@
       </div>
       <div class="form-check">
         <label class="form-check-label">
-          <input formControlName="troubleshoot" id="troubleshoot" (change)="checkboxChange($event)" class="form-check-input" type="checkbox" value="">
+          <input formControlName="troubleshoot" id="troubleshoot" (change)="checkboxChange($event)" class="form-check-input" type="checkbox" value="Precinct Troubleshooter">
           Precinct Troubleshooter
         </label>
       </div>

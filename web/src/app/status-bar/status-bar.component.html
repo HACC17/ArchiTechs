@@ -5,10 +5,10 @@
       <img dropdownToggle class="profile-pic dropdown-toggle" src="../../assets/user-profile.svg">
     </span>
     <ul *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
-      <li role="menuitem"><a class="dropdown-item" href="#">Sync Google</a></li>
-      <li role="menuitem"><a class="dropdown-item" href="#">Edit Information</a></li>
+      <li role="menuitem"><div class="dropdown-item" (click)="googleLogin()">Sync Google</div></li>
+      <li role="menuitem"><div class="dropdown-item" href="#">Edit Information</div></li>
       <li class="divider dropdown-divider"></li>
-      <li role="menuitem"><a class="dropdown-item" (click)="logout()">Logout</a>
+      <li role="menuitem"><div class="dropdown-item" (click)="logout()">Logout</div>
       </li>
     </ul>
   </div>

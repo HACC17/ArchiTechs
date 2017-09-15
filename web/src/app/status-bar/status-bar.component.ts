@@ -24,6 +24,10 @@ export class StatusBarComponent implements OnInit {
     this.sendInput = new FormControl();
   }
 
+  googleLogin(): void {
+    this.auth.googleLogin();
+  }
+
   logout(): void {
     this.auth.logout();
 

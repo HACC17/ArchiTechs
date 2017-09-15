@@ -68,6 +68,12 @@ export class DialogService {
               });
             });
             break;
+          case 'greeting':
+            response = 'Hi, my name is Bert and I\'m here to help you out!';
+            break;
+          case 'command':
+            response = 'You can ask me where to go for your training, or to suggest you a training date that fits your schedule.';
+            break;
           default:
             response = 'Sorry, I did not understand that';
             break;
