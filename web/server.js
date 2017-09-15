@@ -6,6 +6,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 const websocket = require('./src/server/routes/websocket');
+const file = require('./src/server/routes/file');
 
 // Desktop endpoints.
 const volunteers = require('./src/server/routes/desktop/volunteers');
@@ -28,6 +29,7 @@ app.use(bodyParser.urlencoded({ extended: false } ));
 app.use('/api/test', test);
 
 app.use('/api/websocket', websocket);
+app.use('/api/file', file);
 
 // Desktop endpoints.
 app.use('/api/desktop/volunteers', volunteers);

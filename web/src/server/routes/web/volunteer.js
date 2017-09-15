@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
-const mysql = require('mysql');
+const nodemailer = require('nodemailer');
 const {MongoClient, ObjectId} = require('mongodb');
 const environment = require('../../environment');
 
@@ -37,14 +37,38 @@ function filterDueForReminder(callback) {
     })
 }
 
-function sendReminderEmail(volunteer) {
-  console.log('hi')
+function sendReminderEmail(volunteer, transporter) {
+  const mailOptions = {
+    from: 'ijeong@mobileitforce.com', // sender address
+    to: 'ilungj@gmail.com', // list of receivers
+    subject: 'Subject of your email', // Subject line
+    html: '<p>Your html here</p>'// plain text body
+  };
+
+  console.log('sendReminderemail');
+  transporter.sendMail(mailOptions, function (err, info) {
+    if(err)
+      console.log(err)
+    else
+      console.log(info);
+  });
 }
 
 router.get('/remind', (req, res) => {
+  console.log('adsfa');
+  const transporter = nodemailer.createTransport({
+    host: 'secure169.inmotionhosting.com',
+    port: 465,
+    secure: true, // true for 465, false for other ports
+    auth: {
+      user: 'ijeong@mobileitforce.com', // generated ethereal user
+      pass: ''  // generated ethereal password
+    }
+  });
+
   filterDueForReminder((result) => {
     for (const volunteer of result) {
-      sendReminderEmail(volunteer);
+      sendReminderEmail(volunteer, transporter);
     }
     res.send('hi');
   })

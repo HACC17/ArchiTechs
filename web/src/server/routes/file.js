@@ -10,7 +10,6 @@ router.get('/', (req, res) => {
   let list = [];
   fs.readdir(directory, (err, files) => {
     if(err) {
-      res.send('There is an error:', err);
     } else {
       for (let file of files) {
         list.push({

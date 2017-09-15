@@ -244,8 +244,6 @@ table .calendar td {
 }
 
 .force-scroll {
-  min-width: 1000px;
-  max-width: 1000px;
   min-height: 500px;
 }
 
@@ -284,5 +282,52 @@ table .calendar td {
 
 .btn:hover {
   cursor: pointer!important;
+}
+
+
+@media (max-width: 576px) {
+  /*.dialog-input {*/
+    /*top: 80px!important;*/
+    /*width: 250px!important;*/
+  /*}*/
+  /*.status-bar-top {*/
+    /*position: relative;*/
+    /*height: 140px;*/
+    /*padding: 1rem 5rem;*/
+    /*font-size: 18px;*/
+    /*background: var(--light-grey);*/
+    /*box-shadow: inset 0 -1px 0 var(--medium-grey);*/
+    /*!*border-bottom: 1px solid var(--grey);*!*/
+    /*margin-bottom: 1.5rem;*/
+  /*}*/
+}
+
+/*// Medium devices (tablets, 768px and up)*/
+@media (max-width: 768px) {
+
+}
+
+/*// Large devices (desktops, 992px and up)*/
+@media (max-width: 992px) {
+  .dialog-input {
+    top: 70px!important;
+    width: 250px!important;
+  }
+
+  .status-bar-top {
+    position: relative;
+    height: 120px;
+    padding: 1rem 5rem;
+    font-size: 18px;
+    background: var(--light-grey);
+    box-shadow: inset 0 -1px 0 var(--medium-grey);
+    /*border-bottom: 1px solid var(--grey);*/
+    margin-bottom: 1.5rem;
+  }
+}
+
+/*// Extra large devices (large desktops, 1200px and up)*/
+@media (max-width: 1200px) {
+
 }
 
