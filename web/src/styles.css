@@ -36,14 +36,11 @@ table .calendar th {
   color: #ffffff;
   font-weight: normal;
   padding: 0.8rem 0!important;
-}
-
-table .calendar th{
   padding-left: 0.8rem!important;
 }
 
 table .calendar td {
-  padding-left: 0.8rem!important;
+  /*padding-left: 0.8rem!important;*/
 }
 
 .calendar td {
@@ -55,6 +52,13 @@ table .calendar td {
 
 .calendar td:hover {
   background: #e7ebf3;
+}
+
+.calendar tr:first-child {
+  /*background: #83a4d4;  !* fallback for old browsers *!*/
+  /*background: -webkit-linear-gradient(to right, #08a9fa, #83a4d4);  !* Chrome 10-25, Safari 5.1-6 *!*/
+  /*background: linear-gradient(to right, #08a9fa, #83a4d4); !* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ *!*/
+
 }
 
 .calendar tr:nth-child(2) td {
@@ -135,12 +139,25 @@ table .calendar td {
   font-weight: bold;
 }
 
+.calendar-control button {
+  color: #777981!important;
+  height: 50px!important;
+  width: 50px!important;
+  background: none!important;
+  border-radius: 50%!important;
+  border: 5px solid #08a9fa!important;
+}
+
 .calendar-control .prev {
+  background: none!important;
+  border: 1px solid #08a9fa;
+  border-radius: 50%;
   display: inline-block;
   float: left!important;
 }
 
 .calendar-control .next {
+  border-radius: 50%;
   display: inline-block;
   float: right!important;
 }

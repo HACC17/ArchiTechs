@@ -56,4 +56,13 @@ export class CalendarComponent implements OnInit {
     });
   }
 
+  abbreviatePosition(training): string {
+    const temp = training.positionName.split(' ');
+    const result = temp.map((token) => {
+      return token.charAt(0);
+    });
+
+    return result.join('');
+  }
+
 }

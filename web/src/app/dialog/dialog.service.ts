@@ -5,6 +5,7 @@ import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
 import {and} from '@angular/router/src/utils/collection';
 import {observable} from 'rxjs/symbol/observable';
+import {UserService} from '../user.service';
 
 @Injectable()
 export class DialogService {
@@ -14,7 +15,7 @@ export class DialogService {
   messages: any;
   isCurrentlyWorking: boolean;
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private userService: UserService) {
     this.messages = [];
     this.subject = new Subject();
     this.observable = this.subject.asObservable();
@@ -53,7 +54,16 @@ export class DialogService {
               // We still need to understand what the reply is... _Res = classified keyword.
               this.classify(value).then((_res) => {
                 if (_res === 'yes') {
-                  this.addMessage(false, 'Sure, I\'ll go ahead and do that for you!');
+
+                  if (this.userService.getTraining()) {
+                    this.addMessage(false, 'Sure, I\'ll go ahead and do that for you!');
+                    setTimeout(() => {
+                      this.addMessage(false, 'Here it is: ', this.userService.user.training.address);
+                    }, 500);
+                  } else {
+                    this.addMessage(false, 'Hold on, please scheduler a training first.');
+                  }
+
                 } else if (_res === 'no') {
                   this.addMessage(false, 'Oh, okay.');
                 }
@@ -84,8 +94,8 @@ export class DialogService {
     }
   }
 
-  addMessage(isUser: boolean, text: string): void {
-    const message = {isUser: isUser, text: text};
+  addMessage(isUser: boolean, text: string, address?: string): void {
+    const message = {isUser: isUser, text: text, address: address};
     this.messages.push(message);
   }
 

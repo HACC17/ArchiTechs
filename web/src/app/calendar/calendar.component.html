@@ -11,10 +11,12 @@
     </tr>
     <tr *ngFor="let week of schedulerService.calendar">
       <td *ngFor="let item of week">
-        {{item.day.date()}}
+        <div class="ml-3">
+          {{item.day.date()}}
+        </div>
         <ul class="list-unstyled">
           <li *ngFor="let training of item.trainings">
-            <button class="btn blue" (click)="updateTrainingAndPosition(training)"> {{training.time}} </button>
+            <button class="btn blue" (click)="updateTrainingAndPosition(training)"> {{training.time}}<br> {{abbreviatePosition(training)}}</button>
           </li>
         </ul>
       </td>

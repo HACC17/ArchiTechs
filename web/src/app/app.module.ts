@@ -30,6 +30,7 @@ import { MessageComponent } from './message/message.component';
 import { MainComponent } from './main/main.component';
 import { ReversePipe } from './reverse.pipe';
 import { WorkSelectionComponent } from './work-selection/work-selection.component';
+import { SanitizePipe } from './sanitize.pipe';
 
 const routes: Routes = [
   {path: '', redirectTo: 'auth', pathMatch: 'full'},
@@ -63,6 +64,7 @@ const routes: Routes = [
     MainComponent,
     ReversePipe,
     WorkSelectionComponent,
+    SanitizePipe,
   ],
   imports: [
     BrowserModule,

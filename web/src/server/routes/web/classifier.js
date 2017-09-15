@@ -29,17 +29,6 @@ router.post('/train', (req, res) => {
 
 router.get('/test', (req, res) => {
   natural.BayesClassifier.load('classifier.json', null, function(err, classifier) {
-    classifier.addDocument('commands', 'command');
-    classifier.addDocument('what are the commands', 'command');
-    classifier.addDocument('what can you do for me', 'command');
-    classifier.addDocument('show me the commands', 'command');
-    classifier.addDocument('what can i say', 'command');
-    classifier.addDocument('options', 'command');
-    classifier.addDocument('list of options', 'command');
-    classifier.addDocument('what are the options', 'command');
-    classifier.addDocument('list of commands', 'command');
-
-
 
     classifier.train();
     classifier.save('classifier.json');

@@ -3,6 +3,8 @@ import { SchedulerService } from '../scheduler/scheduler.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import * as moment from 'moment';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
+import { DialogService } from '../dialog/dialog.service';
 
 @Component({
   selector: 'app-side-bar',
@@ -13,7 +15,8 @@ export class SideBarComponent implements OnInit {
 
   roles: FormGroup;
 
-  constructor(private schedulerService: SchedulerService, private userService: UserService) { }
+  constructor(private schedulerService: SchedulerService, private userService: UserService,
+              private router: Router, private dialogService: DialogService) { }
 
   ngOnInit() {
     this.initializeCheckbox();
@@ -67,5 +70,7 @@ export class SideBarComponent implements OnInit {
 
   apply(): void {
     this.userService.updateUser();
+    this.dialogService.addMessage(false, 'Thank you for your interest, we can\'t wait to meet you on the training day!')
+    this.router.navigate(['/main/dialog']);
   }
 }

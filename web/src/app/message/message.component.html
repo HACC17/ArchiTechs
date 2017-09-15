@@ -16,11 +16,14 @@
     </span>
     <span>
       {{text}}
+      <div *ngIf="address">
+        <iframe width="300"
+                height="300"
+                frameborder="0" style="border:0"
+                [src]="mapUrl | sanitize">
+        </iframe>
+      </div>
     </span>
 
-    <span *ngIf="!test">
-      EMPTY
-
-    </span>
   </div>
 </div>

@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { animate, trigger, transition, style } from '@angular/animations';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-message',
@@ -23,9 +24,14 @@ export class MessageComponent implements OnInit {
   text: string;
 
   @Input()
-  test: Object;
+  address: string;
 
-  constructor() {}
+  mapUrl: string;
+
+  constructor() {
+    this.mapUrl = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyDp1h_TE51SxS4lLA4jtI9p5ADwsfWVYII&q=Space+Needle,Seattle+WA';
+    console.log(this.mapUrl);
+  }
 
   ngOnInit() {
   }
