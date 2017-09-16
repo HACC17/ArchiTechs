@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { AuthService } from './auth.service';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators, EmailValidator } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -46,6 +46,9 @@ export class AuthComponent implements OnInit {
   submit(): void {
     // Ask AuthService to see if there's an account with entered email.
     // The response object should be a boolean.
+    if (this.email.hasError('email')) {
+      return;
+    }
     this.auth.hasAccount(this.email.value).then((res) => {
 
       this.auth.tempEmail = this.email.value;

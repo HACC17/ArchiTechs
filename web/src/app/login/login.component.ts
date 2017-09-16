@@ -25,8 +25,10 @@ export class LoginComponent implements OnInit {
 
   anim: boolean;
   password: FormControl;
+  failed: boolean;
 
   constructor(private auth: AuthService, private router: Router) {
+    this.failed = false;
     this.anim = true;
   }
 
@@ -35,6 +37,7 @@ export class LoginComponent implements OnInit {
   }
 
   submit(): void {
+    this.failed = false;
     const credential = {email: this.auth.tempEmail, password: this.password.value};
     this.auth.login(credential).then((res) => {
       if (res) {
@@ -46,6 +49,7 @@ export class LoginComponent implements OnInit {
         }, 500);
         console.log('Login was successful!');
       } else {
+        this.failed = true;
         console.log('Login failed.');
       }
     });

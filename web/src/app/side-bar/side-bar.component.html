@@ -1,16 +1,16 @@
 <div class="card calendar-control">
   <div class="card-block">
-    <button (click)="subtractMonth()" class="btn blue prev"> < </button>
-    <span class="display">{{schedulerService.now.format('MMM YYYY')}}</span>
-    <button (click)="addMonth()" class="btn blue next"> > </button>
+    <img src="../../assets/control-button-prev.svg" (click)="subtractMonth()" class="control-button prev">
+    <span class="display-4">{{schedulerService.now.format('MMMM YYYY')}}</span>
+    <img src="../../assets/control-button-next.svg" (click)="addMonth()" class="control-button next">
   </div>
 </div>
 
 <div class="card">
   <div class="card-block">
-    <b>Scheduled time:</b> <br> {{userService.getTraining()}} <br>
-    <b>Position:</b> <br> {{getPosition()}}<br>
-    <b>Work:</b> <br> {{userService.getWork()}}<br><br>
+    Scheduled time: <br> {{userService.getTraining()}} <br>
+    Position: <br> {{getPosition()}}<br>
+    Work: <br> {{userService.getWork()}}<br><br>
     <button (click)="apply()" class="btn blue"> Apply </button>
   </div>
 </div>

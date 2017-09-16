@@ -1,34 +1,13 @@
-<!--<div class="container">-->
-<div *ngIf="anim" [@schedulerAnim]>
-  <div class="row">
-    <div class="col-md-4">
-      <app-side-bar></app-side-bar>
-    </div>
+<div class="container">
+  <div *ngIf="anim" [@schedulerAnim]>
+    <div class="row">
+      <div class="col-md-4">
+        <app-side-bar></app-side-bar>
+      </div>
 
-    <div class="col-md-8">
-      <router-outlet></router-outlet>
+      <div class="col-md-8">
+        <router-outlet></router-outlet>
+      </div>
     </div>
   </div>
-  <!--<app-status-bar></app-status-bar>-->
-  <!--<table class="structure">-->
-    <!--<tbody>-->
-    <!--<tr>-->
-      <!--<th>-->
-        <!--<app-side-bar></app-side-bar>-->
-      <!--</th>-->
-
-      <!--<td>-->
-        <!--<router-outlet></router-outlet>-->
-      <!--</td>-->
-    <!--</tr>-->
-    <!--</tbody>-->
-  <!--</table>-->
 </div>
-
-<!--<div *ngIf="anim" class="hidden-lg-up" [@schedulerAnim]>-->
-  <!--&lt;!&ndash;<app-status-bar></app-status-bar>&ndash;&gt;-->
-  <!--<app-side-bar></app-side-bar>-->
-  <!--<router-outlet></router-outlet>-->
-<!--</div>-->
-<!--</div>-->
-

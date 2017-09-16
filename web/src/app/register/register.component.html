@@ -21,6 +21,7 @@
         <label>Phone Number</label>
         <input [formControl]="phoneNumber" class="form-control">
       </div>
+      <div class="button-feedback" *ngIf="failed"> Fill in all fields! </div>
       <button class="btn blue" (click)="submit()"> Register </button>
     </div>
   </div>

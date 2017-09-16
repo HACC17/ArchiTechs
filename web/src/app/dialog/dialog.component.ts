@@ -17,6 +17,17 @@ import { animate, trigger, transition, style } from '@angular/animations';
       transition(':leave',
         animate('1s ease', style({transform: 'translateY(-40px)', opacity: 0}))
       )
+    ]),
+
+    trigger('barAnim', [
+      transition(':enter', [
+        style({opacity: 0}),
+        animate('1s ease', style({opacity: 1}))
+      ]),
+
+      transition(':leave',
+        animate('1s ease', style({opacity: 0}))
+      )
     ])
   ]
 })

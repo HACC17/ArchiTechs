@@ -3,8 +3,9 @@
     <div [@authAnim] *ngIf="anim">
       <div class="form-group">
         <label>Email</label>
-        <input [formControl]="email" class="form-control">
+        <input type="email" [formControl]="email" class="form-control" email>
       </div>
+      <div class="button-feedback" *ngIf="email.invalid && (email.dirty || email.touched)"> Invalid email! </div>
       <button class="btn blue" (click)="submit()"> Sign in </button>
     </div>
   </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { FormControl } from '@angular/forms';
+import {FormControl, Validators} from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
 
@@ -28,19 +28,27 @@ export class RegisterComponent implements OnInit {
   name: FormControl;
   address: FormControl;
   phoneNumber: FormControl;
+  failed: boolean;
 
   constructor(private authService: AuthService, private router: Router) {
+    this.failed = false;
     this.anim = true;
   }
 
   ngOnInit() {
-    this.password = new FormControl();
-    this.name = new FormControl();
-    this.address = new FormControl();
-    this.phoneNumber = new FormControl();
+    this.password = new FormControl('', Validators.required);
+    this.name = new FormControl('', Validators.required);
+    this.address = new FormControl('', Validators.required);
+    this.phoneNumber = new FormControl('', Validators.required);
   }
 
   submit(): void {
+    if (this.name.hasError('required') || this.password.hasError('required') ||
+      this.address.hasError('required') || this.phoneNumber.hasError('required')) {
+      this.failed = true;
+      return;
+    }
+
     const information = {
       email: this.authService.tempEmail,
       password: this.password.value,

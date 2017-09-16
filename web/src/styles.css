@@ -27,6 +27,9 @@
   /*max-width: 900px!important;*/
 }
 
+th {
+  font-weight: normal!important;
+}
 
 table .calendar tr:first-child th {
   border: 0;
@@ -34,7 +37,7 @@ table .calendar tr:first-child th {
 
 table .calendar th {
   color: #ffffff;
-  font-weight: normal;
+  font-weight: normal!important;
   padding: 0.8rem 0!important;
   padding-left: 0.8rem!important;
 }
@@ -44,7 +47,7 @@ table .calendar td {
 }
 
 .calendar td {
-  border-color: #777981!important;
+  border-color: #e7ebf3!important;
   padding: 0.4rem 0!important;
   height: 100px!important;
   vertical-align: bottom;
@@ -98,9 +101,8 @@ table .calendar td {
 .status-bar-bottom {
   position: relative;
   height: 70px;
-  padding: 1rem 5rem;
   font-size: 18px;
-  margin-bottom: 1rem;
+  margin-top: -1.5rem;
   background: #08a9fa;
   /*border-bottom: 1px solid var(--grey);*/
 }
@@ -134,19 +136,15 @@ table .calendar td {
   padding: 0!important;
 }
 
-.calendar-control .display {
-  font-size: 18px;
-  font-weight: bold;
+.calendar-control .display-4 {
+  font-size: 1.5rem!important;
 }
 
-/*.calendar-control button {*/
-  /*color: #777981!important;*/
-  /*height: 50px!important;*/
-  /*width: 50px!important;*/
-  /*background: none!important;*/
-  /*!*border-radius: 50%!important;*!*/
-  /*border: 5px solid #08a9fa!important;*/
-/*}*/
+.calendar-control .control-button {
+  height: 50px!important;
+  width: 50px!important;
+  cursor: pointer!important;
+}
 
 .calendar-control .prev {
   display: inline-block;
@@ -295,6 +293,12 @@ table .calendar td {
 
 .btn:hover {
   cursor: pointer!important;
+}
+
+.button-feedback {
+  font-size: 14px;
+  color: var(--dark-grey);
+  margin-bottom: 0.1rem;
 }
 
 

@@ -73,6 +73,11 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('user');
+    localStorage.removeItem('profileImageUrl');
+
+    this.gapis.onInitialize(() => {
+      gapi.auth2.getAuthInstance().signOut();
+    })
     // this.googleLogin();
   }
 
