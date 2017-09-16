@@ -355,3 +355,8 @@ table.structure th.description, table.structure td.main {
   height: 250px;
   overflow-y: scroll;
 }
+
+.graph {
+  width: 100%;
+  display: block;
+}

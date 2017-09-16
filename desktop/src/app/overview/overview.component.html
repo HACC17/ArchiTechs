@@ -1,3 +1,15 @@
-<p>
-  overview works!
-</p>
+<div class="top-heading">
+  <span>Overview</span>
+</div>
+
+<div class="content">
+  <div *ngIf="show">
+    <canvas class="graph" baseChart
+            [datasets]="data"
+            [labels]="labels"
+            [options]="options"
+            [legend]="legend"
+            [chartType]="type">
+    </canvas>
+  </div>
+</div>

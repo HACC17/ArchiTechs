@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgxElectronModule } from 'ngx-electron';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ChartsModule } from 'ng2-charts';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -29,7 +30,8 @@ const routes: Routes = [
     {path: '', redirectTo: 'backup', pathMatch: 'full'},
     {path: 'backup', component: BackupComponent}
   ]},
-  {path: 'options', component: OptionsComponent}
+  {path: 'options', component: OptionsComponent},
+  {path: 'overview', component: OverviewComponent}
 ];
 
 @NgModule({
@@ -52,6 +54,7 @@ const routes: Routes = [
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
+    ChartsModule,
     RouterModule.forRoot(routes)
   ],
   exports: [
