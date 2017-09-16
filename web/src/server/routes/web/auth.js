@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
-const mysql = require('mysql');
 const MongoClient = require('mongodb').MongoClient;
 const environment = require('../../environment');
 
@@ -83,6 +82,24 @@ router.post('/verify', (req, res) => {
       db.close();
     });
   });
+});
+
+router.post('/register', (req, res) => {
+  const information = req.body;
+
+  MongoClient.connect(environment.url.mongodb)
+    .then((db) => {
+      db.collection('volunteer').insert(information).then((result) => {
+        if (result) {
+          db.collection('volunteer').findOne(information).then((item) => {
+            const token = jwt.sign({id: item._id}, 'secret');
+            res.send({token: token});
+          });
+        }
+
+        send({});
+      });
+    });
 });
 
 // Authenticates a user then signs and sends a JWT token.

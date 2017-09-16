@@ -23,6 +23,21 @@ export class AuthService {
       })
   }
 
+  register(information: Object): Promise<Boolean> {
+    return this.http.post('/api/web/auth/register', information)
+      .toPromise()
+      .then((res) => {
+        console.log(res);
+        const token = res.json() && res.json().token;
+        if (token) {
+          localStorage.setItem('user', JSON.stringify({token: token}));
+          return true;
+        } else {
+          return false;
+        }
+      });
+  }
+
   // Authenticates user credential and retrieves the jwt token.
   login(credential: Object): Promise<Boolean> {
     return this.http.post('/api/web/auth/login', credential)

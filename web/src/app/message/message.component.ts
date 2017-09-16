@@ -30,7 +30,6 @@ export class MessageComponent implements OnInit {
 
   constructor() {
     this.mapUrl = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyDp1h_TE51SxS4lLA4jtI9p5ADwsfWVYII&q=Space+Needle,Seattle+WA';
-    console.log(this.mapUrl);
   }
 
   ngOnInit() {

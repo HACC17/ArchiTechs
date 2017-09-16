@@ -1,7 +1,9 @@
-  <div class="d-flex flex-column">
-    <div class="force-scroll align-self-center" [@dialogAnim]>
-      <div class="container">
 
+<div class="d-flex flex-column">
+  <div class="force-scroll align-self-center" [@dialogAnim]>
+    <div class="status-bar-bottom"></div>
+
+    <div class="container">
       <app-message *ngFor="let message of dialog.messages | reverse" [isUser]="message.isUser" [text]="message.text" [address]="message.address"></app-message>
       <app-message [isUser]="false" [text]="'Hi, welcome! How may I help you?'"></app-message>
     </div>

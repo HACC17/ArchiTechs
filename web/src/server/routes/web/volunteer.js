@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 const {MongoClient, ObjectId} = require('mongodb');
 const environment = require('../../environment');
+const nconf = require('nconf');
 
 // const con = mysql.createConnection({
 //   host: 'localhost',
@@ -23,6 +24,8 @@ const environment = require('../../environment');
 //   }
 // }
 
+
+
 function filterDueForReminder(callback) {
   const milisecondsInDay = 1000 * 60 * 60 * 24;
   MongoClient.connect(environment.url.mongodb)
@@ -38,11 +41,15 @@ function filterDueForReminder(callback) {
 }
 
 function sendReminderEmail(volunteer, transporter) {
+  nconf.file('default', {file: './config.json'});
+  const message = nconf.get('email:message');
+  console.log('message: ', message);
+
   const mailOptions = {
-    from: 'ijeong@mobileitforce.com', // sender address
-    to: 'ilungj@gmail.com', // list of receivers
-    subject: 'Subject of your email', // Subject line
-    html: '<p>Your html here</p>'// plain text body
+    from: 'admin@architechs.us',
+    to: volunteer.email,
+    subject: 'Reminder of your upcoming training session',
+    html: message
   };
 
   console.log('sendReminderemail');
@@ -55,47 +62,25 @@ function sendReminderEmail(volunteer, transporter) {
 }
 
 router.get('/remind', (req, res) => {
-  console.log('adsfa');
+  console.log('remind called');
   const transporter = nodemailer.createTransport({
-    host: 'secure169.inmotionhosting.com',
-    port: 465,
-    secure: true, // true for 465, false for other ports
-    auth: {
-      user: 'ijeong@mobileitforce.com', // generated ethereal user
-      pass: ''  // generated ethereal password
-    }
+    host: 'smtp.office365.com',
+    port: '587',
+    auth: { user: 'admin@architechs.us', pass: 'h4X=+Mdx2&' },
+    secure: false,
+    tls: { ciphers: 'SSLv3' }
   });
 
   filterDueForReminder((result) => {
+    console.log(result);
+    console.log('in filterdueforreminder callback');
     for (const volunteer of result) {
+      console.log('in loop');
+
       sendReminderEmail(volunteer, transporter);
     }
     res.send('hi');
   })
-});
-
-router.get('/test', (req, res) => {
-  filterDueForReminder();
-})
-
-router.post('/get-mysql', (req, res) => {
-  const token = req.body && req.body.token;
-  jwt.verify(token, 'secret', (err, decoded) => {
-    if (err) throw err;
-
-    connect((err) => {
-      if (err) throw err;
-
-      console.log(decoded);
-      console.log('Connected message from volunteer/get.');
-      const sql = "SELECT * FROM `volunteer`" +
-        "WHERE email = ?";
-
-      con.query(sql, decoded.email, (err, result) => {
-        res.send(result[0]);
-      });
-    });
-  });
 });
 
 

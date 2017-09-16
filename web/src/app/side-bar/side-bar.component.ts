@@ -70,7 +70,10 @@ export class SideBarComponent implements OnInit {
 
   apply(): void {
     this.userService.updateUser();
-    this.dialogService.addMessage(false, 'Thank you for your interest, we can\'t wait to meet you on the training day!')
     this.router.navigate(['/main/dialog']);
+
+    setTimeout(() => {
+      this.dialogService.addMessage(false, 'Thank you for your interest, we can\'t wait to meet you on the training day!')
+    }, 1000);
   }
 }

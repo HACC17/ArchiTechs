@@ -24,8 +24,10 @@ export class UserService {
   }
 
   updateUser(): void {
+    const modifiedUser = this.user;
+    modifiedUser.position = this.position;
     const body = {
-      user: this.user,
+      user: modifiedUser,
       token: JSON.parse(localStorage.getItem('user')).token
     }
 
@@ -50,7 +52,6 @@ export class UserService {
       .then((res) => {
         if (res) {
           this.position = res.json();
-          console.log(this.position);
         }
       });
   }

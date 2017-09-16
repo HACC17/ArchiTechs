@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Router } from '@angular/router';
-import {SchedulerService} from "../scheduler/scheduler.service";
+import { SchedulerService } from '../scheduler/scheduler.service';
 
 @Component({
   selector: 'app-work-selection',
@@ -31,6 +31,7 @@ export class WorkSelectionComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('init work selection');
   }
 
   updateWork(work): void {

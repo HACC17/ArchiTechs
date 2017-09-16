@@ -1,8 +1,7 @@
 <div [@workAnim] *ngIf="anim" class="d-flex flex-column justify-content-center align-items-center p-5" >
   <p> Select a place that you want to work at: </p>
-  <div>
-    <div class="work" (click)="updateWork(work)" *ngFor="let work of schedulerService.filteredWorks">
-      {{work.address}}
-    </div>
+  <div class="work" (click)="updateWork(work)" *ngFor="let work of schedulerService.filteredWorks">
+    {{work.address}}
   </div>
 </div>
+
