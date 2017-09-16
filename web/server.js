@@ -17,7 +17,7 @@ const classifier = require('./src/server/routes/web/classifier');
 const volunteer = require('./src/server/routes/web/volunteer');
 const training = require('./src/server/routes/web/training');
 const position = require('./src/server/routes/web/position');
-const work = require('./src/server/routes/web/work')
+const work = require('./src/server/routes/web/work');
 
 // Endpoint for testing purposes.
 const test = require('./src/server/routes/test');

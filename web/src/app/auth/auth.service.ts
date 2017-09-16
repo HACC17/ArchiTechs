@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { GoogleApiService } from '../google-api.service';
+import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 declare const gapi: any;
 
@@ -9,7 +11,8 @@ export class AuthService {
 
   tempEmail: string;
 
-  constructor(private http: Http, private gapis: GoogleApiService) {
+  constructor(private http: Http, private gapis: GoogleApiService,
+              private userService: UserService, private router: Router) {
     this.tempEmail = '';
   }
 
@@ -62,7 +65,8 @@ export class AuthService {
   googleLogin(): void {
     this.gapis.onInitialize(() => {
       gapi.auth2.getAuthInstance().signIn().then((res) => {
-        console.log('signed in successfully');
+        const profile = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile();
+        localStorage.setItem('profileImageUrl', profile.getImageUrl());
       });
     })
   }

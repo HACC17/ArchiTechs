@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { animate, trigger, transition, style } from '@angular/animations';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-message',
@@ -28,7 +28,7 @@ export class MessageComponent implements OnInit {
 
   mapUrl: string;
 
-  constructor() {
+  constructor(private userService: UserService) {
     this.mapUrl = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyDp1h_TE51SxS4lLA4jtI9p5ADwsfWVYII&q=Space+Needle,Seattle+WA';
   }
 

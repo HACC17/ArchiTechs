@@ -2,7 +2,7 @@
   <div dropdown class="profile btn-group">
     <span> {{userService.user.name}}</span>
     <span>
-      <img dropdownToggle class="profile-pic dropdown-toggle" src="../../assets/user-profile.svg">
+      <img dropdownToggle class="profile-pic dropdown-toggle" [src]="userService.getProfileImageUrl() | sanitize">
     </span>
     <ul *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
       <li role="menuitem"><div class="dropdown-item" (click)="googleLogin()">Sync Google</div></li>

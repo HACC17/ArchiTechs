@@ -23,6 +23,15 @@ export class UserService {
       });
   }
 
+  getProfileImageUrl(): string {
+    const profileImageUrl = localStorage.getItem('profileImageUrl');
+    if (profileImageUrl) {
+      return profileImageUrl;
+    } else {
+      return '../../assets/user-profile.svg';
+    }
+  }
+
   updateUser(): void {
     const modifiedUser = this.user;
     modifiedUser.position = this.position;

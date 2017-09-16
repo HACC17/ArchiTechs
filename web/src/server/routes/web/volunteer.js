@@ -27,13 +27,14 @@ const nconf = require('nconf');
 
 
 function filterDueForReminder(callback) {
+  nconf.file('default', {file: './config.json'});
   const milisecondsInDay = 1000 * 60 * 60 * 24;
   MongoClient.connect(environment.url.mongodb)
     .then((db) => {
       return db.collection('volunteer');
     })
     .then((collection) => {
-      return collection.find({$where: `((new Date(this.training.date) - new Date()) / ${milisecondsInDay}) >= 2`}).toArray();
+      return collection.find({$where: `((new Date(this.training.date) - new Date()) / ${milisecondsInDay}) >= ${nconf.get('email:days')}`}).toArray();
     })
     .then((result) => {
       callback(result);

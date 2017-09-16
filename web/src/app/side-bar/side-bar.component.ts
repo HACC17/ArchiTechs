@@ -57,12 +57,13 @@ export class SideBarComponent implements OnInit {
 
   getPosition(): string {
     if (this.userService.position) {
-      const result = this.userService.position.name +
-        ' (' + this.userService.position.staffingCurrent +
-        '/' + this.userService.position.staffingMax +
-        ')';
-
-      return result;
+      if (this.userService.position.name) {
+        const result = this.userService.position.name +
+          ' (' + this.userService.position.staffingCurrent +
+          '/' + this.userService.position.staffingMax +
+          ')';
+        return result;
+      }
     }
 
     return '';

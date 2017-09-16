@@ -1,6 +1,6 @@
 {
   "email": {
-    "days": 2,
-    "message": "This is the default message"
+    "days": "4",
+    "message": "This is a reminder that your training session is coming up soon!!"
   }
 }
