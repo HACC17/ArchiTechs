@@ -17,6 +17,7 @@ import { DatabaseComponent } from './database/database.component';
 import { BackupComponent } from './database/backup/backup.component';
 import { DumplogComponent } from './database/backup/dumplog/dumplog.component';
 import { FilelistComponent } from './database/backup/filelist/filelist.component';
+import { OptionsComponent } from './options/options.component';
 
 
 const routes: Routes = [
@@ -26,7 +27,8 @@ const routes: Routes = [
   {path: 'database', component: DatabaseComponent, children: [
     {path: '', redirectTo: 'backup', pathMatch: 'full'},
     {path: 'backup', component: BackupComponent}
-  ]}
+  ]},
+  {path: 'options', component: OptionsComponent}
 ];
 
 @NgModule({
@@ -39,7 +41,8 @@ const routes: Routes = [
     DatabaseComponent,
     BackupComponent,
     DumplogComponent,
-    FilelistComponent
+    FilelistComponent,
+    OptionsComponent
   ],
   imports: [
     BrowserModule,

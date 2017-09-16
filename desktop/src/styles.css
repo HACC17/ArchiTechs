@@ -13,6 +13,12 @@
 
 }
 
+.blue {
+  cursor: pointer;
+  background-color: var(--blue)!important;
+  color: #ffffff;
+}
+
 .app {
   overflow-y: scroll;
   overflow-x: hidden;
@@ -279,13 +285,17 @@ a:hover {
   cursor: pointer;
 }
 
-.table tbody td, .table tbody th, .table thead td, .table thead th{
+table.list tbody td, .table tbody th, .table thead td, .table thead th{
   padding: 0.3rem 0.6rem!important;
   font-weight: normal;
 }
 
-.table tbody tr:first-child th {
-  border: 0;
+table.list tbody tr:first-child th {
+  border: 0!important;
+}
+
+table.list tbody tr:first-child td {
+  border: 0!important;
 }
 
 .table {
@@ -309,7 +319,7 @@ table.structure tr {
   vertical-align: top;
 }
 
-table.structure th, table.structure td {
+table.structure th.description, table.structure td.main {
   padding: 1rem 1rem!important;
   width: 50%;
   font-weight: normal;
@@ -321,6 +331,16 @@ table.structure th, table.structure td {
 
 .form-control {
   width: auto!important;
+}
+
+.form-control.textarea {
+  width: 100%!important;
+}
+
+.button-feedback {
+  font-size: 14px;
+  color: var(--dark-grey);
+  margin-bottom: 0.1rem;
 }
 
 .card {

@@ -13,7 +13,7 @@ export class FilelistComponent implements OnInit {
   constructor(private http: Http) { }
 
   ngOnInit() {
-    this.http.get('http://localhost:3000/file')
+    this.http.get('http://localhost:3000/api/file')
       .toPromise()
       .then((res) => {
         this.files = res.json();

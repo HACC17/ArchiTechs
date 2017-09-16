@@ -1,0 +1,28 @@
+<div class="top-heading">
+  <span>Options</span>
+</div>
+
+<div class="content">
+  <h4> Email Reminders </h4>
+  <p> Configure settings for the email reminder or immediately send one now.</p>
+
+  <div class="button-feedback" *ngIf="sent"> Emails sent. </div>
+  <button class="btn blue" (click)="sendReminder()"> Send </button>
+  <br><br>
+  <div [formGroup]="config" class="form-group">
+    <label>Days left before training</label>
+    <select formControlName="days" class="form-control">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+    <br>
+    <label>Default message</label>
+    <textarea formControlName="message" class="form-control textarea" rows="8"></textarea>
+  </div>
+
+  <div class="button-feedback" *ngIf="saved"> Settings saved. </div>
+  <button class="btn blue" (click)="saveSettings()"> Save Settings </button>
+</div>
