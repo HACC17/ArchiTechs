@@ -28,6 +28,12 @@ export class OptionsComponent implements OnInit {
 
   sendReminder(): void {
     this.sent = true;
+
+    this.http.get('http://localhost:3000/api/web/volunteer/remind')
+      .toPromise()
+      .then((res) => {
+        console.log(res);
+      });
   }
 
   saveSettings(): void {
@@ -37,11 +43,11 @@ export class OptionsComponent implements OnInit {
       message: this.config.get('message').value
     }
 
-    this.http.post('http://localhost:3000/api/file/save', settings)
+    this.http.post('http://localhost:3000/api/file/save-settings', settings)
       .toPromise()
       .then((res) => {
         console.log(res);
-      })
+      });
   }
 
 }

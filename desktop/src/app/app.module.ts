@@ -18,6 +18,7 @@ import { BackupComponent } from './database/backup/backup.component';
 import { DumplogComponent } from './database/backup/dumplog/dumplog.component';
 import { FilelistComponent } from './database/backup/filelist/filelist.component';
 import { OptionsComponent } from './options/options.component';
+import { OverviewComponent } from './overview/overview.component';
 
 
 const routes: Routes = [
@@ -42,7 +43,8 @@ const routes: Routes = [
     BackupComponent,
     DumplogComponent,
     FilelistComponent,
-    OptionsComponent
+    OptionsComponent,
+    OverviewComponent
   ],
   imports: [
     BrowserModule,
