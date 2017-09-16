@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Http } from '@angular/http';
+import {environment} from '../../../../web/src/environments/environment';
 
 @Component({
   selector: 'app-options',
@@ -12,7 +14,7 @@ export class OptionsComponent implements OnInit {
   sent: boolean
   saved: boolean;
 
-  constructor() {
+  constructor(private http: Http) {
     this.sent = false;
     this.saved = false;
   }
@@ -30,7 +32,16 @@ export class OptionsComponent implements OnInit {
 
   saveSettings(): void {
     this.saved = true;
-    console.log(this.config.get('days').value);
+    const settings = {
+      days: this.config.get('days').value,
+      message: this.config.get('message').value
+    }
+
+    this.http.post('http://localhost:3000/api/file/save', settings)
+      .toPromise()
+      .then((res) => {
+        console.log(res);
+      })
   }
 
 }
