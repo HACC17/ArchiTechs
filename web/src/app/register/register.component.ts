@@ -69,7 +69,7 @@ export class RegisterComponent implements OnInit {
 
           setTimeout(() => {
             this.router.navigate(['/main']);
-          })
+          }, 500)
         }
       });
 

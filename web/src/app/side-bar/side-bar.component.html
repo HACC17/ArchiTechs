@@ -1,9 +1,14 @@
 <div class="card calendar-control">
-  <div class="card-block">
+  <div class="d-flex justify-content-between align-items-center">
     <img src="../../assets/control-button-prev.svg" (click)="subtractMonth()" class="control-button prev">
-    <span class="display-4">{{schedulerService.now.format('MMMM YYYY')}}</span>
+    <span style="display:inline-block; vertical-align: middle" class="display-4">{{schedulerService.now.format('MMMM YYYY')}}</span>
     <img src="../../assets/control-button-next.svg" (click)="addMonth()" class="control-button next">
   </div>
+  <!--<div class="card-block">-->
+    <!--<img src="../../assets/control-button-prev.svg" (click)="subtractMonth()" class="control-button prev">-->
+    <!--<span style="display:inline-block; vertical-align: middle" class="display-4">{{schedulerService.now.format('MMMM YYYY')}}</span>-->
+    <!--<img src="../../assets/control-button-next.svg" (click)="addMonth()" class="control-button next">-->
+  <!--</div>-->
 </div>
 
 <div class="card">

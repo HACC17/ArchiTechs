@@ -37,7 +37,7 @@ const routes: Routes = [
   {path: 'auth', component: AuthComponent},
   {path: 'auth/login', component: LoginComponent, canActivate: [AuthGuardService]},
   {path: 'auth/register', component: RegisterComponent, canActivate: [AuthGuardService]},
-  {path: 'main', component: MainComponent, children: [
+  {path: 'main', component: MainComponent, canActivate: [SchedulerGuardService], children: [
     {path: '', redirectTo: 'scheduler', pathMatch: 'full'},
     {path: 'scheduler', component: SchedulerComponent, children: [
       {path: '', redirectTo: 'calendar', pathMatch: 'full'},

@@ -1,6 +1,15 @@
 <div class="container">
   <div class="row justify-content-center align-items-center p-5" >
-    <div [@authAnim] *ngIf="anim">
+    <div class="auth" [@authAnim] *ngIf="anim">
+
+      <div class="d-flex flex-column align-items-center">
+        <div class="display-3"> Welcome! </div>
+
+        <br>
+        <p>Please sign in or register to volunteer for the upcoming election.</p>
+        <br>
+      </div>
+
       <div class="form-group">
         <label>Email</label>
         <input type="email" [formControl]="email" class="form-control" email>

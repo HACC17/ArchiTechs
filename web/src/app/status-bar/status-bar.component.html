@@ -1,4 +1,10 @@
 <div class="status-bar-top">
+  <div class="title">
+    <div class="display-5">
+      <img class="logo" src="../../assets/pipe-logo.svg"> PIPE
+    </div>
+  </div>
+
   <div dropdown class="profile btn-group">
     <span> {{userService.user.name}}</span>
     <span>
@@ -6,7 +12,6 @@
     </span>
     <ul *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
       <li role="menuitem"><div class="dropdown-item" (click)="googleLogin()">Sync Google</div></li>
-      <li role="menuitem"><div class="dropdown-item" href="#">Edit Information</div></li>
       <li class="divider dropdown-divider"></li>
       <li role="menuitem"><div class="dropdown-item" (click)="logout()">Logout</div>
       </li>

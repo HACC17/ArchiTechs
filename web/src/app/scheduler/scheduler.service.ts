@@ -64,6 +64,10 @@ export class SchedulerService {
         // Months is 0 indexed in moment.
         (date.getMonth() === this.now.month());
 
+      if (!result) {
+        return false;
+      }
+
       // Now filter by roles, if specified.
       if (roles) {
         for (const role in roles) {

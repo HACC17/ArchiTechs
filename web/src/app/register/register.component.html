@@ -1,28 +1,67 @@
 <div class="container">
-  <div class="row justify-content-center align-items-center p-5" >
-    <div [@registerAnim] *ngIf="anim">
-      <div class="form-group">
-        <label>Email</label>
-        <p> {{authService.tempEmail}} </p>
-      </div>
-      <div class="form-group">
-        <label>Password</label>
-        <input [formControl]="password" class="form-control">
-      </div>
-      <div class="form-group">
-        <label>Name</label>
-        <input [formControl]="name" class="form-control">
-      </div>
-      <div class="form-group">
-        <label>Address</label>
-        <input [formControl]="address" class="form-control">
-      </div>
-      <div class="form-group">
-        <label>Phone Number</label>
-        <input [formControl]="phoneNumber" class="form-control">
-      </div>
-      <div class="button-feedback" *ngIf="failed"> Fill in all fields! </div>
-      <button class="btn blue" (click)="submit()"> Register </button>
-    </div>
+  <div [@registerAnim] *ngIf="anim" class="row justify-content-center align-items-center p-5" >
+    <table class="structure">
+      <tbody>
+        <tr>
+          <td>
+            <div class="display-3"> Architechs </div>
+            <div class="display-3 text-blue"> PIPE<span style="vertical-align: top" class="display-4"> &copy; </span> </div>
+            <div class="display-4"> Performing & Intelligent Planning Ecosystem </div>
+
+          </td>
+          <td>
+            <div>
+              <div class="form-group">
+                <label>Email</label>
+                <p> {{authService.tempEmail}} </p>
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input [formControl]="password" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Name</label>
+                <input [formControl]="name" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Address</label>
+                <input [formControl]="address" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input [formControl]="phoneNumber" class="form-control">
+              </div>
+              <div class="button-feedback" *ngIf="failed"> Fill in all fields! </div>
+              <button class="btn blue" (click)="submit()"> Register </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!--<div [@registerAnim] *ngIf="anim">-->
+      <!--<div class="form-group">-->
+        <!--<label>Email</label>-->
+        <!--<p> {{authService.tempEmail}} </p>-->
+      <!--</div>-->
+      <!--<div class="form-group">-->
+        <!--<label>Password</label>-->
+        <!--<input [formControl]="password" class="form-control">-->
+      <!--</div>-->
+      <!--<div class="form-group">-->
+        <!--<label>Name</label>-->
+        <!--<input [formControl]="name" class="form-control">-->
+      <!--</div>-->
+      <!--<div class="form-group">-->
+        <!--<label>Address</label>-->
+        <!--<input [formControl]="address" class="form-control">-->
+      <!--</div>-->
+      <!--<div class="form-group">-->
+        <!--<label>Phone Number</label>-->
+        <!--<input [formControl]="phoneNumber" class="form-control">-->
+      <!--</div>-->
+      <!--<div class="button-feedback" *ngIf="failed"> Fill in all fields! </div>-->
+      <!--<button class="btn blue" (click)="submit()"> Register </button>-->
+    <!--</div>-->
   </div>
 </div>

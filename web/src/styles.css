@@ -18,6 +18,10 @@
   color: #ffffff;
 }
 
+.text-blue {
+  color: #08a9fa;
+}
+
 .calendar {
   overflow: hidden;
   border-collapse: separate!important;
@@ -29,10 +33,6 @@
 
 th {
   font-weight: normal!important;
-}
-
-table .calendar tr:first-child th {
-  border: 0;
 }
 
 table .calendar th {
@@ -53,19 +53,17 @@ table .calendar td {
   vertical-align: bottom;
 }
 
+.calendar.table th {
+  /*border-top: 1px solid #777981!important;*/
+}
+
 .calendar td:hover {
   background: #e7ebf3;
 }
 
-.calendar tr:first-child {
-  /*background: #83a4d4;  !* fallback for old browsers *!*/
-  /*background: -webkit-linear-gradient(to right, #08a9fa, #83a4d4);  !* Chrome 10-25, Safari 5.1-6 *!*/
-  /*background: linear-gradient(to right, #08a9fa, #83a4d4); !* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ *!*/
-
-}
-
 .calendar tr:nth-child(2) td {
-  border-top: 0!important;
+  /*border-top: 0!important;*/
+  /*border-top: 1px solid #777981!important;*/
 }
 
 .calendar button {
@@ -101,9 +99,10 @@ table .calendar td {
 .status-bar-bottom {
   position: relative;
   height: 70px;
-  font-size: 18px;
+  font-size: 12px;
   margin-top: -1.5rem;
-  background: #08a9fa;
+  background: #ffffff;
+  padding: 1rem;
   /*border-bottom: 1px solid var(--grey);*/
 }
 
@@ -130,30 +129,23 @@ table .calendar td {
   box-shadow: none!important;
   border: 0!important;
   text-align: center;
+  position: relative;
 }
 
-.calendar-control .card-block {
-  padding: 0!important;
-}
-
-.calendar-control .display-4 {
+.display-4 {
   font-size: 1.5rem!important;
+}
+
+.display-5 {
+  font-size: 2.0rem;
+  font-weight: 300;
+  line-height: 1.1;
 }
 
 .calendar-control .control-button {
   height: 50px!important;
   width: 50px!important;
   cursor: pointer!important;
-}
-
-.calendar-control .prev {
-  display: inline-block;
-  float: left!important;
-}
-
-.calendar-control .next {
-  display: inline-block;
-  float: right!important;
 }
 
 .dialog-box {
@@ -254,6 +246,11 @@ table .calendar td {
   float: left;
 }
 
+.logo {
+  width: 50px;
+  height: 50px;
+}
+
 .force-scroll {
   min-height: 500px;
 }
@@ -299,6 +296,12 @@ table .calendar td {
   font-size: 14px;
   color: var(--dark-grey);
   margin-bottom: 0.1rem;
+}
+
+.auth {
+  text-wrap: normal;
+  width: 330px!important;
+  word-wrap: break-word;
 }
 
 
