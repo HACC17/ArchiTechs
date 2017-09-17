@@ -34,7 +34,7 @@ export class SchedulerService {
       .toPromise()
       .then((res) => {
         this.trainings = res.json();
-
+        console.log(this.trainings);
         this.filterTrainings();
         this.makeCalendar();
       });
@@ -110,6 +110,7 @@ export class SchedulerService {
 
           for (const training of this.filteredTrainings) {
             const date = new Date(training.date);
+            console.log(date);
             if (date.getMonth() === day.month() && date.getDate() === day.date()) {
               trainings.push(training);
             }

@@ -24,22 +24,44 @@ export class SideBarComponent implements OnInit {
 
   initializeCheckbox(): void {
     this.roles = new FormGroup({
-      control: new FormControl(),
-      counting: new FormControl(),
-      delivery: new FormControl(),
-      information: new FormControl(),
-      facility: new FormControl(),
-      precinct: new FormControl(),
-      troubleshoot: new FormControl()
+      control: new FormControl(false),
+      counting: new FormControl(false),
+      delivery: new FormControl(false),
+      information: new FormControl(false),
+      facility: new FormControl(false),
+      precinct: new FormControl(false),
+      troubleshoot: new FormControl(false)
     })
   }
 
   checkboxChange(event): void {
+    console.log(this.roles.get(event.target.id).value);
     if (this.roles.get(event.target.id).value) {
       this.roles.patchValue({[event.target.id] : event.target.value});
+      this.roles.patchValue({[event.target.id] : event.target.value});
+
     }
 
-    this.schedulerService.filterTrainings(this.roles.getRawValue());
+
+    let isAll = true;
+    const roleResults = this.roles.getRawValue();
+    for (const role in roleResults) {
+      if (roleResults.hasOwnProperty(role)) {
+        if (roleResults[role] !== false) {
+          isAll = false;
+        }
+      }
+    }
+    console.log(roleResults);
+    console.log(isAll);
+
+
+    if (isAll) {
+      this.schedulerService.filterTrainings();
+    } else {
+      this.schedulerService.filterTrainings(roleResults);
+    }
+
     this.schedulerService.makeCalendar();
   }
 
