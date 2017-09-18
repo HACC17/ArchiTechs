@@ -5,7 +5,8 @@ import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
 import {and} from '@angular/router/src/utils/collection';
 import {observable} from 'rxjs/symbol/observable';
-import {UserService} from '../user.service';
+import { UserService } from '../user.service';
+import { SchedulerService } from '../scheduler/scheduler.service';
 
 @Injectable()
 export class DialogService {
@@ -15,7 +16,8 @@ export class DialogService {
   messages: any;
   isCurrentlyWorking: boolean;
 
-  constructor(private http: Http, private userService: UserService) {
+  constructor(private http: Http, private userService: UserService,
+              private schedulerService: SchedulerService) {
     this.messages = [];
     this.subject = new Subject();
     this.observable = this.subject.asObservable();
@@ -43,6 +45,19 @@ export class DialogService {
 
         // Res = classified keyword.
         switch (res) {
+          case 'suggest':
+            if (!localStorage.getItem('profileImageUrl')) {
+              response = 'Please sync with your google account first so I can see your schedule.';
+            } else {
+              if (!this.userService.getTraining()) {
+                response = 'Please schedule a training first.';
+              } else {
+                const suggestedTraining = this.schedulerService.findBestDate();
+                response = 'You seem to be free on ' + suggestedTraining.date + '. ' +
+                  'There is a training on that day  for the position: ' + suggestedTraining.positionName + '.';
+              }
+            }
+            break;
           case 'map':
             response = 'Would you like me to show you a map?';
 
@@ -61,11 +76,13 @@ export class DialogService {
                       this.addMessage(false, 'Here it is: ', this.userService.user.training.address);
                     }, 500);
                   } else {
-                    this.addMessage(false, 'Hold on, please scheduler a training first.');
+                    this.addMessage(false, 'Hold on, please schedule a training first.');
                   }
 
                 } else if (_res === 'no') {
                   this.addMessage(false, 'Oh, okay.');
+                } else {
+                  this.addMessage(false, 'Sorry, I didn\'t understand that');
                 }
 
                 // Conversation is over.

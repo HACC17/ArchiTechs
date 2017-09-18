@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DialogService } from './dialog.service';
 import { FormControl } from '@angular/forms';
 import { animate, trigger, transition, style } from '@angular/animations';
+import {SchedulerService} from "../scheduler/scheduler.service";
 
 @Component({
   selector: 'app-dialog',
@@ -35,11 +36,14 @@ export class DialogComponent implements OnInit {
 
   anim: boolean;
 
-  constructor(private dialog: DialogService) {
+  constructor(private dialog: DialogService, private schedulerService: SchedulerService) {
     this.anim = true;
   }
 
   ngOnInit() {
+    if (localStorage.getItem('profileImageUrl')) {
+      this.schedulerService.getGoogleEventsList()
+    }
   }
 
 }

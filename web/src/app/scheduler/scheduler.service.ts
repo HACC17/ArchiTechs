@@ -143,7 +143,10 @@ export class SchedulerService {
   }
 
   // Compares filtered training dates with google events and returns the first non-matching day.
-  findBestDate(): Object {
+  findBestDate(): any {
+    console.log(this.calendar);
+    console.log(this.filteredTrainings);
+    console.log(this.googleEvents);
     for (const training of this.filteredTrainings) {
       let match = true;
       for (const event of this.googleEvents) {

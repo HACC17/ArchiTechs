@@ -30,6 +30,12 @@ router.post('/train', (req, res) => {
 router.get('/test', (req, res) => {
   natural.BayesClassifier.load('classifier.json', null, function(err, classifier) {
 
+    classifier.addDocument('sign me up', 'suggest');
+    classifier.addDocument('get me a schedule', 'suggest');
+
+
+
+
     classifier.train();
     classifier.save('classifier.json');
 

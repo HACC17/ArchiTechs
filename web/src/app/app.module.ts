@@ -31,6 +31,7 @@ import { MainComponent } from './main/main.component';
 import { ReversePipe } from './reverse.pipe';
 import { WorkSelectionComponent } from './work-selection/work-selection.component';
 import { SanitizePipe } from './sanitize.pipe';
+import { DialogGuardService } from './guards/dialog-guard.service';
 
 const routes: Routes = [
   {path: '', redirectTo: 'auth', pathMatch: 'full'},
@@ -44,7 +45,7 @@ const routes: Routes = [
       {path: 'calendar', component: CalendarComponent},
       {path: 'work', component: WorkSelectionComponent}
     ]},
-    {path: 'dialog', component: DialogComponent},
+    {path: 'dialog', component: DialogComponent, canActivate: [DialogGuardService]},
   ]}
 ]
 
@@ -84,6 +85,7 @@ const routes: Routes = [
     AuthGuardService,
     SchedulerGuardService,
     DialogService,
+    DialogGuardService,
     GoogleApiService,
     UserService,
     AnimationService

@@ -3,6 +3,7 @@ import { Http, Response } from '@angular/http';
 import { GoogleApiService } from '../google-api.service';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { SchedulerService } from '../scheduler/scheduler.service';
 
 declare const gapi: any;
 
@@ -12,7 +13,8 @@ export class AuthService {
   tempEmail: string;
 
   constructor(private http: Http, private gapis: GoogleApiService,
-              private userService: UserService, private router: Router) {
+              private userService: UserService, private router: Router,
+              private schedulerService: SchedulerService) {
     this.tempEmail = '';
   }
 
@@ -67,6 +69,7 @@ export class AuthService {
       gapi.auth2.getAuthInstance().signIn().then((res) => {
         const profile = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile();
         localStorage.setItem('profileImageUrl', profile.getImageUrl());
+        this.schedulerService.getGoogleEventsList();
       });
     })
   }
