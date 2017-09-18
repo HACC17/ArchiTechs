@@ -324,7 +324,8 @@ table.structure tr {
 }
 
 table.structure th.description, table.structure td.main {
-  padding: 1rem 1rem!important;
+  /*padding: 1rem 1rem!important;*/
+  padding-bottom: 1rem!important;
   width: 50%;
   font-weight: normal;
 }

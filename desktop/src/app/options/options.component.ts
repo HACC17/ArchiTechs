@@ -29,7 +29,7 @@ export class OptionsComponent implements OnInit {
   sendReminder(): void {
     this.sent = true;
 
-    this.http.get('http://localhost:3000/api/web/volunteer/remind')
+    this.http.get('http://architechs.us/api/web/volunteer/send-all')
       .toPromise()
       .then((res) => {
         console.log(res);

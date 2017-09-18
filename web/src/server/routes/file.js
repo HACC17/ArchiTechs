@@ -3,10 +3,6 @@ const router = express.Router();
 const fs = require('fs');
 const nconf = require('nconf');
 
-router.get('/get-settings', (req, res) => {
-
-});
-
 router.post('/save-settings', (req, res) => {
   const settings = req.body;
   nconf.file('default', {file: './config.json'});
@@ -23,21 +19,30 @@ router.post('/save-settings', (req, res) => {
   });
 });
 
+
+router.get('/download', (req, res) => {
+  const directory = './dump/election/';
+  res.download(directory + req.query.name);
+});
+
+
 router.get('/', (req, res) => {
   /* ---- NEED AUTHENTICATION HERE ----*/
 
   /* --------------------------------- */
-  let directory = __dirname; // Might have user define the directory
+  const directory = './dump/election';
   let list = [];
   fs.readdir(directory, (err, files) => {
     if(err) {
+      res.send('There is an error:', err);
     } else {
       for (let file of files) {
         list.push({
-          name: file
+          name: file,
+          url: 'http://architechs.us/api/file/download?name=' + file
         });
       }
-      res.send(list);
+      res.send(JSON.stringify(list));
     }
   })
 });

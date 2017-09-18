@@ -1,5 +1,5 @@
 <div class="top-heading">
-  {{user.first + ' ' + user.last}}
+  {{user.name}}
 </div>
 
 <div class="content">
@@ -7,45 +7,22 @@
     <tbody>
     <tr>
       <th>
-        <h4> Basic Information </h4>
-        <p>
-          You can edit the volunteer's basic information here.
-        </p>
+        <h4> Training </h4>
       </th>
       <td>
-        <div [formGroup]="basicInformation"  class="form-group">
-          <p>
-            <label> First Name </label>
-            <input formControlName="firstName" class="form-control">
-          </p>
-
-          <p>
-            <label> Last Name </label>
-            <input formControlName="lastName" class="form-control">
-          </p>
-
-          <p>
-            <label> Date of Birth </label>
-            <input formControlName="dob" class="form-control">
-          </p>
-
-          <p>
-            <label> Email </label>
-            <input formControlName="email" class="form-control">
-          </p>
-        </div>
+        <p> Date: {{this.user.training.date}}</p>
+        <p> Time: {{this.user.training.time}}</p>
+        <p> Position: {{this.user.training.positionName}}</p>
+        <p> Address: {{this.user.training.address}} </p>
       </td>
     </tr>
 
     <tr>
       <th>
-        <h4> Header </h4>
-        <p>
-          Summary...
-        </p>
+        <h4> Work </h4>
       </th>
       <td>
-        Description
+        <p> Address: {{this.user.work.address}}</p>
       </td>
     </tr>
     </tbody>

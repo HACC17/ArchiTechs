@@ -12,7 +12,7 @@ router.ws('/', function(ws, req) {
   /* AUTHENTICATION HERE */
 
   /* DB BACKUP */
-  const mongodump = exec('mongodump --verbose', (err, stdout, stderr) => {
+  const mongodump = exec('mongodump -h db:27017 --verbose', (err, stdout, stderr) => {
     console.log('mongodump is completed');
     ws.terminate();
   });

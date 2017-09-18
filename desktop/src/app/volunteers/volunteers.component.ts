@@ -11,6 +11,7 @@ export class VolunteersComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(new Date('09-27-2017'));
   }
 
 }

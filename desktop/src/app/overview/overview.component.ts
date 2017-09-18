@@ -49,9 +49,10 @@ export class OverviewComponent implements OnInit {
   ngOnInit() {}
 
   getPositions(): void {
-    this.http.get('http://localhost:3000/api/web/position/list')
+    this.http.get('http://architechs.us/api/web/position/list')
       .toPromise()
       .then((res) => {
+        console.log(res);
         this.positions = res.json();
         console.log(this.positions);
 

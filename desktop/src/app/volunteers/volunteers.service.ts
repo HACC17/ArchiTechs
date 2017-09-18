@@ -16,12 +16,13 @@ export class VolunteersService {
   users: Volunteer[];
 
   constructor(private http: Http) {}
-
+  /*environment.api + '/api/web/volunteer/list'*/
   getVolunteers(): void {
     console.log('getVolunteers called');
-    this.http.get(environment.api + '/api/web/volunteer/list')
+    this.http.get('http://architechs.us/api/web/volunteer/list')
       .toPromise()
       .then((res) => {
+        console.log(res);
         this.users = res.json();
         console.log(this.users);
       })

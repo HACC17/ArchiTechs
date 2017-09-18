@@ -34,6 +34,8 @@ function filterDueForReminder(callback) {
       return db.collection('volunteer');
     })
     .then((collection) => {
+      console.log(nconf.get('email:days'));
+      console.log((new Date('09-27-2017') - new Date()) / milisecondsInDay);
       return collection.find({$where: `((new Date(this.training.date) - new Date()) / ${milisecondsInDay}) >= ${nconf.get('email:days')}`}).toArray();
     })
     .then((result) => {
@@ -47,7 +49,7 @@ function sendReminderEmail(volunteer, transporter) {
   console.log('message: ', message);
 
   const mailOptions = {
-    from: 'admin@architechs.us',
+    from: 'ijeong@mobileitforce.com',
     to: volunteer.email,
     subject: 'Reminder of your upcoming training session',
     html: message
@@ -62,14 +64,45 @@ function sendReminderEmail(volunteer, transporter) {
   });
 }
 
+router.get('/send-all', (req, res) => {
+  const transporter = nodemailer.createTransport({
+    host: 'secure169.inmotionhosting.com',
+    port: 465,
+    secure: true,
+    auth: {
+      user: 'ijeong@mobileitforce.com',
+      pass: ''
+    }
+  });
+
+  res.setHeader('Content-Type', 'application/json');
+  MongoClient.connect(environment.url.mongodb, (err, db) => {
+    if (err) throw err;
+    db.collection('volunteer').find().toArray((err, result) => {
+      if (err) throw err;
+      if (result) {
+        for (const volunteer of result) {
+          console.log('in loop');
+
+          sendReminderEmail(volunteer, transporter);
+        }
+        db.close();
+      }
+    });
+    db.close();
+  });
+})
+
 router.get('/remind', (req, res) => {
   console.log('remind called');
   const transporter = nodemailer.createTransport({
-    host: 'smtp.office365.com',
-    port: '587',
-    auth: { user: 'admin@architechs.us', pass: 'h4X=+Mdx2&' },
-    secure: false,
-    tls: { ciphers: 'SSLv3' }
+    host: 'secure169.inmotionhosting.com',
+    port: 465,
+    secure: true,
+    auth: {
+      user: 'ijeong@mobileitforce.com',
+      pass: ''
+    }
   });
 
   filterDueForReminder((result) => {
@@ -100,6 +133,21 @@ router.post('/get', (req, res) => {
       });
       db.close();
     });
+  });
+});
+
+router.get('/list', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  MongoClient.connect(environment.url.mongodb, (err, db) => {
+    if (err) throw err;
+    db.collection('volunteer').find().toArray((err, result) => {
+      if (err) throw err;
+      if (result) {
+        res.send(result);
+        db.close();
+      }
+    });
+    db.close();
   });
 });
 

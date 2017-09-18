@@ -17,7 +17,7 @@ export class DumplogComponent implements OnInit {
   }
 
   start(): void {
-    const ws = new WebSocket('ws://localhost:3000/api/websocket');
+    const ws = new WebSocket('ws://architechs.us/api/websocket');
     ws.onopen = (e) => {
       console.log('ws is open');
       console.log('ws is now listening to messages');

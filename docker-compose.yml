@@ -1,17 +1,14 @@
 version: "3"
 services:
   web:
-    build: ./web
-    container_name: "web"
-    volumes:
-      - ./web:/web
+    image: ilungj/pipe
     ports:
-      - "3000:3000"
+      - "80:3000"
 
   db:
     image: ilungj/hacc-db
-    container_name: "database"
     volumes:
-      - ./sample_data/data/db:/data/db
+      - /data/db:/data/db
+      - /data/dump:/data/dump
     ports:
       - 27017:27017
