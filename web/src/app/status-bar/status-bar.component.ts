@@ -33,6 +33,7 @@ export class StatusBarComponent implements OnInit {
 
     // Go back to the main screen now that the user is logged out of the session.
     this.router.navigate(['/auth']);
+    window.location.reload();
   }
 
   openDialog(): void {

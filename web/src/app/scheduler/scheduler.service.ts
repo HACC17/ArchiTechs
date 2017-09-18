@@ -34,7 +34,6 @@ export class SchedulerService {
       .toPromise()
       .then((res) => {
         this.trainings = res.json();
-        console.log(this.trainings);
         this.filterTrainings();
         this.makeCalendar();
       });
@@ -110,7 +109,6 @@ export class SchedulerService {
 
           for (const training of this.filteredTrainings) {
             const date = new Date(training.date);
-            console.log(date);
             if (date.getMonth() === day.month() && date.getDate() === day.date()) {
               trainings.push(training);
             }
@@ -144,9 +142,6 @@ export class SchedulerService {
 
   // Compares filtered training dates with google events and returns the first non-matching day.
   findBestDate(): any {
-    console.log(this.calendar);
-    console.log(this.filteredTrainings);
-    console.log(this.googleEvents);
     for (const training of this.filteredTrainings) {
       let match = true;
       for (const event of this.googleEvents) {
