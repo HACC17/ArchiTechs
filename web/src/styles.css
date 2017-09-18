@@ -244,6 +244,7 @@ table .calendar td {
 .title {
   display: inline-block!important;
   float: left;
+  cursor: pointer;
 }
 
 .logo {

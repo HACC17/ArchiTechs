@@ -34,15 +34,7 @@ export class SideBarComponent implements OnInit {
     })
   }
 
-  checkboxChange(event): void {
-    console.log(this.roles.get(event.target.id).value);
-    if (this.roles.get(event.target.id).value) {
-      this.roles.patchValue({[event.target.id] : event.target.value});
-      this.roles.patchValue({[event.target.id] : event.target.value});
-
-    }
-
-
+  checkOptionsFilterTrainings(): void {
     let isAll = true;
     const roleResults = this.roles.getRawValue();
     for (const role in roleResults) {
@@ -52,28 +44,33 @@ export class SideBarComponent implements OnInit {
         }
       }
     }
-    console.log(roleResults);
-    console.log(isAll);
-
 
     if (isAll) {
       this.schedulerService.filterTrainings();
     } else {
       this.schedulerService.filterTrainings(roleResults);
     }
+  }
 
+  checkboxChange(event): void {
+    if (this.roles.get(event.target.id).value) {
+      this.roles.patchValue({[event.target.id] : event.target.value});
+      this.roles.patchValue({[event.target.id] : event.target.value});
+
+    }
+    this.checkOptionsFilterTrainings();
     this.schedulerService.makeCalendar();
   }
 
   addMonth(): void {
     this.schedulerService.now = this.schedulerService.now.add(1, 'months');
-    this.schedulerService.filterTrainings(this.roles.getRawValue());
+    this.checkOptionsFilterTrainings();
     this.schedulerService.makeCalendar();
   }
 
   subtractMonth(): void {
     this.schedulerService.now = this.schedulerService.now.subtract(1, 'months');
-    this.schedulerService.filterTrainings(this.roles.getRawValue());
+    this.checkOptionsFilterTrainings();
     this.schedulerService.makeCalendar();
   }
 

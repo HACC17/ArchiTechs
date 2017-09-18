@@ -47,4 +47,8 @@ export class StatusBarComponent implements OnInit {
       this.dialogService.updateRequest(this.sendInput.value);
     }
   }
+
+  redirectToHome(): void {
+    this.router.navigate(['/main']);
+  }
 }
