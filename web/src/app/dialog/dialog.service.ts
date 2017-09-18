@@ -62,10 +62,8 @@ export class DialogService {
             response = 'Would you like me to show you a map?';
 
             // We started a conversation here. Keep listening for a reply.
-            console.log('Conversation started.');
             this.isCurrentlyWorking = true;
             const subscription = this.observable.subscribe((value) => {
-              console.log('Observable triggered.');
               // We still need to understand what the reply is... _Res = classified keyword.
               this.classify(value).then((_res) => {
                 if (_res === 'yes') {
@@ -73,7 +71,7 @@ export class DialogService {
                   if (this.userService.getTraining()) {
                     this.addMessage(false, 'Sure, I\'ll go ahead and do that for you!');
                     setTimeout(() => {
-                      this.addMessage(false, 'Here it is: ', this.userService.user.training.address);
+                      this.addMessage(false, 'Here it is: ', this.userService.user.training.address + ' Honolulu, HI');
                     }, 500);
                   } else {
                     this.addMessage(false, 'Hold on, please schedule a training first.');
@@ -82,11 +80,10 @@ export class DialogService {
                 } else if (_res === 'no') {
                   this.addMessage(false, 'Oh, okay.');
                 } else {
-                  this.addMessage(false, 'Sorry, I didn\'t understand that');
+                  this.addMessage(false, 'Sorry, I didn\'t understand that.');
                 }
 
                 // Conversation is over.
-                console.log('Conversation is over.');
                 setTimeout(() => {
                   this.isCurrentlyWorking = false;
                 }, 500);
@@ -121,7 +118,6 @@ export class DialogService {
     return this.http.post('/api/web/classifier/classify', body)
       .toPromise()
       .then((res) => {
-        console.log(res.text());
         return res.text();
       })
   }

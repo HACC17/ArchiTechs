@@ -29,10 +29,10 @@ export class MessageComponent implements OnInit {
   mapUrl: string;
 
   constructor(private userService: UserService) {
-    this.mapUrl = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyDp1h_TE51SxS4lLA4jtI9p5ADwsfWVYII&q=Space+Needle,Seattle+WA';
   }
 
   ngOnInit() {
+    this.mapUrl = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyDp1h_TE51SxS4lLA4jtI9p5ADwsfWVYII&q=' + this.address;
   }
 
 }
