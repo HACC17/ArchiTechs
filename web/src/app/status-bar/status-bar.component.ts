@@ -50,5 +50,6 @@ export class StatusBarComponent implements OnInit {
 
   redirectToHome(): void {
     this.router.navigate(['/main']);
+    window.location.reload();
   }
 }

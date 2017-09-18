@@ -14,9 +14,12 @@ import { DialogService } from '../dialog/dialog.service';
 export class SideBarComponent implements OnInit {
 
   roles: FormGroup;
+  failed: boolean;
 
   constructor(private schedulerService: SchedulerService, private userService: UserService,
-              private router: Router, private dialogService: DialogService) { }
+              private router: Router, private dialogService: DialogService) {
+    this.failed = false;
+  }
 
   ngOnInit() {
     this.initializeCheckbox();
@@ -89,6 +92,12 @@ export class SideBarComponent implements OnInit {
   }
 
   apply(): void {
+    if (!Object.keys(this.userService.user.training).length ||
+      !Object.keys(this.userService.position).length ||
+      !Object.keys(this.userService.user.work).length) {
+      this.failed = true;
+      return;
+    }
     this.userService.updateUser();
     this.router.navigate(['/main/dialog']);
 

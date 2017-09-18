@@ -67,7 +67,7 @@ table .calendar td {
 }
 
 .calendar button {
-  width: 100%;
+  width: 90%;
   font-size: 12px!important;
   padding: 0.2rem!important;
 }
@@ -307,7 +307,10 @@ table .calendar td {
 
 
 @media (max-width: 576px) {
-
+  .title {
+    visibility: hidden;
+    display: none!important;
+  }
 }
 
 @media (max-width: 768px) {

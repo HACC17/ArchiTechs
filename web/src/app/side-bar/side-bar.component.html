@@ -16,6 +16,7 @@
     Scheduled time: <br> {{userService.getTraining()}} <br>
     Position: <br> {{getPosition()}}<br>
     Work: <br> {{userService.getWork()}}<br><br>
+    <div class="button-feedback" *ngIf="failed"> One or more fields not selected! </div>
     <button (click)="apply()" class="btn blue"> Apply </button>
   </div>
 </div>
