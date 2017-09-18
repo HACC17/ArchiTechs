@@ -13,6 +13,7 @@ export class OverviewComponent implements OnInit {
   labels: string[];
   type;
   legend;
+  colors: any[];
 
   data: any[];
 
@@ -26,11 +27,20 @@ export class OverviewComponent implements OnInit {
     };
     this.positions = [];
     this.labels = [];
-    this.type = 'bar';
+    this.type = 'horizontalBar';
     this.legend = false;
     this.data = [
       {data: [], label: 'Current Staffing'},
       {data: [], label: 'Max Staffing'}
+    ];
+    this.colors = [
+      {
+        backgroundColor: '#08a9fa'
+      },
+
+      {
+        backgroundColor: '#ec6ead'
+      }
     ];
     this.getPositions();
 

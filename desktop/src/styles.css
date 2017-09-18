@@ -306,6 +306,10 @@ table.list tbody tr:first-child td {
   border-radius: 0.25rem!important;
 }
 
+.table tr:first-child th {
+  border-top: 0!important;
+}
+
 table.structure {
   min-width: 700px;
   width: 100%;

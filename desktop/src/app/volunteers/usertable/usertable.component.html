@@ -1,16 +1,16 @@
 <table class="table">
   <tbody>
   <tr>
-    <th> First </th>
-    <th> Last </th>
-    <th> Date of Birth </th>
+    <th> Name </th>
     <th> Email </th>
+    <th> Address </th>
+    <th> Phone Number </th>
   </tr>
   <tr class="table-selectable" [routerLink]="'/volunteers/' + user._id" *ngFor="let user of service.users">
-    <th> {{user.first}} </th>
-    <th> {{user.last}} </th>
-    <th> {{user.dob}} </th>
+    <th> {{user.name}} </th>
     <th> {{user.email}} </th>
+    <th> {{user.address}} </th>
+    <th> {{user.phoneNumber}} </th>
   </tr>
   </tbody>
 </table>

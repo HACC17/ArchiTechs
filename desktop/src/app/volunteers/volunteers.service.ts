@@ -19,7 +19,7 @@ export class VolunteersService {
 
   getVolunteers(): void {
     console.log('getVolunteers called');
-    this.http.get(environment.api + '/volunteers')
+    this.http.get(environment.api + '/api/web/volunteer/list')
       .toPromise()
       .then((res) => {
         this.users = res.json();
